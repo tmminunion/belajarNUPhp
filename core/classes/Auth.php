@@ -1,5 +1,7 @@
 <?php
 
+use Medoo\Medoo;
+
 class Auth
 {
     private $host = DB_HOST;
@@ -16,10 +18,10 @@ class Auth
     {
         $this->Mdb = new Medoo([
             'database_type' => 'mysql',
-            'database_name' => 'nama_database',
+            'database_name' => 'nuphp',
             'server' => 'localhost',
-            'username' => 'username',
-            'password' => 'password'
+            'username' => 'root',
+            'password' => ''
         ]);
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
         $options = [

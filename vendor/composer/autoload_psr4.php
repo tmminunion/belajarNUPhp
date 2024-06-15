@@ -20,6 +20,7 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Psr\\Clock\\' => array($vendorDir . '/psr/clock/src'),
     'Nufat\\Cli\\' => array($vendorDir . '/nufat/cli/src'),
+    'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'Illuminate\\View\\' => array($vendorDir . '/illuminate/view'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/collections', $vendorDir . '/illuminate/conditionable', $vendorDir . '/illuminate/macroable', $vendorDir . '/illuminate/support'),

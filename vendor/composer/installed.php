@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'nufat/nuphp',
-        'pretty_version' => 'v1.4.4',
-        'version' => '1.4.4.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '13673d599844b97ac31951302eaac5ddc1e36e3a',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -26,6 +26,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../carbonphp/carbon-doctrine-types',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'catfan/medoo' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'd1ff4e0e873a3e032e3d8804031dd6be4e013b22',
+            'type' => 'framework',
+            'install_path' => __DIR__ . '/../catfan/medoo',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(
@@ -242,9 +253,9 @@
             'dev_requirement' => false,
         ),
         'nufat/nuphp' => array(
-            'pretty_version' => 'v1.4.4',
-            'version' => '1.4.4.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '13673d599844b97ac31951302eaac5ddc1e36e3a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

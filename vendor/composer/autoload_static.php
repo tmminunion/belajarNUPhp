@@ -48,6 +48,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         ),
         'M' => 
         array (
+            'Medoo\\' => 6,
             'Masterminds\\' => 12,
         ),
         'I' => 
@@ -151,6 +152,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         'Nufat\\Cli\\' => 
         array (
             0 => __DIR__ . '/..' . '/nufat/cli/src',
+        ),
+        'Medoo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/catfan/medoo/src',
         ),
         'Masterminds\\' => 
         array (
