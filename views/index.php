@@ -242,7 +242,7 @@
                                         /argon/
                                     </th>
                                     <td>
-                                        4,569
+                                        4,600
                                     </td>
                                     <td>
                                         340
@@ -358,7 +358,7 @@
                                         Facebook
                                     </th>
                                     <td>
-                                        5,480
+                                        5,48045554
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
