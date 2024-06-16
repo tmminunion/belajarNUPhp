@@ -14,8 +14,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">SALDO</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($totals->saldo_akhir, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -24,8 +24,8 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-success mr-2"><?= 'Rp. ' . number_format($totalsbulan->saldo_akhir, 0, ',', '.') ?></span>
+                                <span class="text-nowrap">Saldo bulan ini</span>
                             </p>
                         </div>
                     </div>
@@ -35,8 +35,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">KREDIT</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($totals->total_kredit, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -45,8 +45,8 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last week</span>
+                                <span class="text-success mr-2"><?= 'Rp. ' . number_format($totalsbulan->total_kredit, 0, ',', '.') ?></span>
+                                <span class="text-nowrap">Kredit bulan ini</span>
                             </p>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                    <span class="h2 font-weight-bold mb-0">924</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">DEBIT</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($totals->total_debit, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -66,8 +66,8 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                <span class="text-nowrap">Since yesterday</span>
+                                <span class="text-warning mr-2"><?= 'Rp. ' . number_format($totalsbulan->total_debit, 0, ',', '.') ?></span>
+                                <span class="text-nowrap">Debit bulan ini</span>
                             </p>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Rata rata</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($saldo_per_anggota, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                <span class="text-success mr-2"><?= 'Rp. ' . number_format($anggotabulan, 0, ',', '.') ?></span>
                                 <span class="text-nowrap">Since last month</span>
                             </p>
                         </div>
@@ -108,20 +108,7 @@
                             <h2 class="text-white mb-0">Sales value</h2>
                         </div>
                         <div class="col">
-                            <ul class="nav nav-pills justify-content-end">
-                                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                                    <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                        <span class="d-none d-md-block">Month</span>
-                                        <span class="d-md-none">M</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                                    <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                        <span class="d-none d-md-block">Week</span>
-                                        <span class="d-md-none">W</span>
-                                    </a>
-                                </li>
-                            </ul>
+
                         </div>
                     </div>
                 </div>
@@ -373,3 +360,170 @@
         </div>
     </div>
 </div>
+
+
+
+
+<?php $this->block('scriptsfooter') ?>
+
+<!--   Optional JS   -->
+<script src="<?= getBaseUrl(); ?>assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+<script src="<?= getBaseUrl(); ?>assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+<!--   Argon JS   -->
+<script src="<?= getBaseUrl(); ?>assets/js/argon-dashboard.js"></script>
+<script>
+    var OrdersChart = (function() {
+        //
+        // Variables
+        //
+
+        var $chart = $("#chart-orders");
+        var $ordersSelect = $('[name="ordersSelect"]');
+
+        //
+        // Methods
+        //
+
+        // Init chart
+        function initChart($chart) {
+            // Create chart
+            var ordersChart = new Chart($chart, {
+                type: "bar",
+                options: {
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 1,
+                                color: "#dfe2e6",
+                                zeroLineColor: "#dfe2e6",
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    if (!(value % 10)) {
+                                        var formattedValue = (value / 1000).toLocaleString('id-ID') + "K";
+                                        return formattedValue;
+                                    }
+                                },
+                            },
+                        }, ],
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(item, data) {
+                                var label = data.datasets[item.datasetIndex].label || "";
+                                var yLabel = item.yLabel;
+                                var formattedValue = "Rp. " + (yLabel / 1000).toLocaleString('id-ID');
+
+                                var content = "";
+
+                                if (data.datasets.length > 1) {
+                                    content +=
+                                        '<span class="popover-body-label mr-auto">' +
+                                        label +
+                                        "</span>";
+                                }
+
+                                content +=
+                                    '<span class="popover-body-value">' + formattedValue + "</span>";
+
+                                return content;
+                            },
+                        },
+                    },
+                },
+                data: {
+                    labels: <?= json_encode($labels) ?>,
+                    datasets: [{
+                        label: "Sales",
+                        data: <?= json_encode($datak) ?>,
+                    }, ],
+                },
+            });
+
+            // Save to jQuery object
+            $chart.data("chart", ordersChart);
+        }
+
+        // Init chart
+        if ($chart.length) {
+            initChart($chart);
+        }
+    })();
+
+
+
+    var SalesChart = (function() {
+        // Variables
+
+        var $chart = $("#chart-sales");
+
+        // Methods
+
+        function init($chart) {
+            var salesChart = new Chart($chart, {
+                type: "line",
+                options: {
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 1,
+                                color: Charts.colors.gray[900],
+                                zeroLineColor: Charts.colors.gray[900],
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    if (!(value % 10)) {
+                                        var formattedValue = "Rp. " + (value / 1000).toLocaleString('id-ID') + "K";
+                                        return formattedValue;
+
+                                    }
+                                },
+                            },
+                        }, ],
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(item, data) {
+                                var label = data.datasets[item.datasetIndex].label || "";
+                                var yLabel = item.yLabel;
+                                var formattedValue = "Rp. " + (yLabel / 1000).toLocaleString('id-ID');
+                                var content = "";
+
+                                if (data.datasets.length > 1) {
+                                    content +=
+                                        '<span class="popover-body-label mr-auto">' +
+                                        label +
+                                        "</span>";
+                                }
+
+                                content +=
+                                    '<span class="popover-body-value">' + formattedValue + "k</span>";
+                                return content;
+                            },
+                        },
+                    },
+                },
+                data: {
+                    labels: <?= json_encode($labelsaldo) ?>,
+                    datasets: [{
+                        label: "Performance",
+                        data: <?= json_encode($saldoPerBulan) ?>,
+                    }, ],
+                },
+            });
+
+            // Save to jQuery object
+
+            $chart.data("chart", salesChart);
+        }
+
+        // Events
+
+        if ($chart.length) {
+            init($chart);
+        }
+    })();
+</script>
+
+
+<?php $this->endblock() ?>

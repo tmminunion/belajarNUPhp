@@ -13,13 +13,12 @@ $capsule->addConnection([
 $capsule->addConnection([
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => 'bunp2332_wp812',
-    'username' => 'bunp2332_wp812',
-    'password' => '6USS[!5f4p',
+    'database' => 'nuphp',
+    'username' => 'root',
+    'password' => '',
     'charset' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci', // tambahkan collation untuk menghindari masalah karakter
-    'prefix' => 'wpw6_',
-], 'mysqlwordpress'); // Nama koneksi
+], 'nuphp'); // Nama koneksi
 
 $capsule->addConnection([
     'driver' => 'mysql',

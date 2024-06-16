@@ -15,7 +15,10 @@
         "illuminate/view": "10.x-dev",
         "illuminate/support": "10.x-dev",
         "nufat/cli": "dev-main",
-        "catfan/medoo": "dev-master"
+        "catfan/medoo": "dev-master",
+        "illuminate/pagination": "*",
+        "symfony/translation": "*",
+        "fakerphp/faker": "2.0.x-dev"
     },
     "autoload": {
         "files": [

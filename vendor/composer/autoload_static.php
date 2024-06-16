@@ -56,6 +56,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
             'Illuminate\\View\\' => 16,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Pipeline\\' => 20,
+            'Illuminate\\Pagination\\' => 22,
             'Illuminate\\Filesystem\\' => 22,
             'Illuminate\\Events\\' => 18,
             'Illuminate\\Database\\' => 20,
@@ -73,6 +74,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             'FontLib\\' => 8,
             'Firebase\\JWT\\' => 13,
+            'Faker\\' => 6,
         ),
         'D' => 
         array (
@@ -176,6 +178,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             0 => __DIR__ . '/..' . '/illuminate/pipeline',
         ),
+        'Illuminate\\Pagination\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/pagination',
+        ),
         'Illuminate\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/filesystem',
@@ -219,6 +225,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fakerphp/faker/src',
         ),
         'Dompdf\\' => 
         array (
