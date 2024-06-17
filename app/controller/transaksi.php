@@ -9,7 +9,7 @@ class transaksi extends Controller
           $page = 1;
           $perPage = 30;
           $offset = ($page - 1) * $perPage;
-          $transactions = Transaction::orderBy('created_at', 'desc')
+          $transactions = Transaction::orderBy('date', 'desc')
                ->skip($offset)
                ->take($perPage)
                ->get();

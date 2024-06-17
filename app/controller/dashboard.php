@@ -33,48 +33,8 @@ SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
 
           $total_members = Member::count();
 
-          // Menghitung saldo per anggota
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
           $anggotabulan = ($total_members > 0) ? round($totalsbulan->saldo_akhir / $total_members) : 0;
-
-          $totalKreditPerBulan = Transaction::selectRaw(
-               'SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) AS total_kredit,
-strftime("%m", date) AS bulan'
-          )
-               ->whereRaw("date >= date('now', '-6 months')")
-               ->groupBy('bulan')
-               ->orderBy('bulan')
-               ->get();
-
-          $labels = [];
-          $datak = [];
-
-          foreach ($totalKreditPerBulan as $item) {
-               $labels[] = date('M', mktime(0, 0, 0, $item->bulan));
-               $datak[] = $item->total_kredit;
-          }
-
-          $totalSaldoPerBulan = Transaction::selectRaw('
-    SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) - SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_saldo,
-    strftime("%Y-%m", date) AS bulan
-')
-               ->whereRaw("date >= date('now', '-8 months')")
-               ->groupBy('bulan')
-               ->orderBy('bulan')
-               ->get();
-
-          $labelsaldo = [];
-          $saldoPerBulan = [];
-
-          foreach ($totalSaldoPerBulan as $item) {
-               // Extract month and year from the bulan field
-               $bulanYear = explode('-', $item->bulan);
-               $monthName = date("M", mktime(0, 0, 0, $bulanYear[1], 1));
-
-               $labelsaldo[] = $monthName;
-               $saldoPerBulan[] = $item->total_saldo;
-          }
-
 
           $memberIdsWithKredit = Transaction::where('type', 'kredit')
                ->where('status', 1)
@@ -91,7 +51,7 @@ strftime("%m", date) AS bulan'
           $latest = Transaction::latest()->take($utKredit < 5 ? 5 : $utKredit - 2)->get();
 
           // Menggunakan compact untuk mengirimkan variabel ke view
-          $data = compact('membersWithoutKredit', 'latest', 'totalsbulan', 'totals', 'rasio_kredit_debit', 'saldo_per_anggota', 'anggotabulan', 'labels', 'datak', 'labelsaldo', 'saldoPerBulan');
+          $data = compact('membersWithoutKredit', 'latest', 'totalsbulan', 'totals', 'rasio_kredit_debit', 'saldo_per_anggota', 'anggotabulan');
 
           View('dashboard/index', $data);
      }

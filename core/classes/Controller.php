@@ -39,6 +39,14 @@ class Controller
         }
     }
 
+    public function checkCsrf($token)
+    {
+        if (isset($_SESSION['token_csrf']) && $_SESSION['token_csrf'] == $token) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function model($m)
     {

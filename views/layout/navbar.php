@@ -11,55 +11,11 @@
             </a>
 
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-
+                <?php
+                echo App\Helper\SideMenu::render('dashboard');
+                ?>
                 <!-- Navigation -->
-                <ul class="navbar-nav">
-                    <li class="nav-item  active ">
-                        <a class="nav-link  active " href="<?= getBaseUrl(); ?>">
-                            <i class="ni ni-world-2 text-primary"></i> HOME
-                        </a>
-                    </li>
-                    <li class="nav-item  active ">
-                        <a class="nav-link  active " href="<?= getBaseUrl(); ?>dashboard">
-                            <i class="ni ni-tv-2 text-primary"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>transaksi">
-                            <i class="ni ni-bullet-list-67 text-red"></i> Transaksi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>pembayaran">
-                            <i class="ni ni-money-coins text-green"></i> Pembayaran
-                        </a>
-                    </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>member">
-                            <i class="ni ni-single-02 text-yellow"></i>Member
-                        </a>
-                    </li>
-
-                    <?php
-
-                    use App\Model\UserFrofil;
-
-                    if (isLogin()) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= getBaseUrl(); ?>auth/logout">
-                                <i class="ni ni-button-power text-danger"></i> Logout
-                            </a>
-                        </li>
-                    <?php else : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= getBaseUrl(); ?>auth/login">
-                                <i class="ni ni-key-25 text-info"></i> Login
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
                 <hr class="my-3">
                 <!-- 
                
@@ -67,17 +23,17 @@
               
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+                        <a class="nav-link" href="">
                             <i class="ni ni-spaceship"></i> Getting started
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+                        <a class="nav-link" href="">
                             <i class="ni ni-palette"></i> Foundation
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
+                        <a class="nav-link" href="">
                             <i class="ni ni-ui-04"></i> Components
                         </a>
                     </li>

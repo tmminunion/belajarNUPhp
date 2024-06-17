@@ -1,4 +1,5 @@
-<?php $this->extend("layout/layout.php"); ?>
+<?php $this->extend("layout/layout.php");
+$dataker = $this->modelna('KreditBulanan'); ?>
 
 
 
@@ -39,7 +40,7 @@
                                     <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($totals->total_kredit, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                    <div class="icon icon-shape bg-success text-white rounded-circle shadow">
                                         <i class="fas fa-chart-pie"></i>
                                     </div>
                                 </div>
@@ -60,8 +61,8 @@
                                     <span class="h2 font-weight-bold mb-0"><?= 'Rp. ' . number_format($totals->total_debit, 0, ',', '.') ?></span>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                        <i class="fas fa-users"></i>
+                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                        <i class="fas fa-minus"></i>
                                     </div>
                                 </div>
                             </div>
@@ -82,13 +83,13 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-percent"></i>
+                                        <i class="fas fa-money-bill-wave"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
                                 <span class="text-success mr-2"><?= 'Rp. ' . number_format($anggotabulan, 0, ',', '.') ?></span>
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">Average Bulan ini</span>
                             </p>
                         </div>
                     </div>
@@ -325,11 +326,16 @@
                     },
                 },
                 data: {
-                    labels: <?= json_encode($labels) ?>,
+                    labels: <?= json_encode($dataker->getLabels()); ?>,
                     datasets: [{
-                        label: "Sales",
-                        data: <?= json_encode($datak) ?>,
-                    }, ],
+                        label: "Kredit",
+                        data: <?= json_encode($dataker->getkredit()); ?>,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)'
+                    }, {
+                        label: "Debit",
+                        data: <?= json_encode($this->modelna('DebitBulanan')->getdebit()); ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                    }],
                 },
             });
 
@@ -397,10 +403,10 @@
                     },
                 },
                 data: {
-                    labels: <?= json_encode($labelsaldo) ?>,
+                    labels: <?= json_encode($this->modelna('SaldoBulanan')->labelsaldo) ?>,
                     datasets: [{
                         label: "Performance",
-                        data: <?= json_encode($saldoPerBulan) ?>,
+                        data: <?= json_encode($this->modelna('SaldoBulanan')->saldoPerBulan); ?>,
                     }, ],
                 },
             });
