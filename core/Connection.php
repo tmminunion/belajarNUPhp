@@ -10,25 +10,6 @@ $capsule->addConnection([
     'prefix' => '',
 ]);
 
-$capsule->addConnection([
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'nuphp',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci', // tambahkan collation untuk menghindari masalah karakter
-], 'nuphp'); // Nama koneksi
-
-$capsule->addConnection([
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'bunp2332_auth',
-    'username' => 'DB_USER_KTA',
-    'password' => 'DB_PASS_KTA',
-    'charset' => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci', // tambahkan collation untuk menghindari masalah karakter
-], 'auth'); // Nama koneksi
 
 $capsule->setAsGlobal();
 $capsule->bootEloquent();

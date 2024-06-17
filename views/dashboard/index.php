@@ -105,7 +105,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                            <h2 class="text-white mb-0">Sales value</h2>
+                            <h2 class="text-white mb-0">SALDO BULANAN</h2>
                         </div>
                         <div class="col">
 
@@ -127,7 +127,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                            <h2 class="mb-0">Total orders</h2>
+                            <h2 class="mb-0">KAS BULANAN</h2>
                         </div>
                     </div>
                 </div>
@@ -146,10 +146,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Page visits</h3>
+                            <h3 class="mb-0">Transaksi terakhir</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                            <a href="<?= getBaseUrl(); ?>transaksi" class="btn btn-sm btn-primary">See all</a>
                         </div>
                     </div>
                 </div>
@@ -158,83 +158,52 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Page name</th>
-                                <th scope="col">Visitors</th>
-                                <th scope="col">Unique users</th>
-                                <th scope="col">Bounce rate</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Transaksi</th>
+                                <th scope="col">Nama</th>
+
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    /argon/
-                                </th>
-                                <td>
-                                    4,600
-                                </td>
-                                <td>
-                                    340
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/index.html
-                                </th>
-                                <td>
-                                    3,985
-                                </td>
-                                <td>
-                                    319
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/charts.html
-                                </th>
-                                <td>
-                                    3,513
-                                </td>
-                                <td>
-                                    294
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/tables.html
-                                </th>
-                                <td>
-                                    2,050
-                                </td>
-                                <td>
-                                    147
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/profile.html
-                                </th>
-                                <td>
-                                    1,795
-                                </td>
-                                <td>
-                                    190
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                </td>
-                            </tr>
+                            <?php foreach ($latest as $nomor => $value) : ?>
+                                <tr>
+                                    <td>
+                                        <?= $nomor + 1 ?>
+                                    </td>
+                                    <td>
+                                        <?= $value["judul"] ?>
+                                    </td>
+                                    <td>
+                                        <?= $value->member->nama; ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $value->date; ?>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <?php if ($value->type == 'debit') { ?>
+                                                <i class="bg-danger"></i>
+                                            <?php } else { ?>
+                                                <i class="bg-success"></i>
+                                            <?php } ?>
+                                            <?= $value->type; ?>
+                                        </span>
+                                    </td>
+
+
+                                    <td>
+                                        <?= 'Rp. ' . number_format($value->jumlah, 0, ',', '.') . ' ,-'; ?>
+
+                                    </td>
+
+
+
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -245,11 +214,11 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Social traffic</h3>
+                            <h3 class="mb-0">BELUM BAYAR KAS BULANAN</h3>
                         </div>
-                        <div class="col text-right">
+                        <!-- <div class="col text-right">
                             <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -257,102 +226,26 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Referral</th>
-                                <th scope="col">Visitors</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    1,480
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">60%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    5,48045554
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">70%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Google
-                                </th>
-                                <td>
-                                    4,807
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">80%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Instagram
-                                </th>
-                                <td>
-                                    3,678
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">75%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    twitter
-                                </th>
-                                <td>
-                                    2,645
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">30%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php foreach ($membersWithoutKredit as $nomor => $value) : ?>
+                                <tr>
+                                    <td>
+                                        <?= $nomor + 1 ?>
+                                    </td>
+                                    <th scope="row">
+                                        <?= $value->nama ?>
+                                    </th>
+                                    <td>
+                                        <i class="ni ni-ungroup"></i>
+                                    </td>
+
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -361,7 +254,7 @@
     </div>
 </div>
 
-
+<div class="m-5"></div>
 
 
 <?php $this->block('scriptsfooter') ?>
@@ -412,7 +305,7 @@
                             label: function(item, data) {
                                 var label = data.datasets[item.datasetIndex].label || "";
                                 var yLabel = item.yLabel;
-                                var formattedValue = "Rp. " + (yLabel / 1000).toLocaleString('id-ID');
+                                var formattedValue = "Rp. " + (yLabel).toLocaleString('id-ID');
 
                                 var content = "";
 
@@ -424,7 +317,7 @@
                                 }
 
                                 content +=
-                                    '<span class="popover-body-value">' + formattedValue + "</span>";
+                                    '<span class="popover-body-value">' + formattedValue + ",-</span>";
 
                                 return content;
                             },
@@ -473,7 +366,7 @@
                             ticks: {
                                 callback: function(value) {
                                     if (!(value % 10)) {
-                                        var formattedValue = "Rp. " + (value / 1000).toLocaleString('id-ID') + "K";
+                                        var formattedValue = "IDR" + (value / 1000).toLocaleString('id-ID') + "K";
                                         return formattedValue;
 
                                     }
@@ -486,7 +379,7 @@
                             label: function(item, data) {
                                 var label = data.datasets[item.datasetIndex].label || "";
                                 var yLabel = item.yLabel;
-                                var formattedValue = "Rp. " + (yLabel / 1000).toLocaleString('id-ID');
+                                var formattedValue = "Rp. " + (yLabel).toLocaleString('id-ID');
                                 var content = "";
 
                                 if (data.datasets.length > 1) {
@@ -497,7 +390,7 @@
                                 }
 
                                 content +=
-                                    '<span class="popover-body-value">' + formattedValue + "k</span>";
+                                    '<span class="popover-body-value">' + formattedValue + ",-</span>";
                                 return content;
                             },
                         },

@@ -6,7 +6,9 @@ class profil extends Controller
 {
      public function index()
      {
-          $data = [];
+          $this->auth(true);
+          $member = mylogin();
+          $data['member'] = member::find($member);
           View("profil/index", $data);
      }
      public function member($member)

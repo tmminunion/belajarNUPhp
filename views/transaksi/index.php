@@ -1,9 +1,9 @@
 <?php $this->extend("layout/layout.php"); ?>
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+
+<div class="header bg-gradient-primary pb-5 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
             <div class="container-fluid mt-1">
-                <!-- Table -->
                 <div class="row">
                     <div class="col">
                         <div class="card shadow">
@@ -11,111 +11,88 @@
                                 <h3 class="mb-0">Data Transaksi Kas</h3>
                             </div>
                             <div class="table-responsive">
-
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Transaksi</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Noreg</th>
-                                            <th scope="col">Tanggal</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Jumlah</th>
-
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <?php
-                                        foreach ($transactions as $nomor => $value) { ?>
-
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
                                             <tr>
-                                                <td>
-                                                    <?= $nomor + 1 ?>
-                                                </td>
-                                                <td>
-                                                    <?= $value["judul"] ?>
-                                                </td>
-                                                <td>
-                                                    <?= $value->member->nama; ?>
-                                                </td>
-                                                <td>
-                                                    <?= $value->member->noreg; ?>
-                                                </td>
-                                                <td>
-                                                    <?= $value->date; ?>
-                                                </td>
-                                                <td>
-                                                    <span class="badge badge-dot mr-4">
-                                                        <?php if ($value->type == 'debit') { ?>
-                                                            <i class="bg-danger"></i>
-                                                        <?php } else { ?>
-                                                            <i class="bg-success"></i>
-                                                        <?php } ?>
-                                                        <?= $value->type; ?>
-                                                    </span>
-                                                </td>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Transaksi</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Noreg</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Jumlah</th>
 
-
-                                                <td>
-                                                    <?= 'Rp. ' . number_format($value->jumlah, 0, ',', '.') . ' ,-'; ?>
-
-                                                </td>
-
-
-                                                <td class="text-right">
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                <th scope="col"></th>
                                             </tr>
-                                        <?php $nomor++;
-                                        } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-footer py-4">
-                                <div class="d-flex justify-content-between">
-                                    <?php if ($currentPage > 1) : ?>
-                                        <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage - 1; ?>" class="btn btn-primary">Previous</a>
-                                    <?php endif; ?>
-                                    <?php if (count($transactions) == $perPage) : ?>
-                                        <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage + 1; ?>" class="btn btn-primary">Next</a>
-                                    <?php endif; ?>
-                                </div>
+                                        </thead>
+                                        <tbody>
 
-                                <!-- <nav aria-label="...">
-                                    <ul class="pagination justify-content-end mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">
-                                                <i class="fas fa-angle-left"></i>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="fas fa-angle-right"></i>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav> -->
+                                            <?php
+                                            foreach ($transactions as $nomor => $value) { ?>
+
+                                                <tr>
+                                                    <td>
+                                                        <?= $nomor + 1 ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $value["judul"] ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $value->member->nama; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $value->member->noreg; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?= $value->date; ?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-dot mr-4">
+                                                            <?php if ($value->type == 'debit') { ?>
+                                                                <i class="bg-danger"></i>
+                                                            <?php } else { ?>
+                                                                <i class="bg-success"></i>
+                                                            <?php } ?>
+                                                            <?= $value->type; ?>
+                                                        </span>
+                                                    </td>
+
+
+                                                    <td>
+                                                        <?= 'Rp. ' . number_format($value->jumlah, 0, ',', '.') . ' ,-'; ?>
+
+                                                    </td>
+
+
+                                                    <td class="text-right">
+                                                        <div class="dropdown">
+                                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fas fa-ellipsis-v"></i>
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                                <a class="dropdown-item" href="#">Action</a>
+                                                                <a class="dropdown-item" href="#">Another action</a>
+                                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php $nomor++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer py-4">
+                                    <div class="d-flex justify-content-between">
+                                        <?php if ($currentPage > 1) : ?>
+                                            <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage - 1; ?>" class="btn btn-primary">Previous</a>
+                                        <?php endif; ?>
+                                        <?php if (count($transactions) == $perPage) : ?>
+                                            <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage + 1; ?>" class="btn btn-primary">Next</a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

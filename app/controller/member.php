@@ -2,7 +2,7 @@
 
 use App\Model\member as memberModel;
 
-class member extends Controller
+class member
 {
      public function index()
      {

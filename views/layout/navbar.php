@@ -30,31 +30,35 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>">
-                            <i class="ni ni-planet text-blue"></i> Histori
+                        <a class="nav-link " href="<?= getBaseUrl(); ?>pembayaran">
+                            <i class="ni ni-money-coins text-green"></i> Pembayaran
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>">
-                            <i class="ni ni-pin-3 text-orange"></i> Maps
-                        </a>
-                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link " href="<?= getBaseUrl(); ?>member">
                             <i class="ni ni-single-02 text-yellow"></i>Member
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= getBaseUrl(); ?>">
-                            <i class="ni ni-bullet-list-67 text-red"></i> Tables
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= getBaseUrl(); ?>auth/login">
-                            <i class="ni ni-key-25 text-info"></i> Login
-                        </a>
-                    </li>
 
+                    <?php
+
+                    use App\Model\UserFrofil;
+
+                    if (isLogin()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= getBaseUrl(); ?>auth/logout">
+                                <i class="ni ni-button-power text-danger"></i> Logout
+                            </a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= getBaseUrl(); ?>auth/login">
+                                <i class="ni ni-key-25 text-info"></i> Login
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
                 <hr class="my-3">
                 <!-- 
@@ -91,23 +95,28 @@
             <div class="container-fluid">
                 <!-- Brand -->
                 <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="<?= getBaseUrl(); ?>">
-                    <h1>KAS KEUANGAN </h1>
+                    <img src="<?= getBaseUrl(); ?>assets/img/logo.png" class="navbar-brand-img" height="50" alt="...">
                 </a>
                 <!-- Form -->
 
                 <!-- User -->
                 <ul class="navbar-nav align-items-center d-none d-md-flex">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="media align-items-center">
-                                <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="Image placeholder" src="<?= getBaseUrl(); ?>assets/img/theme/team-4-800x800.jpg">
-                                </span>
-                                <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                        <?php if (isLogin()) { ?>
+
+
+                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="media align-items-center">
+                                    <div class="media-body mr-3 d-none d-lg-block">
+                                        <span class="mb-0 text-sm  font-weight-bold"><?= member_login()->nama; ?></span>
+                                    </div>
+                                    <span class="avatar avatar-sm rounded-circle">
+                                        <img alt="Image placeholder" src="data:image/png;base64,<?= member_login()->gambar;  ?>" height="35">
+                                    </span>
+
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php } ?>
                         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                             <div class=" dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Welcome!</h6>

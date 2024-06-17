@@ -10,11 +10,36 @@ class Controller
         if (isset($this->auth)) {
             $this->auth($this->auth);
         }
+        if (isset($this->role)) {
+            $this->roles($this->role);
+        }
     }
     protected function auth($by)
     {
         $auth = new Auth($by);
     }
+    public function roles($v)
+    {
+        if (!isset($_SESSION['login_role'])) {
+            header("location: " . getBaseUrl());
+            exit();
+        }
+
+        // Jika $v adalah array
+        if (is_array($v)) {
+            if (!in_array($_SESSION['login_role'], $v)) {
+                header("location: " . getBaseUrl());
+                exit();
+            }
+        } else { // Jika $v adalah nilai tunggal
+            if ($_SESSION['login_role'] != $v) {
+                header("location: " . getBaseUrl());
+                exit();
+            }
+        }
+    }
+
+
     public function model($m)
     {
         require_once 'app/models/' . $m . '.php';

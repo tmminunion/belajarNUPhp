@@ -71,7 +71,7 @@ if (isset($_SESSION['login'])) {
                                     </form>
                                     <hr>
                                     <p class="mb-2 text-muted">Lupa Pasword? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
-                                    <p class="mb-0 text-muted">Daftar Akun ? <a href="<?= getBaseUrl(); ?>auth/register" class="f-w-400">Signup</a></p>
+
                                 </div>
                             </div>
                         </div>

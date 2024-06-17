@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class member extends Model
 {
-    protected $connection = 'nuphp';
+
 
     public function transactions()
     {

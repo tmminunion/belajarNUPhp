@@ -18,7 +18,13 @@
         "catfan/medoo": "dev-master",
         "illuminate/pagination": "*",
         "symfony/translation": "*",
-        "fakerphp/faker": "2.0.x-dev"
+        "fakerphp/faker": "2.0.x-dev",
+        "symfony/cache-contracts": "3.5.x-dev",
+        "symfony/event-dispatcher-contracts": "3.5.x-dev",
+        "symfony/deprecation-contracts": "3.5.x-dev",
+        "symfony/http-client-contracts": "3.5.x-dev",
+        "symfony/service-contracts": "3.5.x-dev",
+        "symfony/translation-contracts": "3.5.x-dev"
     },
     "autoload": {
         "files": [
