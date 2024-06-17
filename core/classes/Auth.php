@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\user;
+use App\Model\User;
 
 
 class Auth
@@ -65,7 +65,7 @@ class Auth
 
     public function login($emailOrUsername, $password)
     {
-        $user = user::where('email', $emailOrUsername)
+        $user = User::where('email', $emailOrUsername)
             ->orWhere('username', $emailOrUsername)
             ->first();
 
@@ -93,7 +93,7 @@ class Auth
 
     private function recordLog($token, $id)
     {
-        $user = user::find($id);
+        $user = User::find($id);
         if ($user) {
             $user->token = $token;
             $user->updated_at = now(); // Use Laravel's now() helper to get the current date and time

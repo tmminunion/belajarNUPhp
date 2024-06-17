@@ -16,4 +16,5 @@
     <link href="<?= getBaseUrl(); ?>assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="<?= getBaseUrl(); ?>assets/css/argon-dashboard.css?v=1.1.2" rel="stylesheet" />
+    <?= $this['scriptsheader'] ?>
 </head>

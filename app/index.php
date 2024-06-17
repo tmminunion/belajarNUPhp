@@ -1,9 +1,7 @@
 <?php
-class index extends Database
+
+function tolink($url)
 {
-    public $table;
-    public function set($na)
-    {
-        $this->table = $na;
-    }
+    header("Location: " . getBaseUrl() . $url);
+    exit;
 }

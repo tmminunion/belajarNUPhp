@@ -5,17 +5,10 @@ use Steampixel\Route;
 define('BASEPATH', BASE_DIR);
 
 Route::add('/', function () {
-    view('index');
+    tolink('home');
 });
 
-//kostumisasi router silahkan tambahkan disini.
-//mulai kostumisasi router
-// Route::add('/home', function () {
-//     View('home');
-// });
 
-
-//end kostumisasi router
 //Auto Router 
 Route::add('/(.*)/(.*)/(.*)/(.*)/(.*)', function ($folder, $file, $p1, $p2, $p3) {
     InitFolder($file, $folder, $p1, $p2, $p3);
