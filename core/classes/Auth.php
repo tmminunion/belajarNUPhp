@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 use App\Model\User;
 
 

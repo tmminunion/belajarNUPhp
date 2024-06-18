@@ -2486,58 +2486,6 @@
             "install-path": "../sabberworm/php-css-parser"
         },
         {
-            "name": "sergeytsalkov/meekrodb",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SergeyTsalkov/meekrodb.git",
-                "reference": "2b1b0fe3a0c8c2d4b7b08d889fa7280ec05b6693"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/2b1b0fe3a0c8c2d4b7b08d889fa7280ec05b6693",
-                "reference": "2b1b0fe3a0c8c2d4b7b08d889fa7280ec05b6693",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "time": "2024-06-15T03:42:04+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "classmap": [
-                    "db.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Sergey Tsalkov",
-                    "email": "stsalkov@gmail.com"
-                }
-            ],
-            "description": "The Simple PHP/MySQL Library",
-            "homepage": "http://www.meekro.com",
-            "keywords": [
-                "database",
-                "mysql",
-                "mysqli",
-                "pdo"
-            ],
-            "support": {
-                "email": "support@meekro.com",
-                "issues": "https://github.com/SergeyTsalkov/meekrodb/issues",
-                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/master"
-            },
-            "install-path": "../sergeytsalkov/meekrodb"
-        },
-        {
             "name": "steampixel/simple-php-router",
             "version": "0.7.1",
             "version_normalized": "0.7.1.0",

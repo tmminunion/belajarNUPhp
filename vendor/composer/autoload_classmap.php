@@ -6,18 +6,14 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Helper\\SideMenu' => $baseDir . '/helper/class/SideMenu.php',
+    'App\\Helper\\Unsplash' => $baseDir . '/helper/class/Unsplash.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'DB' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
-    'DBTransaction' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
     'Dompdf\\Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
-    'MeekroDB' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
-    'MeekroDBException' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
-    'MeekroDBParsedQuery' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
-    'MeekroDBWalk' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
     'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'StringHelper' => $baseDir . '/helper/class/StringHelper.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-    'WhereClause' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
 );

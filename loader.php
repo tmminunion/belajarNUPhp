@@ -9,6 +9,7 @@ use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\Factory;
 use Illuminate\View\FileViewFinder;
+use App\Core\Csrf;
 
 function views($viewName, $templateData)
 {
@@ -38,9 +39,9 @@ function views($viewName, $templateData)
     echo $viewFactory->make($viewName, $templateData)->render();
 }
 
-spl_autoload_register(function ($class) {
-    include  __DIR__ . '/core/classes/' . $class . '.php';
-});
+// spl_autoload_register(function ($class) {
+//     include  __DIR__ . '/core/classes/' . $class . '.php';
+// });
 
 require_once('core/Block.php');
 require_once('core/Template.php');

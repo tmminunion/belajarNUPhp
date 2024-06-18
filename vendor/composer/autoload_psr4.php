@@ -51,4 +51,5 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'App\\Model\\' => array($baseDir . '/app/Model'),
     'App\\Helper\\' => array($baseDir . '/helper/class'),
+    'App\\Core\\' => array($baseDir . '/core/classes'),
 );

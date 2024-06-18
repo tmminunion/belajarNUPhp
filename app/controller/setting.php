@@ -1,4 +1,7 @@
 <?php
+
+use App\Core\Controller;
+
 class setting extends Controller
 {
      public function index()

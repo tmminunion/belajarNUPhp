@@ -1,4 +1,11 @@
 <?php
+
+namespace App\Core;
+
+use App\Core\Auth;
+
+
+
 class Controller
 {
 
@@ -38,7 +45,18 @@ class Controller
             }
         }
     }
-
+    public function cekpost()
+    {
+        $last = get_last_form();
+        if (!$this->checkCsrf($_POST['csrf'])) {
+            if (isset($last)) {
+                header("Location: " . $last . "?error=csrf");
+            } else {
+                header("location: " . getBaseUrl() . "?error=csrf");
+            }
+            exit;
+        }
+    }
     public function checkCsrf($token)
     {
         if (isset($_SESSION['token_csrf']) && $_SESSION['token_csrf'] == $token) {

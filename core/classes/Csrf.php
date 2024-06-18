@@ -1,4 +1,7 @@
 <?php
+
+namespace App\core;
+
 class Csrf
 {
     public static function start()

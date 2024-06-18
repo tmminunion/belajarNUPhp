@@ -1,7 +1,8 @@
 <?php
 
-use App\Model\Transaction;
-use App\Model\Member;
+use App\Model\member;
+use App\Core\Controller;
+use App\Model\transaction;
 
 class dashboard extends Controller
 {
@@ -9,7 +10,7 @@ class dashboard extends Controller
 
      public function index()
      {
-          $totals = Transaction::selectRaw('
+          $totals = transaction::selectRaw('
 SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) AS total_kredit,
 SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
 (SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) - SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END)) AS saldo_akhir
@@ -22,7 +23,7 @@ SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
           $currentMonth = date('m');
           $currentYear = date('Y');
 
-          $totalsbulan = Transaction::selectRaw('
+          $totalsbulan = transaction::selectRaw('
 SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) AS total_kredit,
 SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
 (SUM(CASE WHEN type = "kredit" THEN jumlah ELSE 0 END) - SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END)) AS saldo_akhir
@@ -31,12 +32,12 @@ SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
                ->whereRaw("strftime('%Y', date) = ?", [$currentYear])
                ->first();
 
-          $total_members = Member::count();
+          $total_members = member::count();
 
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
           $anggotabulan = ($total_members > 0) ? round($totalsbulan->saldo_akhir / $total_members) : 0;
 
-          $memberIdsWithKredit = Transaction::where('type', 'kredit')
+          $memberIdsWithKredit = transaction::where('type', 'kredit')
                ->where('status', 1)
                ->whereRaw("strftime('%m', date) = ?", [$currentMonth])
                ->whereRaw("strftime('%Y', date) = ?", [$currentYear])
@@ -48,7 +49,7 @@ SUM(CASE WHEN type = "debit" THEN jumlah ELSE 0 END) AS total_debit,
           $utKredit = $membersWithoutKredit->count();
 
           // Jika jumlah data yang ditemukan kurang dari lima, tetap ambil lima data terbaru
-          $latest = Transaction::latest()->take($utKredit < 5 ? 5 : $utKredit - 2)->get();
+          $latest = transaction::latest()->take($utKredit < 5 ? 5 : $utKredit - 2)->get();
 
           // Menggunakan compact untuk mengirimkan variabel ke view
           $data = compact('membersWithoutKredit', 'latest', 'totalsbulan', 'totals', 'rasio_kredit_debit', 'saldo_per_anggota', 'anggotabulan');

@@ -211,7 +211,7 @@ $dataker = $this->modelna('KreditBulanan'); ?>
             </div>
         </div>
         <div class="col-xl-4">
-            <div class="card shadow">
+            <div class="card shadow mb-2">
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
@@ -255,7 +255,7 @@ $dataker = $this->modelna('KreditBulanan'); ?>
     </div>
 </div>
 
-<div class="m-5"></div>
+
 
 
 <?php $this->block('scriptsfooter') ?>

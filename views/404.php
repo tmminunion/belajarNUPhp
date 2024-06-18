@@ -22,7 +22,7 @@
                     <!--//branding-->
                     <div class="tagline">
                         <h1 class="logo text-warning">MAAF ...!! <br>HALAMAN TIDAK DITEMUKAN</h1>
-
+                        <h2><?= tanggal_sekarang() ?></h2>
                     </div>
 
 

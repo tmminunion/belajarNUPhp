@@ -1,4 +1,9 @@
 <?php
+
+use App\Core\Auth;
+use App\Core\Alert;
+use App\Core\Csrf;
+
 new Auth(false);
 if (isset($_SESSION['login'])) {
     header("location: " . getBaseUrl());

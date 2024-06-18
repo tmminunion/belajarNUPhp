@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Controller;
+
 class Absensi extends Controller
 {
     public $auth = false;

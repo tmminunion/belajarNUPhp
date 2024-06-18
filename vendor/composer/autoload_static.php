@@ -16,7 +16,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '06a34129a50df3d9257ee706cf3c875b' => __DIR__ . '/..' . '/illuminate/filesystem/functions.php',
-        'e52a82fd6aa462d914c0baae2f592190' => __DIR__ . '/../..' . '/helper/function.php',
+        '20d070f712baf850388fce32c0390388' => __DIR__ . '/../..' . '/helper/index.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -100,6 +100,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             'App\\Model\\' => 10,
             'App\\Helper\\' => 11,
+            'App\\Core\\' => 9,
         ),
     );
 
@@ -288,6 +289,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             0 => __DIR__ . '/../..' . '/helper/class',
         ),
+        'App\\Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/core/classes',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -301,20 +306,16 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
     );
 
     public static $classMap = array (
+        'App\\Helper\\SideMenu' => __DIR__ . '/../..' . '/helper/class/SideMenu.php',
+        'App\\Helper\\Unsplash' => __DIR__ . '/../..' . '/helper/class/Unsplash.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'DB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'DBTransaction' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
         'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
-        'MeekroDB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBException' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBParsedQuery' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBWalk' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'StringHelper' => __DIR__ . '/../..' . '/helper/class/StringHelper.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-        'WhereClause' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

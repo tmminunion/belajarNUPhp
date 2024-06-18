@@ -1,4 +1,7 @@
 <?php
+
+use App\Core\Oldata;
+
 function now()
 {
     return date('Y-m-d H:i:s');

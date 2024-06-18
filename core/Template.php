@@ -164,4 +164,35 @@ class Template implements \ArrayAccess
 	{
 		unset($this->blocks[$offset]);
 	}
+
+	public function Component($component, array $variables = array())
+	{
+		// Generate the full path to the component file
+		$componentPath = $this->environment->getTemplateDir() . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.php';
+
+		// Check if the component file exists
+		if (!file_exists($componentPath)) {
+			throw new \InvalidArgumentException(sprintf("Component file %s could not be found", $componentPath));
+		}
+
+		extract($variables, EXTR_SKIP);
+		ob_start();
+		require($componentPath);
+		return ob_get_clean();
+	}
+	public function ComponentView($component, array $variables = array())
+	{
+		// Generate the full path to the component file
+		$componentPath = 'views' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.php';
+
+		// Check if the component file exists
+		if (!file_exists($componentPath)) {
+			throw new \InvalidArgumentException(sprintf("Component file %s could not be found", $componentPath));
+		}
+
+		extract($variables, EXTR_SKIP);
+		ob_start();
+		require($componentPath);
+		return ob_get_clean();
+	}
 }

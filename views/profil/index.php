@@ -1,8 +1,8 @@
 <?php $this->extend("layout/layout.php"); ?>
 
-<div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(<?= getBaseUrl() ?>/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(<?= getImage() ?>); background-size: cover; background-position: center top;">
     <!-- Mask -->
-    <span class="mask bg-gradient-default opacity-8"></span>
+    <span class="mask bg-gradient-default opacity-7"></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center mt--3">
         <div class="row">

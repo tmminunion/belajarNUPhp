@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '957cd6bcd34665b395f0bfa8c088180a3ed9d931',
+        'reference' => 'd1399073b4597008986f7e4e6866ed5858c4348f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -273,7 +273,7 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '957cd6bcd34665b395f0bfa8c088180a3ed9d931',
+            'reference' => 'd1399073b4597008986f7e4e6866ed5858c4348f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -409,17 +409,6 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'sergeytsalkov/meekrodb' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '2b1b0fe3a0c8c2d4b7b08d889fa7280ec05b6693',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../sergeytsalkov/meekrodb',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
             'dev_requirement' => false,
         ),
         'steampixel/simple-php-router' => array(

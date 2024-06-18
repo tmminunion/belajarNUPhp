@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Controller;
 use App\Model\transaction;
 
 class transaksi extends Controller
