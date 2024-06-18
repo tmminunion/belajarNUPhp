@@ -12,6 +12,7 @@ class pembayaran extends Controller
 
      public function __construct()
      {
+          parent::__construct(); // Memanggil konstruktor dari kelas induk
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
                $this->cekpost();
           }
