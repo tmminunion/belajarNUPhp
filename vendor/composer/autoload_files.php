@@ -15,5 +15,6 @@ return array(
     '7b11c4dc42b3b3023073cb14e519683c' => $vendorDir . '/ralouphie/getallheaders/src/getallheaders.php',
     'ef65a1626449d89d0811cf9befce46f0' => $vendorDir . '/illuminate/events/functions.php',
     '06a34129a50df3d9257ee706cf3c875b' => $vendorDir . '/illuminate/filesystem/functions.php',
+    'dc1275c308c5b416beb314b6317daca2' => $vendorDir . '/overtrue/pinyin/src/const.php',
     '20d070f712baf850388fce32c0390388' => $baseDir . '/helper/index.php',
 );

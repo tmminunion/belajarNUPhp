@@ -23,7 +23,8 @@
         "symfony/deprecation-contracts": "3.5.x-dev",
         "symfony/http-client-contracts": "3.5.x-dev",
         "symfony/service-contracts": "3.5.x-dev",
-        "symfony/translation-contracts": "3.5.x-dev"
+        "symfony/translation-contracts": "3.5.x-dev",
+        "lasserafn/php-initial-avatar-generator": "dev-master"
     },
     "autoload": {
         "files": [

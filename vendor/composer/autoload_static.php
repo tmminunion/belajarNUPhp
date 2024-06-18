@@ -16,6 +16,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '06a34129a50df3d9257ee706cf3c875b' => __DIR__ . '/..' . '/illuminate/filesystem/functions.php',
+        'dc1275c308c5b416beb314b6317daca2' => __DIR__ . '/..' . '/overtrue/pinyin/src/const.php',
         '20d070f712baf850388fce32c0390388' => __DIR__ . '/../..' . '/helper/index.php',
     );
 
@@ -37,6 +38,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
             'Symfony\\Component\\Finder\\' => 25,
             'Svg\\' => 4,
             'Sabberworm\\CSS\\' => 15,
+            'SVG\\' => 4,
         ),
         'P' => 
         array (
@@ -48,6 +50,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
         ),
+        'O' => 
+        array (
+            'Overtrue\\Pinyin\\' => 16,
+        ),
         'N' => 
         array (
             'Nufat\\Cli\\' => 10,
@@ -57,8 +63,15 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
             'Medoo\\' => 6,
             'Masterminds\\' => 12,
         ),
+        'L' => 
+        array (
+            'LasseRafn\\Initials\\' => 19,
+            'LasseRafn\\InitialAvatarGenerator\\' => 33,
+            'LasseRafn\\' => 10,
+        ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Illuminate\\View\\' => 16,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Pipeline\\' => 20,
@@ -153,6 +166,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
+        'SVG\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/meyfa/php-svg/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -182,6 +199,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Overtrue\\Pinyin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/overtrue/pinyin/src',
+        ),
         'Nufat\\Cli\\' => 
         array (
             0 => __DIR__ . '/..' . '/nufat/cli/src',
@@ -193,6 +214,22 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'LasseRafn\\Initials\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lasserafn/php-initials/src',
+        ),
+        'LasseRafn\\InitialAvatarGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lasserafn/php-initial-avatar-generator/src',
+        ),
+        'LasseRafn\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lasserafn/php-string-script-language/src',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
         'Illuminate\\View\\' => 
         array (
