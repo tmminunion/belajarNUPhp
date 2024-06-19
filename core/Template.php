@@ -105,8 +105,13 @@ class Template implements \ArrayAccess
 				throw new \InvalidArgumentException(sprintf("Could not render. The file %s could not be found", $_file));
 
 			extract($variables, EXTR_SKIP);
+			$content = file_get_contents($_file);
+			$content = $this->replaceBladeSyntax($content, $variables);
+			$content = $this->renderComponents($content, $variables);
+
 			ob_start();
-			require($_file);
+			//require($_file);
+			eval('?>' . $content);
 			$this->content->append(ob_get_clean());
 		}
 
@@ -165,10 +170,11 @@ class Template implements \ArrayAccess
 		unset($this->blocks[$offset]);
 	}
 
-	public function Component($component, array $variables = array())
+
+	public function gComponent($component, array $variables = array())
 	{
 		// Generate the full path to the component file
-		$componentPath = $this->environment->getTemplateDir() . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.php';
+		$componentPath = $this->environment->getTemplateDir() . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.nu.php';
 
 		// Check if the component file exists
 		if (!file_exists($componentPath)) {
@@ -183,7 +189,7 @@ class Template implements \ArrayAccess
 	public function ComponentView($component, array $variables = array())
 	{
 		// Generate the full path to the component file
-		$componentPath = 'views' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.php';
+		$componentPath = 'views' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $component . '.nu.php';
 
 		// Check if the component file exists
 		if (!file_exists($componentPath)) {
@@ -194,5 +200,147 @@ class Template implements \ArrayAccess
 		ob_start();
 		require($componentPath);
 		return ob_get_clean();
+	}
+
+	protected function Component($component, array $variables = array())
+	{
+		// Generate the full path to the component file
+		$componentPath = $this->findComponent($component);
+
+		// Check if the component file exists
+		if ($componentPath !== null) {
+			extract($variables, EXTR_SKIP); // Extract variables for use in the component file
+			$content = $this->replaceBladeSyntax(file_get_contents($componentPath), $variables); // Get file content and apply Blade syntax
+			ob_start();
+			eval('?>' . $content); // Evaluate the PHP content
+			return ob_get_clean();
+		} else {
+			throw new \InvalidArgumentException(sprintf("Component file %s could not be found", $component));
+		}
+	}
+
+
+	protected function renderComponents($content, $variables)
+	{
+		$pattern = '/<nu-([\w-]+)\s+data=\'(.*?)\'>(.*?)<\/nu-\1>/s'; // Include content between tags
+
+		$content = preg_replace_callback($pattern, function ($matches) use ($variables) {
+			$component = $matches[1];
+			$data = $matches[2];
+			$content = $matches[3]; // Get the content between tags
+
+			// Attempt to decode JSON data
+			$data = json_decode($data, true);
+			if (json_last_error() !== JSON_ERROR_NONE) {
+				throw new \InvalidArgumentException('Invalid JSON data: ' . $data);
+			}
+
+			// Check if the component file exists in a subfolder
+			$componentPath = $this->findComponent($component);
+
+			if ($componentPath !== null) {
+				// Merge the component data with the global variables
+				$mergedVariables = array_merge($variables, $data, ['slot' => $content]); // Include the content as a variable
+
+				// Render the component with merged variables
+				return $this->Component($component, $mergedVariables);
+			} else {
+				throw new \InvalidArgumentException("Component file could not be found.");
+			}
+		}, $content);
+
+		return $content;
+	}
+
+
+
+
+
+
+	protected function findComponent($component)
+	{
+		// Define the base directory for components
+		$baseDir = 'resource/components';
+
+		// Check if the component exists in a subfolder
+		$componentPath = $baseDir . DIRECTORY_SEPARATOR . str_replace('-', DIRECTORY_SEPARATOR, $component) . '.nu.php';
+
+		if (file_exists($componentPath)) {
+			return $componentPath;
+		} else {
+			return null;
+		}
+	}
+	protected function vrenderComponents($content, $variables)
+	{
+		$pattern = '/<nu-([\w-]+)\s+data=\'(.*?)\'><\/nu-\1>/';
+
+		$content = preg_replace_callback($pattern, function ($matches) use ($variables) {
+			$component = $matches[1];
+			$data = $matches[2];
+			if (empty($data) || $data === 'null') {
+				// If data is empty or null, set it to an empty array
+				$data = [];
+			}
+			// Attempt to decode JSON data
+			$data = json_decode($data, true);
+			if (json_last_error() !== JSON_ERROR_NONE) {
+				throw new \InvalidArgumentException('Invalid JSON data: ' . $data);
+			}
+
+			// Check if the component file exists in a subfolder
+			$componentPath = $this->findComponent($component);
+
+			if ($componentPath !== null) {
+				// Merge the component data with the global variables
+				$mergedVariables = array_merge($variables, $data);
+
+				// Render the component with merged variables
+				return $this->Component($component, $mergedVariables); // Mengirimkan nama file komponen, bukan path lengkap
+			} else {
+				throw new \InvalidArgumentException("Component file could not be found.");
+			}
+		}, $content);
+
+		return $content;
+	}
+
+
+
+	protected function replaceBladeSyntax($content, $variables)
+	{
+		// Patterns to match Blade-like syntax {{ $variable }} and {{ variable }}
+		$patterns = [
+			'/{{\s*\$(.*?)\s*}}/', // with $
+			'/{{\s*(.*?)\s*}}/'    // without $
+		];
+
+		// Callback function to replace matched patterns with PHP code
+		foreach ($patterns as $pattern) {
+			$content = preg_replace_callback($pattern, function ($matches) use ($variables) {
+				$keys = explode('.', $matches[1]);
+				$value = $this->getValueFromArray($variables, $keys);
+
+				if ($value !== null) {
+					return '<?php echo htmlspecialchars(' . var_export($value, true) . ', ENT_QUOTES, "UTF-8"); ?>';
+				} else {
+					return $matches[0]; // Leave unchanged if variable not found
+				}
+			}, $content);
+		}
+
+		return $content;
+	}
+
+	protected function getValueFromArray($array, $keys)
+	{
+		foreach ($keys as $key) {
+			if (is_array($array) && array_key_exists($key, $array)) {
+				$array = $array[$key];
+			} else {
+				return null;
+			}
+		}
+		return $array;
 	}
 }

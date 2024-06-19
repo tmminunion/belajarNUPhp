@@ -1,4 +1,4 @@
-<?php include('views/layout/head.php'); ?>
-<?php include('views/layout/navbar.php'); ?>
+<nu-layout-head data='{"id": "hulu"}'></nu-layout-head>
+<nu-layout-navbar data='{"id": "nav"}'></nu-layout-navbar>
 <?= $this['content'] ?>
-<?php include('views/layout/footer.php'); ?>
+<nu-layout-footer data='{"id": "dodol"}'></nu-layout-footer>

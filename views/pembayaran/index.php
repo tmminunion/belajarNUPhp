@@ -99,7 +99,7 @@ use App\core\Csrf; ?>
             </div>
 
             <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 mt-3">
-                <?= Component('pro'); ?>
+                <nu-pro data='{"id":10}'></nu-pro>
                 <div class="card mt-2">
                     <div class="card-header">
                         <h5 class="mb-0">Add Type Transaksi</h5>
@@ -174,8 +174,8 @@ use App\core\Csrf; ?>
 </div>
 
 
-<?= Component('confirmModal', ['id' => 'confirmModal']); ?>
-<?= Component('confirmModal', ['id' => 'confirmModal2']); ?>
+<?= Components('confirmModal', ['id' => 'confirmModal']); ?>
+<?= Components('confirmModal', ['id' => 'confirmModal2']); ?>
 
 
 <?php $this->block('scriptsfooter') ?>
