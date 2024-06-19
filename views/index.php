@@ -2,38 +2,36 @@
 
 
 
-<!-- End Navbar -->
-<!-- Header -->
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-            <section class="pt-4">
-                <div class="container px-lg-5">
-                    <!-- Page Features-->
-                    <div class="row gx-lg-5">
-
-                        <nu-test data='{"id": "confirmModal1"}'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis sequi perferendis culpa doloremque esse labore, praesentium fugit omnis magni tenetur voluptate possimus nisi hic dolorum illum, beatae doloribus eum.</nu-test>
-                        <nu-home-index data='{"id": "confirmModal2"}'></nu-home-index>
-
-                        <div class="col-lg-6 col-xxl-4 mb-5">
-                            <div class="card bg-light border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fas fa-check-circle"></i></div>
-                                    <h2 class="fs-4 fw-bold">{{$dataanak.name}}</h2>
-                                    <p class="mb-0">{{$dataanak.address}}</p>
-                                    <h2 class="fs-4 fw-bold">{{ $dataanak.phone}}</h2>
-
-                                    <p class="mb-0">{{name}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
+<div class="header pb-1 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(<?= getImage() ?>); background-size: cover; background-position: center top;">
+    <!-- Mask -->
+    <span class="mask bg-gradient-default opacity-7"></span>
+    <!-- Header container -->
+   
 </div>
+<!-- Page content -->
+<div class="container-fluid mt--9">
+      <div class="container mt-5 mb-3">
+    <div class="row">
+      <?php
+for ($i = 1; $i <= 12; $i++) {
+    ?>
+    <nu-card-cardcip data='{"id":"<?= $i ?>"}' class='class-<?= $i ?>'><?= $i ?></nu-card-cardcip>
+    <?php
+}
+?>
+      
+      
+        
+        
+    </div>
+</div>  
+            
+            
+
+</div>
+
+
+
 
 
 <?php $this->block('scriptsheader') ?>
@@ -41,5 +39,56 @@
     .bg-gradient-primary-to-secondary {
         background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;
     }
+  
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px
+}
+
+.progress div {
+    background-color: red
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
 </style>
 <?php $this->endblock() ?>

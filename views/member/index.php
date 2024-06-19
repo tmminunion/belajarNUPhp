@@ -50,7 +50,15 @@
                                                 </td>
                                                 <td>
                                                     <div class="avatar-group">
-                                                       <nu-card-numcard data='{"id":"1"}'></nu-card-numcard>
+<?php
+for ($i = 1; $i <= 12; $i++) {
+  ?>
+    <nu-card-numcard data='{"id":"<?=$i?>"}'><?=$i?></nu-card-numcard>
+    <?
+}
+?>
+ 
+                                                       
                                                     </div>
                                                 </td>
                                                 

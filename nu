@@ -54,11 +54,15 @@ function run($argv)
                 }
                 break;
             case "serve2":
-                return shell_exec('php -S localhost:8006 -t .');
+                return shell_exec('php -S localhost:8006 -t public_html');
                 break;
             case "serve3":
-                return shell_exec('php -S localhost:8007 -t .');
+                return shell_exec('php -S localhost:8007 -t public_html');
                 break;
+               case "servedb":
+                return shell_exec('php -S localhost:8008 -t core/database');
+                break; 
+                
             default:
                 if (class_exists('Nufat\\Cli\\' . ucfirst($argv[1]))) {
                     $classname = 'Nufat\\Cli\\' . ucfirst($argv[1]);

@@ -96,33 +96,84 @@ class Template implements \ArrayAccess
 		$this->blocks = $blocks;
 	}
 
-	public function render(array $variables = array())
-	{
-		if ($this->templatePath !== null) {
-			$_file = $this->templatePath;
+protected function renderComponents($content, $variables)
+{
+    // Adjust the regex to capture multiple attributes and make data attribute optional
+    $pattern = '/<nu-([\w-]+)([^>]*)>(.*?)<\/nu-\1>/s';
 
-			if (!file_exists($_file))
-				throw new \InvalidArgumentException(sprintf("Could not render. The file %s could not be found", $_file));
+    $content = preg_replace_callback($pattern, function ($matches) use ($variables) {
+        $component = $matches[1];
+        $attributes = $matches[2];
+        $slotContent = $matches[3]; // Get the content between tags
 
-			extract($variables, EXTR_SKIP);
-			$content = file_get_contents($_file);
-			$content = $this->replaceBladeSyntax($content, $variables);
-			$content = $this->renderComponents($content, $variables);
+        // Extract all attributes
+        preg_match_all('/([\w-]+)\s*=\s*([\'"])(.*?)\2/', $attributes, $attributeMatches, PREG_SET_ORDER);
+        $data = [];
+        foreach ($attributeMatches as $attr) {
+            $attrName = $attr[1];
+            $attrValue = $attr[3];
+            if ($attrName === 'data') {
+                $data = json_decode($attrValue, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new \InvalidArgumentException('Invalid JSON data: ' . $attrValue);
+                }
+            } else {
+                $data[$attrName] = $attrValue;
+            }
+        }
 
-			ob_start();
-			//require($_file);
-			eval('?>' . $content);
-			$this->content->append(ob_get_clean());
-		}
+        // Check if the component file exists in a subfolder
+        $componentPath = $this->findComponent($component);
 
-		if ($this->extends !== null) {
-			$this->extends->setBlocks($this->getBlocks());
-			$content = (string)$this->extends->render();
-			return $content;
-		}
+        if ($componentPath !== null) {
+            // Merge the component data with the global variables
+            $mergedVariables = array_merge($variables, $data, ['slot' => $slotContent]); // Include the content as a variable
 
-		return (string)$this->content;
-	}
+            // Render the component with merged variables
+            return $this->Component($component, $mergedVariables);
+        } else {
+            throw new \InvalidArgumentException("Component file could not be found.");
+        }
+    }, $content);
+
+    return $content;
+}
+
+
+public function render(array $variables = array())
+{
+    if ($this->templatePath !== null) {
+        $_file = $this->templatePath;
+
+        if (!file_exists($_file))
+            throw new \InvalidArgumentException(sprintf("Could not render. The file %s could not be found", $_file));
+
+        extract($variables, EXTR_SKIP);
+        $content = file_get_contents($_file);
+
+        // Step 1: Replace Blade syntax with PHP code
+        $content = $this->replaceBladeSyntax($content, $variables);
+
+        // Step 2: Evaluate the PHP code
+        ob_start();
+        eval('?>' . $content);
+        $evaluatedContent = ob_get_clean();
+
+        // Step 3: Render the components in the evaluated content
+        $evaluatedContent = $this->renderComponents($evaluatedContent, $variables);
+
+        // Append the final content
+        $this->content->append($evaluatedContent);
+    }
+
+    if ($this->extends !== null) {
+        $this->extends->setBlocks($this->getBlocks());
+        $content = (string)$this->extends->render();
+        return $content;
+    }
+
+    return (string)$this->content;
+}
 
 	public function setEnvironment(Environment $environment)
 	{
@@ -218,44 +269,7 @@ class Template implements \ArrayAccess
 			throw new \InvalidArgumentException(sprintf("Component file %s could not be found", $component));
 		}
 	}
-
-
-	protected function renderComponents($content, $variables)
-	{
-		$pattern = '/<nu-([\w-]+)\s+data=\'(.*?)\'>(.*?)<\/nu-\1>/s'; // Include content between tags
-
-		$content = preg_replace_callback($pattern, function ($matches) use ($variables) {
-			$component = $matches[1];
-			$data = $matches[2];
-			$content = $matches[3]; // Get the content between tags
-
-			// Attempt to decode JSON data
-			$data = json_decode($data, true);
-			if (json_last_error() !== JSON_ERROR_NONE) {
-				throw new \InvalidArgumentException('Invalid JSON data: ' . $data);
-			}
-
-			// Check if the component file exists in a subfolder
-			$componentPath = $this->findComponent($component);
-
-			if ($componentPath !== null) {
-				// Merge the component data with the global variables
-				$mergedVariables = array_merge($variables, $data, ['slot' => $content]); // Include the content as a variable
-
-				// Render the component with merged variables
-				return $this->Component($component, $mergedVariables);
-			} else {
-				throw new \InvalidArgumentException("Component file could not be found.");
-			}
-		}, $content);
-
-		return $content;
-	}
-
-
-
-
-
+	
 
 	protected function findComponent($component)
 	{
@@ -271,42 +285,7 @@ class Template implements \ArrayAccess
 			return null;
 		}
 	}
-	protected function vrenderComponents($content, $variables)
-	{
-		$pattern = '/<nu-([\w-]+)\s+data=\'(.*?)\'><\/nu-\1>/';
-
-		$content = preg_replace_callback($pattern, function ($matches) use ($variables) {
-			$component = $matches[1];
-			$data = $matches[2];
-			if (empty($data) || $data === 'null') {
-				// If data is empty or null, set it to an empty array
-				$data = [];
-			}
-			// Attempt to decode JSON data
-			$data = json_decode($data, true);
-			if (json_last_error() !== JSON_ERROR_NONE) {
-				throw new \InvalidArgumentException('Invalid JSON data: ' . $data);
-			}
-
-			// Check if the component file exists in a subfolder
-			$componentPath = $this->findComponent($component);
-
-			if ($componentPath !== null) {
-				// Merge the component data with the global variables
-				$mergedVariables = array_merge($variables, $data);
-
-				// Render the component with merged variables
-				return $this->Component($component, $mergedVariables); // Mengirimkan nama file komponen, bukan path lengkap
-			} else {
-				throw new \InvalidArgumentException("Component file could not be found.");
-			}
-		}, $content);
-
-		return $content;
-	}
-
-
-
+	
 	protected function replaceBladeSyntax($content, $variables)
 	{
 		// Patterns to match Blade-like syntax {{ $variable }} and {{ variable }}
@@ -343,4 +322,5 @@ class Template implements \ArrayAccess
 		}
 		return $array;
 	}
+	
 }
