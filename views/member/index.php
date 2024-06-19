@@ -18,8 +18,8 @@
                                             <th scope="col">Nama</th>
                                             <th scope="col">Noreg</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Users</th>
-                                            <th scope="col">Completion</th>
+                                            <th scope="col">Transaksi</th>
+                                          
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -50,30 +50,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="avatar-group">
-                                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                            <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
-                                                        </a>
-                                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                                            <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg" class="rounded-circle">
-                                                        </a>
-                                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                                            <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg" class="rounded-circle">
-                                                        </a>
-                                                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                            <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
-                                                        </a>
+                                                       <nu-card-numcard data='{"id":"1"}'></nu-card-numcard>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="mr-2">100%</span>
-                                                        <div>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                
                                                 <td class="text-right">
                                                     <div class="dropdown">
                                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
