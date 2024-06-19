@@ -13,7 +13,7 @@ function run($argv)
     if (isset($argv[1])) {
         switch ($argv[1]) {
             case "serve":
-                shell_exec('php -S localhost:8005 -t .');
+                shell_exec('php -S localhost:8005 -t public_html');
                 break;
             case "buat":
                 $buat = new Buat();

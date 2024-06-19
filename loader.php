@@ -54,7 +54,7 @@ Csrf::start();
 function Init($file,  $parms = null)
 {
 
-    if (file_exists('app/controller/' . $file . '.php')) {
+    if (file_exists(__DIR__.'/app/controller/' . $file . '.php')) {
         require_once('app/controller/' . $file . '.php');
         if (class_exists($file)) {
             $file = new $file;
@@ -62,17 +62,17 @@ function Init($file,  $parms = null)
                 call_user_func_array(array($file, "index"), array($file));
             }
         }
-    } elseif (file_exists('views/' . $file . '.php')) {
+    } elseif (file_exists(__DIR__.'/views/' . $file . '.php')) {
         CetakInit($file);
     } else {
-        header('HTTP/1.0 404 Not Found');
+      header('HTTP/1.0 404 Not Found');
         View('404');
+      //  echo __DIR__;
     }
 }
 function InitFolder($file, $folder, $p1 = null, $p2 = null, $p3 = null)
 {
-
-    if (file_exists('app/controller/' . $folder . '.php')) {
+    if (file_exists(__DIR__.'/app/controller/' . $folder . '.php')) {
         require_once('app/controller/' . $folder . '.php');
         if (class_exists($folder)) {
             $folder = new $folder;
@@ -86,7 +86,7 @@ function InitFolder($file, $folder, $p1 = null, $p2 = null, $p3 = null)
             }
             call_user_func_array(array($folder, $file), array($p1, $p2, $p3));
         }
-    } elseif (file_exists('views/' . $folder . '/' . $file . '.php')) {
+    } elseif (file_exists(__DIR__.'/views/' . $folder . '/' . $file . '.php')) {
         CetakInitf($file, $folder, $p1, $p2, $p3);
     } else {
         header('HTTP/1.0 404 Not Found');

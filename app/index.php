@@ -20,7 +20,7 @@ function Component($component, $variables = [])
 
 function Components($file, $data = [])
 {
-    $theme = new SimpleTemplateEngine\Environment('resource/components');
+    $theme = new SimpleTemplateEngine\Environment(__dir__.'/../resource/components');
     echo $theme->render($file . '.nu.php', $data);
 }
 

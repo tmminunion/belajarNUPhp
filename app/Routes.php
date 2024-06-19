@@ -28,7 +28,8 @@ Route::add('/(.*)', function ($file) {
 
 //404 Router 
 Route::pathNotFound(function ($path) {
-    header('HTTP/1.0 404 Not Found');
+   header('HTTP/1.0 404 Not Found');
     View('404');
+   // echo "dodol";
 });
 Route::run(BASEPATH);

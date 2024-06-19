@@ -26,7 +26,7 @@ class Template implements \ArrayAccess
 	}
 	public function modelna($m)
 	{
-		require_once 'app/models/' . $m . '.php';
+		require_once __DIR__.'/../app/models/' . $m . '.php';
 		return new $m;
 	}
 	public function extend($path)
@@ -260,7 +260,7 @@ class Template implements \ArrayAccess
 	protected function findComponent($component)
 	{
 		// Define the base directory for components
-		$baseDir = 'resource/components';
+		$baseDir = __DIR__.'/../resource/components';
 
 		// Check if the component exists in a subfolder
 		$componentPath = $baseDir . DIRECTORY_SEPARATOR . str_replace('-', DIRECTORY_SEPARATOR, $component) . '.nu.php';

@@ -24,18 +24,19 @@ function getAppVersion()
 }
 function View($file, $data = [])
 {
-    $theme = new SimpleTemplateEngine\Environment('views');
+    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
     echo $theme->render($file . '.php', $data);
 }
 function CetakInit($file)
 {
-    $theme = new SimpleTemplateEngine\Environment('views');
-    $data['old']  = Oldata::get();
-    echo $theme->render($file . '.php', $data);
+    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
+   $data['old']  = Oldata::get();
+  echo $theme->render($file . '.php', $data);
+//echo __DIR__;
 }
 function CetakInitf($file, $folder, $p1 = null, $p2 = null, $p3 = null)
 {
-    $theme = new SimpleTemplateEngine\Environment('views');
+    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
     $data['p1'] = $p1;
     $data['p2'] = $p2;
     $data['p3'] = $p3;
