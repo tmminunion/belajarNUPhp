@@ -2,7 +2,7 @@
 
 
 
-<div class="header pb-1 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(<?= getImage() ?>); background-size: cover; background-position: center top;">
+<div class="header pb-1 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(<?= getpic() ?>); background-size: cover; background-position: center top;">
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-7"></span>
     <!-- Header container -->
@@ -12,13 +12,13 @@
 <div class="container-fluid mt--9">
       <div class="container mt-5 mb-3">
     <div class="row">
-      <?php
-for ($i = 1; $i <= 12; $i++) {
-    ?>
-    <nu-card-cardcip data='{"id":"<?= $i ?>"}' class='class-<?= $i ?>'><?= $i ?></nu-card-cardcip>
-    <?php
-}
-?>
+     <?php foreach ($events as $event):
+     ?>
+     
+    <nu-card-cardcip data='{"id":"<?= $event['event_date'] ?>", "event_name":"<?= $event['event_name'] ?>"}' class='class-<?= $event['event_location'] ?>'>
+       <?= $event['organizer'] ?>
+    </nu-card-cardcip>
+<?php endforeach; ?>
       
       
         
@@ -43,6 +43,7 @@ for ($i = 1; $i <= 12; $i++) {
 .card {
     border: none;
     border-radius: 10px
+    min-height: 350px;
 }
 
 .c-details span {
