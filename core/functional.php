@@ -24,19 +24,18 @@ function getAppVersion()
 }
 function View($file, $data = [])
 {
-    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
+    $theme = new SimpleTemplateEngine\Environment(__DIR__ . '/../views');
     echo $theme->render($file . '.php', $data);
 }
 function CetakInit($file)
 {
-    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
-   $data['old']  = Oldata::get();
-  echo $theme->render($file . '.php', $data);
-//echo __DIR__;
+    $theme = new SimpleTemplateEngine\Environment(__DIR__ . '/../views');
+    $data['old']  = Oldata::get();
+    echo $theme->render($file . '.php', $data);
 }
 function CetakInitf($file, $folder, $p1 = null, $p2 = null, $p3 = null)
 {
-    $theme = new SimpleTemplateEngine\Environment(__DIR__.'/../views');
+    $theme = new SimpleTemplateEngine\Environment(__DIR__ . '/../views');
     $data['p1'] = $p1;
     $data['p2'] = $p2;
     $data['p3'] = $p3;
@@ -45,14 +44,23 @@ function CetakInitf($file, $folder, $p1 = null, $p2 = null, $p3 = null)
     echo $theme->render($folder . '/' . $file . '.php', $data);
 }
 
-function response($status,  $data)
+function response($status, $data)
 {
-    header("Content-Type:application/json");
-    header("HTTP/1.1 " . $status);
-    $response['data'] = $data;
-    $json_response = json_encode($data);
-    echo $data;
+    header("Content-Type: application/json");
+    http_response_code($status);
+    echo json_encode(['data' => $data]);
 }
+
+function res($status, $data)
+{
+    header("Content-Type: application/json");
+    http_response_code($status);
+    echo json_encode(['data' => $data]);
+}
+
+
+
+
 
 function textToSlug($text = '')
 {

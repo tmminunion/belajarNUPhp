@@ -19,7 +19,7 @@
                                             <th scope="col">Noreg</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Transaksi</th>
-                                          
+
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -50,18 +50,18 @@
                                                 </td>
                                                 <td>
                                                     <div class="avatar-group">
-<?php
-for ($i = 1; $i <= 12; $i++) {
-  ?>
-    <nu-card-numcard data='{"id":"<?=$i?>"}'><?=$i?></nu-card-numcard>
-    <?
-}
-?>
- 
-                                                       
+                                                        <?php
+                                                        for ($i = 1; $i <= 12; $i++) {
+                                                        ?>
+                                                            <nu-card-numcard data='{"id":"<?= $i ?>"}'><?= $i ?></nu-card-numcard>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+
                                                     </div>
                                                 </td>
-                                                
+
                                                 <td class="text-right">
                                                     <div class="dropdown">
                                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

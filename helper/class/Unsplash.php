@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use Illuminate\Support\Facades\Cache;
 use GuzzleHttp\Client;
 use App\Model\Image;
 
