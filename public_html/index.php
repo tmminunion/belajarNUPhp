@@ -1,8 +1,12 @@
 <?php
-
 session_start();
 date_default_timezone_set('Asia/Bangkok');
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../core/config.php';
-require __DIR__ . '/../loader.php';
-require __DIR__ . '/../app/Routes.php';
+
+// Definisikan variabel untuk jalur root proyek
+$rootDir = __DIR__ . '/..';
+
+// Require autoload, konfigurasi, dan file loader dari root direktori
+require_once $rootDir . '/vendor/autoload.php';
+require_once $rootDir . '/core/config.php';
+require_once $rootDir . '/loader.php';
+require_once $rootDir . '/Routes.php';
