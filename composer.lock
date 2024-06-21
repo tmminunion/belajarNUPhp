@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81a84e821f500eea4904b60570e5627a",
+    "content-hash": "7517645bbdf06c4bf287ce1b2bbb5c53",
     "packages": [
         {
             "name": "brick/math",
@@ -977,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "994cedcd2060b65918efe46da805ac31b0563034"
+                "reference": "37c863cffb345869dd134eff8e646bc82a19cc96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/994cedcd2060b65918efe46da805ac31b0563034",
-                "reference": "994cedcd2060b65918efe46da805ac31b0563034",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/37c863cffb345869dd134eff8e646bc82a19cc96",
+                "reference": "37c863cffb345869dd134eff8e646bc82a19cc96",
                 "shasum": ""
             },
             "require": {
@@ -1024,7 +1024,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-06-04T13:31:47+00:00"
+            "time": "2024-06-19T14:25:05+00:00"
         },
         {
             "name": "illuminate/conditionable",
@@ -1177,12 +1177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "c57f5c8d3e55d9c952a2ad5f432bcb1dc2d3322c"
+                "reference": "b8aca982ac6762d52e1bbc1979b9b5a8412713c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/c57f5c8d3e55d9c952a2ad5f432bcb1dc2d3322c",
-                "reference": "c57f5c8d3e55d9c952a2ad5f432bcb1dc2d3322c",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/b8aca982ac6762d52e1bbc1979b9b5a8412713c2",
+                "reference": "b8aca982ac6762d52e1bbc1979b9b5a8412713c2",
                 "shasum": ""
             },
             "require": {
@@ -1242,7 +1242,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-05-13T17:20:36+00:00"
+            "time": "2024-06-19T16:05:23+00:00"
         },
         {
             "name": "illuminate/events",
@@ -2111,12 +2111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nufatID/cli.git",
-                "reference": "dcfdd7b08c86d5856a1157a14d66ca7f97027b8e"
+                "reference": "53251c15485389452b755b9035ae79abba563ffc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nufatID/cli/zipball/dcfdd7b08c86d5856a1157a14d66ca7f97027b8e",
-                "reference": "dcfdd7b08c86d5856a1157a14d66ca7f97027b8e",
+                "url": "https://api.github.com/repos/nufatID/cli/zipball/53251c15485389452b755b9035ae79abba563ffc",
+                "reference": "53251c15485389452b755b9035ae79abba563ffc",
                 "shasum": ""
             },
             "default-branch": true,
@@ -2138,9 +2138,46 @@
             "description": "nufatcli app",
             "support": {
                 "issues": "https://github.com/nufatID/cli/issues",
-                "source": "https://github.com/nufatID/cli/tree/v1.0.2"
+                "source": "https://github.com/nufatID/cli/tree/v1.0.4"
             },
-            "time": "2024-06-15T06:53:28+00:00"
+            "time": "2024-06-21T09:41:58+00:00"
+        },
+        {
+            "name": "nufat/nutemplete",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nufatID/Nutemplete.git",
+                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
+                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nufat\\Nutemplete\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "nufat.id"
+                }
+            ],
+            "description": "untuk templete nuphp",
+            "support": {
+                "issues": "https://github.com/nufatID/Nutemplete/issues",
+                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.2"
+            },
+            "time": "2024-06-21T11:18:43+00:00"
         },
         {
             "name": "overtrue/pinyin",
@@ -3160,12 +3197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "098e36a5b73de12beeb5ac17e80abf3696f7ad5f"
+                "reference": "8740a072b86292957feb42703edde77fcfca84fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/098e36a5b73de12beeb5ac17e80abf3696f7ad5f",
-                "reference": "098e36a5b73de12beeb5ac17e80abf3696f7ad5f",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8740a072b86292957feb42703edde77fcfca84fb",
+                "reference": "8740a072b86292957feb42703edde77fcfca84fb",
                 "shasum": ""
             },
             "require": {
@@ -3233,7 +3270,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T15:07:36+00:00"
+            "time": "2024-06-20T08:18:00+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -3298,7 +3335,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -3659,7 +3696,6 @@
         "firebase/php-jwt": 20,
         "illuminate/view": 20,
         "illuminate/support": 20,
-        "nufat/cli": 20,
         "catfan/medoo": 20,
         "fakerphp/faker": 20,
         "symfony/cache-contracts": 20,
@@ -3667,11 +3703,14 @@
         "symfony/deprecation-contracts": 20,
         "symfony/http-client-contracts": 20,
         "symfony/service-contracts": 20,
-        "symfony/translation-contracts": 20
+        "symfony/translation-contracts": 20,
+        "lasserafn/php-initial-avatar-generator": 20,
+        "nufat/nutemplete": 20,
+        "nufat/cli": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

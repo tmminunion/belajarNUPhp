@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 use App\Model\Transaction;
 
 class DebitBulanan

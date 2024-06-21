@@ -2,6 +2,7 @@
 
 use App\Core\Controller;
 use App\Helper\NuRequest;
+
 class home extends Controller
 {
     private $faker;
@@ -30,35 +31,19 @@ class home extends Controller
             'company' => $this->faker->company,
             'events' => $events
         ];
-$lastRequest = $_COOKIE["last_image_request"] ?? null;
-$waktu = date("H:i:s");
-$diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
-$minute = 60;
-$fifteenMinutes = 15 * $minute;
+        $lastRequest = $_COOKIE["last_image_request"] ?? null;
+        $waktu = date("H:i:s");
+        $diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
+        $minute = 60;
+        $fifteenMinutes = 15 * $minute;
 
-if ($diff > $fifteenMinutes) {
-    $gambar = getImage();
-    setcookie("last_image_request", $waktu, time() + 15 * $minute);
-} else {
-    $gambar = getPic();
-}
-$data["gambar"]=$gambar;
+        if ($diff > $fifteenMinutes) {
+            $gambar = getImage();
+            setcookie("last_image_request", $waktu, time() + 15 * $minute);
+        } else {
+            $gambar = getPic();
+        }
+        $data["gambar"] = $gambar;
         View("index", $data);
-    }
-    public function authya()
-    {
-        // Mengambil nilai dari header Authorization
-  
-
-
-// Initialize Laravel components
-$laravelSetup = new NuRequest();
-
-// Make an HTTP request
-$response = $laravelSetup->Http('https://bungtemin.net/news/wp-json/wp');
-
-// Output the response body
-echo $response->body();
-       
     }
 }

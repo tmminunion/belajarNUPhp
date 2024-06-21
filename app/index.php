@@ -14,13 +14,13 @@ function to_url($url)
 }
 function Component($component, $variables = [])
 {
-    $templateEngine = new SimpleTemplateEngine\Template();
+    $templateEngine = new \Nufat\Nutemplete\Template();
     echo $templateEngine->ComponentView($component, $variables);
 }
 
 function Components($file, $data = [])
 {
-    $theme = new SimpleTemplateEngine\Environment(__dir__.'/../resource/components');
+    $theme = new \Nufat\Nutemplete\Render(__dir__ . '/../resource/components');
     echo $theme->render($file . '.nu.php', $data);
 }
 

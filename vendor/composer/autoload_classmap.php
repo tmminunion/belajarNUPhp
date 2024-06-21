@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Helper\\SideMenu' => $baseDir . '/helper/class/SideMenu.php',
+    'App\\Helper\\SideMenuTab' => $baseDir . '/helper/class/SideMenuTab.php',
     'App\\Helper\\Unsplash' => $baseDir . '/helper/class/Unsplash.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

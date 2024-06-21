@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '7cdeb7b6d5d52ab37561fec7552907be42183d3d',
+        'reference' => 'f8d5752a2815d7e4a7ceee9cd18e18c432b327d3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -136,7 +136,7 @@
         'illuminate/collections' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '994cedcd2060b65918efe46da805ac31b0563034',
+            'reference' => '37c863cffb345869dd134eff8e646bc82a19cc96',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/collections',
             'aliases' => array(),
@@ -172,7 +172,7 @@
         'illuminate/database' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => 'c57f5c8d3e55d9c952a2ad5f432bcb1dc2d3322c',
+            'reference' => 'b8aca982ac6762d52e1bbc1979b9b5a8412713c2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/database',
             'aliases' => array(),
@@ -309,7 +309,7 @@
         'nufat/cli' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'dcfdd7b08c86d5856a1157a14d66ca7f97027b8e',
+            'reference' => '53251c15485389452b755b9035ae79abba563ffc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nufat/cli',
             'aliases' => array(
@@ -320,10 +320,21 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '7cdeb7b6d5d52ab37561fec7552907be42183d3d',
+            'reference' => 'f8d5752a2815d7e4a7ceee9cd18e18c432b327d3',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'nufat/nutemplete' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '67494a168f8fc18b6e8eb1f7c021b8c17afc3184',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nufat/nutemplete',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'overtrue/pinyin' => array(
@@ -532,7 +543,7 @@
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '098e36a5b73de12beeb5ac17e80abf3696f7ad5f',
+            'reference' => '8740a072b86292957feb42703edde77fcfca84fb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),

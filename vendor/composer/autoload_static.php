@@ -56,6 +56,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         ),
         'N' => 
         array (
+            'Nufat\\Nutemplete\\' => 17,
             'Nufat\\Cli\\' => 10,
         ),
         'M' => 
@@ -111,6 +112,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         ),
         'A' => 
         array (
+            'App\\Models\\' => 11,
             'App\\Model\\' => 10,
             'App\\Helper\\' => 11,
             'App\\Core\\' => 9,
@@ -202,6 +204,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         'Overtrue\\Pinyin\\' => 
         array (
             0 => __DIR__ . '/..' . '/overtrue/pinyin/src',
+        ),
+        'Nufat\\Nutemplete\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nufat/nutemplete/src',
         ),
         'Nufat\\Cli\\' => 
         array (
@@ -318,6 +324,10 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'App\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/models',
+        ),
         'App\\Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/Model',
@@ -344,6 +354,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
 
     public static $classMap = array (
         'App\\Helper\\SideMenu' => __DIR__ . '/../..' . '/helper/class/SideMenu.php',
+        'App\\Helper\\SideMenuTab' => __DIR__ . '/../..' . '/helper/class/SideMenuTab.php',
         'App\\Helper\\Unsplash' => __DIR__ . '/../..' . '/helper/class/Unsplash.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',

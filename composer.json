@@ -13,7 +13,6 @@
         "firebase/php-jwt": "dev-main",
         "illuminate/view": "10.x-dev",
         "illuminate/support": "10.x-dev",
-        "nufat/cli": "dev-main",
         "catfan/medoo": "dev-master",
         "illuminate/pagination": "*",
         "symfony/translation": "*",
@@ -24,7 +23,9 @@
         "symfony/http-client-contracts": "3.5.x-dev",
         "symfony/service-contracts": "3.5.x-dev",
         "symfony/translation-contracts": "3.5.x-dev",
-        "lasserafn/php-initial-avatar-generator": "dev-master"
+        "lasserafn/php-initial-avatar-generator": "dev-master",
+        "nufat/nutemplete": "dev-main",
+        "nufat/cli": "dev-main"
     },
     "autoload": {
         "files": [
@@ -33,6 +34,7 @@
         ],
         "psr-4": {
             "App\\Model\\": "app/Model/",
+             "App\\Models\\": "app/models/",
             "App\\Helper\\": "helper/class/",
             "App\\Core\\": "core/classes/"
         },
