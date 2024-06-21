@@ -1,18 +1,4 @@
-<?php $this->extend("layout/layout.php");
-
-$lastRequest = $_COOKIE["last_image_request"] ?? null;
-$waktu = date("H:i:s");
-$diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
-$minute = 60;
-$fifteenMinutes = 15 * $minute;
-
-if ($diff > $fifteenMinutes) {
-    $gambar = getImage();
-    setcookie("last_image_request", $waktu, time() + 15 * $minute);
-} else {
-    $gambar = getPic();
-}
-?>
+<?php $this->extend("layout/layout.php");?>
 
 
 

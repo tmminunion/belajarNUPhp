@@ -1,7 +1,7 @@
 <?php
 
 use App\Core\Controller;
-
+use App\Helper\NuRequest;
 class home extends Controller
 {
     private $faker;
@@ -30,20 +30,35 @@ class home extends Controller
             'company' => $this->faker->company,
             'events' => $events
         ];
+$lastRequest = $_COOKIE["last_image_request"] ?? null;
+$waktu = date("H:i:s");
+$diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
+$minute = 60;
+$fifteenMinutes = 15 * $minute;
 
+if ($diff > $fifteenMinutes) {
+    $gambar = getImage();
+    setcookie("last_image_request", $waktu, time() + 15 * $minute);
+} else {
+    $gambar = getPic();
+}
+$data["gambar"]=$gambar;
         View("index", $data);
     }
     public function authya()
     {
         // Mengambil nilai dari header Authorization
-        $authHeader = isset($_SERVER['HTTP_AUTHORIZATION']) ? $_SERVER['HTTP_AUTHORIZATION'] : null;
+  
 
-        if ($authHeader) {
-            $data['dodo'] = 'Authorization Header: ' . $authHeader;
-            response(200, $data);
-        } else {
 
-            response(404, 'Authorization Header tidak ditemukan.');
-        }
+// Initialize Laravel components
+$laravelSetup = new NuRequest();
+
+// Make an HTTP request
+$response = $laravelSetup->Http('https://bungtemin.net/news/wp-json/wp');
+
+// Output the response body
+echo $response->body();
+       
     }
 }

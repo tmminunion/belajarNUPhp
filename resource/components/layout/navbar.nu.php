@@ -11,33 +11,18 @@
             </a>
 
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                <?php
-                echo App\Helper\SideMenu::render('dashboard');
-                ?>
+                <?= App\Helper\SideMenu::render();?>
                 <!-- Navigation -->
 
                 <hr class="my-3">
-                <!-- 
+                
                
-                <h6 class="navbar-heading text-muted">Documentation</h6>
+                <h6 class="navbar-heading text-muted">Tabungan Tours</h6>
               
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="ni ni-spaceship"></i> Getting started
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="ni ni-palette"></i> Foundation
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="ni ni-ui-04"></i> Components
-                        </a>
-                    </li>
-                </ul> -->
+              <?= App\Helper\SideMenuTab::render();?>
+              
+              
+                
 
             </div>
         </div>
