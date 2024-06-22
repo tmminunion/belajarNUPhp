@@ -33,11 +33,7 @@
         </div>
     </nav>
 
-    <div class="main-content" style="
-    background: #7474BF; /* Fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #348AC7, #7474BF); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-">
+    <div class="main-content" style="background: #7474BF;background: -webkit-linear-gradient(to right, #348AC7, #7474BF);background: linear-gradient(to right, #348AC7, #7474BF);min-height:calc(100vh - 80px);">
 
         <!-- Navbar -->
         <nav class="navbar navbar-top navbar-expand-md navbar-dark bg-default" id="navbar-main">

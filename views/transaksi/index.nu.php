@@ -1,7 +1,7 @@
 @extends("layout.layout")
 
 <div class="header bg-gradient-primary pb-5 pt-5 pt-md-8">
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height:calc(100vh - 30px);">
         <div class="header-body">
             <div class="container-fluid mt-1">
                 <div class="row">
