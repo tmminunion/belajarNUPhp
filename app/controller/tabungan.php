@@ -1,14 +1,16 @@
 <?php
+
 use App\Core\Controller;
-use App\Model\transaction;
+use App\Model\Tabung;
+
 class tabungan extends Controller
 {
-   public function index()
+     public function index()
      {
           $page = 1;
           $perPage = 30;
           $offset = ($page - 1) * $perPage;
-          $transactions = Transaction::orderBy('date', 'desc')
+          $transactions = Tabung::orderBy('date', 'desc')
                ->skip($offset)
                ->take($perPage)
                ->get();

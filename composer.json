@@ -24,8 +24,8 @@
         "symfony/service-contracts": "3.5.x-dev",
         "symfony/translation-contracts": "3.5.x-dev",
         "lasserafn/php-initial-avatar-generator": "dev-master",
-        "nufat/nutemplete": "dev-main",
-        "nufat/cli": "dev-main"
+        "nufat/cli": "dev-main",
+        "nufat/nutemplete": "dev-main"
     },
     "autoload": {
         "files": [

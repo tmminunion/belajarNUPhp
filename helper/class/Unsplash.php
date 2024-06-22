@@ -46,4 +46,21 @@ class Unsplash
         $random_index = array_rand($images->toArray());
         return $images[$random_index]->link;
     }
+    public static function getimg()
+    {
+        $lastRequest = $_COOKIE["last_image_request"] ?? null;
+        $waktu = date("H:i:s");
+        $diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
+        $minute = 60;
+        $fifteenMinutes = 15 * $minute;
+
+        if ($diff > $fifteenMinutes) {
+            $gambar = self::getRandomPhoto();
+            setcookie("last_image_request", $waktu, time() + 15 * $minute);
+        } else {
+            $gambar = self::getRandomLink();
+        }
+
+        return $gambar;
+    }
 }

@@ -18,7 +18,7 @@ if (isset($_SESSION['login'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
+        UNDERBODY ASSY
     </title>
     <!-- Favicon -->
     <link href="<?= getBaseUrl(); ?>assets/img/brand/favicon.png" rel="icon" type="image/png">
@@ -32,7 +32,7 @@ if (isset($_SESSION['login'])) {
 </head>
 
 <body class="bg-default">
-    <div class="main-content">
+    <div class="container-fluid">
         <!-- Navbar -->
 
         <!-- Header -->

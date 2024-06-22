@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7517645bbdf06c4bf287ce1b2bbb5c53",
+    "content-hash": "33d593c2e95d59bc3efb723f5bd7c99a",
     "packages": [
         {
             "name": "brick/math",
@@ -2148,12 +2148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nufatID/Nutemplete.git",
-                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184"
+                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
-                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
+                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/f2398e51204193ba7e3d7b821e757c9ee238b162",
+                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162",
                 "shasum": ""
             },
             "default-branch": true,
@@ -2175,9 +2175,9 @@
             "description": "untuk templete nuphp",
             "support": {
                 "issues": "https://github.com/nufatID/Nutemplete/issues",
-                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.2"
+                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.3"
             },
-            "time": "2024-06-21T11:18:43+00:00"
+            "time": "2024-06-22T04:50:27+00:00"
         },
         {
             "name": "overtrue/pinyin",
@@ -3705,12 +3705,12 @@
         "symfony/service-contracts": 20,
         "symfony/translation-contracts": 20,
         "lasserafn/php-initial-avatar-generator": 20,
-        "nufat/nutemplete": 20,
-        "nufat/cli": 20
+        "nufat/cli": 20,
+        "nufat/nutemplete": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

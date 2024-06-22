@@ -15,6 +15,24 @@
     <link href="<?= getBaseUrl(); ?>assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
     <link href="<?= getBaseUrl(); ?>assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- CSS Files -->
+
+
     <link href="<?= getBaseUrl(); ?>assets/css/argon-dashboard.css?v=1.1.2" rel="stylesheet" />
     <?= $this['scriptsheader'] ?>
+    <style>
+        #sidenav-main {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #sidenav-main.hide {
+            transform: translateX(-100%);
+        }
+
+
+
+        .main-content.full-width {
+            margin-left: 0;
+        }
+    </style>
+
 </head>

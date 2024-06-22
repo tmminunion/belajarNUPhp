@@ -2242,15 +2242,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nufatID/Nutemplete.git",
-                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184"
+                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
-                "reference": "67494a168f8fc18b6e8eb1f7c021b8c17afc3184",
+                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/f2398e51204193ba7e3d7b821e757c9ee238b162",
+                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162",
                 "shasum": ""
             },
-            "time": "2024-06-21T11:18:43+00:00",
+            "time": "2024-06-22T04:50:27+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -2271,7 +2271,7 @@
             "description": "untuk templete nuphp",
             "support": {
                 "issues": "https://github.com/nufatID/Nutemplete/issues",
-                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.2"
+                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.3"
             },
             "install-path": "../nufat/nutemplete"
         },

@@ -2,21 +2,24 @@
 
 use Steampixel\Route;
 
-function newview($path, $params = []) {
+function newview($path, $params = [])
+{
     extract($params);
-    $viewFile = __DIR__ . '/views/' . $path . '.php';
-  
+    $viewFile = __DIR__ . '/views/' . $path . '.nu.php';
+
     if (file_exists($viewFile)) {
-        view($path);
+        View($path, $params);
     } else {
-        echo "Error 404: View not found! File not found at $viewFile<br>";
+        header('HTTP/1.0 404 Not Found');
+        View('404');
     }
 }
 
-function autoloadRoute($pathParts) {
+function autoloadRoute($pathParts)
+{
     $controllerBaseDir = 'app/controller';
-    $routerBaseDir ='/router';
-    $viewBaseDir = __DIR__.'/views';
+    $routerBaseDir = '/router';
+    $viewBaseDir = __DIR__ . '/views';
     $maxDepth = count($pathParts);
 
     for ($i = 0; $i < $maxDepth; $i++) {
@@ -41,7 +44,8 @@ function autoloadRoute($pathParts) {
                         if (method_exists($controller, 'index')) {
                             call_user_func_array([$controller, 'index'], $params);
                         } else {
-                            echo 'Error 404: Method not found!';
+                            header('HTTP/1.0 404 Not Found');
+                            View('404');
                         }
                     }
                     return;
@@ -65,22 +69,64 @@ function autoloadRoute($pathParts) {
                 if (method_exists($controller, 'index')) {
                     call_user_func_array([$controller, 'index'], $params);
                 } else {
-                    echo 'Error 404: Method not found!';
+                    header('HTTP/1.0 404 Not Found');
+                    View('404');
                 }
             }
             return;
         }
 
-        // Check router directory
-        $routerPath = __DIR__ . '/' . $routerBaseDir . '/' . $currentPath;
-        if (file_exists($routerPath . '.php')) {
-            require_once $routerPath . '.php';
+        // Check if the URL directly points to a file in the router directory
+        $directFilePath = __DIR__ . '/' . $routerBaseDir . '/' . $pathParts[0] . '.php';
+        if (file_exists($directFilePath)) {
+            require_once $directFilePath;
+            $className = ucfirst($pathParts[0]);
+            $methodName = $pathParts[1] ?? 'index';
+            $controller = new $className();
+
+            if (class_exists($className) && method_exists($controller, $methodName)) {
+                $params = array_slice($pathParts, 2);
+                call_user_func_array([$controller, $methodName], $params);
+            } else {
+                $params = array_slice($pathParts, 1);
+                if (method_exists($controller, 'index')) {
+                    call_user_func_array([$controller, 'index'], $params);
+                } else {
+                    header('HTTP/1.0 404 Not Found');
+                    View('404');
+                }
+            }
             return;
         }
 
+
+        $routerDirPath = __DIR__ . '/' . $routerBaseDir . '/' . $currentPath;
+        if (is_dir($routerDirPath)) {
+            $phpFilePath = $routerDirPath . '/' . $pathParts[$i + 1] . '.php';
+            if (file_exists($phpFilePath)) {
+                require_once $phpFilePath;
+                $className = ucfirst($pathParts[$i + 1]);
+                $methodName = $pathParts[$i + 2] ?? 'index';
+                $controller = new $className();
+
+                if (class_exists($className) && method_exists($controller, $methodName)) {
+                    $params = array_slice($pathParts, $i + 3);
+                    call_user_func_array([$controller, $methodName], $params);
+                } else {
+                    $params = array_slice($pathParts, $i + 2);
+                    if (method_exists($controller, 'index')) {
+                        call_user_func_array([$controller, 'index'], $params);
+                    } else {
+                        header('HTTP/1.0 404 Not Found');
+                        View('404');
+                    }
+                }
+                return;
+            }
+        }
         // Check view directory
-        $viewPath = $viewBaseDir . '/' . $currentPath . '.php';
-      
+        $viewPath = $viewBaseDir . '/' . $currentPath . '.nu.php';
+
         if (file_exists($viewPath)) {
             $params = array_slice($pathParts, $i + 1);
             newview($currentPath, $params);
@@ -89,7 +135,7 @@ function autoloadRoute($pathParts) {
     }
 
     // If no route matched
-   header('HTTP/1.0 404 Not Found');
+    header('HTTP/1.0 404 Not Found');
     View('404');
 }
 
@@ -99,10 +145,10 @@ Route::add('/', function () {
 });
 
 // Define the route with a wildcard pattern
-Route::add('/(.*)', function($fullPath) {
+Route::add('/(.*)', function ($fullPath) {
     $pathParts = explode('/', trim($fullPath, '/'));
     autoloadRoute($pathParts);
-},['get','post']);
+}, ['get', 'post']);
 
 // Run the router
 Route::run('/');

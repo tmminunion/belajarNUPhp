@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '4764157d461e6e53df59f8b74335fef7b5507b3a',
+        'reference' => '37ebd88827bb235aefb9c415477b120f0d1cda0c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -320,7 +320,7 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '4764157d461e6e53df59f8b74335fef7b5507b3a',
+            'reference' => '37ebd88827bb235aefb9c415477b120f0d1cda0c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -329,7 +329,7 @@
         'nufat/nutemplete' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '67494a168f8fc18b6e8eb1f7c021b8c17afc3184',
+            'reference' => 'f2398e51204193ba7e3d7b821e757c9ee238b162',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nufat/nutemplete',
             'aliases' => array(

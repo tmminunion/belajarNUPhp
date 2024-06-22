@@ -15567,8 +15567,65 @@ a.btn-icon-only {
   background-color: transparent;
 }
 
+/*---------------------------------------*/
+
+#navbar-toggle-btn {
+  display: block;
+  margin-right: 10px;
+    /* Adjust the margin as needed */
+  /* Ensure the button is initially visible */
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+  /* Center items vertically */
+}
+/* Hide the button on mobile */
+@media (max-width: 767.98px) {
+  #navbar-toggle-btn {
+    display: none;
+    /* Hide the button on mobile */
+  }
+}
+
+#sidenav-main {
+  transition: transform 0.3s ease-in-out;
+}
+
+#sidenav-main.hide {
+  transform: translateX(-100%);
+}
+
 .main-content {
   position: relative;
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 0;
+  /* Default to no margin */
+}
+
+/* Full-width main content on mobile */
+@media (max-width: 767.98px) {
+  .main-content {
+    margin-left: 0 !important;
+    /* Ensure no margin on mobile */
+  }
+
+  /* Ensure main content has no margin when navbar is hidden on mobile */
+  #sidenav-main.hide+.main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Margin adjustments for larger screens */
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 250px;
+    /* Adjust based on the width of your vertical navbar */
+  }
+
+  .main-content.full-width {
+    margin-left: 0;
+  }
 }
 
 .main-content .navbar-top {
@@ -15589,53 +15646,29 @@ a.btn-icon-only {
   }
 }
 
-.navbar-vertical.navbar-expand-xs.fixed-left+.main-content {
+/* Margin adjustments for different navbar expand classes */
+.navbar-vertical.navbar-expand-xs.fixed-left+.main-content,
+.navbar-vertical.navbar-expand-xs.fixed-right+.main-content,
+.navbar-vertical.navbar-expand-sm.fixed-left+.main-content,
+.navbar-vertical.navbar-expand-sm.fixed-right+.main-content,
+.navbar-vertical.navbar-expand-md.fixed-left+.main-content,
+.navbar-vertical.navbar-expand-md.fixed-right+.main-content,
+.navbar-vertical.navbar-expand-lg.fixed-left+.main-content,
+.navbar-vertical.navbar-expand-lg.fixed-right+.main-content,
+.navbar-vertical.navbar-expand-xl.fixed-left+.main-content,
+.navbar-vertical.navbar-expand-xl.fixed-right+.main-content {
   margin-left: 250px;
+ 
 }
 
-.navbar-vertical.navbar-expand-xs.fixed-right+.main-content {
-  margin-right: 250px;
+/* Ensure main content has no margin when navbar is hidden */
+#sidenav-main.hide+.main-content {
+  margin-left: 0;
 }
 
-@media (min-width: 576px) {
-  .navbar-vertical.navbar-expand-sm.fixed-left+.main-content {
-    margin-left: 250px;
-  }
 
-  .navbar-vertical.navbar-expand-sm.fixed-right+.main-content {
-    margin-right: 250px;
-  }
-}
+/*---------------------------------------*/
 
-@media (min-width: 768px) {
-  .navbar-vertical.navbar-expand-md.fixed-left+.main-content {
-    margin-left: 250px;
-  }
-
-  .navbar-vertical.navbar-expand-md.fixed-right+.main-content {
-    margin-right: 250px;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-vertical.navbar-expand-lg.fixed-left+.main-content {
-    margin-left: 250px;
-  }
-
-  .navbar-vertical.navbar-expand-lg.fixed-right+.main-content {
-    margin-right: 250px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .navbar-vertical.navbar-expand-xl.fixed-left+.main-content {
-    margin-left: 250px;
-  }
-
-  .navbar-vertical.navbar-expand-xl.fixed-right+.main-content {
-    margin-right: 250px;
-  }
-}
 
 .custom-checkbox .custom-control-input~.custom-control-label {
   cursor: pointer;

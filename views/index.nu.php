@@ -2,7 +2,7 @@
 
 
 
-<div class="header pb-1 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(<?= $gambar; ?>); background-size: cover; background-position: center top;">
+<div class="header pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(<?= $gambar; ?>); background-size: cover; background-position: center top;">
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-7"></span>
     <!-- Header container -->
@@ -10,7 +10,10 @@
         <div class="row">
             <div class="col-lg-7 col-md-10">
                 <h1 class="display-2 text-white">List App Donasi</h1>
-                <p class="text-white mt-0 mb-9">Memberikan kebahagiaan untuk orang lain sejatinya juga membahagiakan diri-sendiri.</p>
+                <p class="text-white mt-0 mb-9">{{text}}</p>
+
+
+
 
             </div>
         </div>
@@ -18,27 +21,25 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--9">
-    <div class="container mt-5 mb-3">
+    <div class="container mt-5">
         <div class="row">
-          
-          <div class="col-md-4 py-3">
-    <div class="card p-3 mb-2 text-center" data-toggle="modal" data-target="#addEventModal">
-        <div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-            <div class="icon p-3 m-1">
-                <i class="fas fa-plus"></i>
+
+            <div class="col-md-4 py-3">
+                <div class="card p-3 mb-2 text-center" data-toggle="modal" data-target="#addEventModal">
+                    <div class="d-flex justify-content-center align-items-center mt-3" style="min-height: 200px;">
+                        <div class="icon m-1"> <i class="fas fa-plus" style="font-size: 50px;"></i> </div>
+                    </div>
+                    <div class="mt--5">
+                        <h5 style="font-size:20px;">Add New</h5>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div>
-            <h5>Add New</h5>
-        </div>
-    </div>
-</div>
-          
+
             <?php foreach ($events as $event) :
             ?>
 
-                <nu-card-cardcip data='{"id":"<?= $event['event_date'] ?>", "event_name":"<?= $event['event_name'] ?>"}' class='class-<?= $event['event_location'] ?>'>
-                    <?= $event['organizer'] ?>
+                <nu-card-cardcip data='{"id":"<?= $event['created_at'] ?>", "event_name":"<?= $event['eventid'] ?>"}' class='<?= $event['deskripsi'] ?>' icon="{{$icon}}">
+                    <?= $event['nama_acara'] ?>
                 </nu-card-cardcip>
             <?php endforeach; ?>
 
@@ -131,7 +132,7 @@
 
 <script>
     $(document).ready(function() {
-      
+
         $('#form-type').on('submit', function(event) {
             event.preventDefault();
             $('#confirmModal').modal('show');
@@ -145,7 +146,7 @@
         $('#confirmModal').on('hidden.bs.modal', function() {
             $('#form-type')[0].reset();
         });
-      
+
     });
 </script>
 

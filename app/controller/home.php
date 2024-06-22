@@ -1,7 +1,9 @@
 <?php
 
 use App\Core\Controller;
-use App\Helper\NuRequest;
+use App\Model\Don;
+use App\Helper\Unsplash;
+
 
 class home extends Controller
 {
@@ -9,41 +11,15 @@ class home extends Controller
 
     public function index()
     {
-        $this->faker = \Faker\Factory::create();
-
-        $events = [];
-        for ($i = 0; $i < 12; $i++) {
-            $events[] = [
-                'event_name' => $this->faker->sentence(3), // Generates a 3-word event name
-                'event_date' => $this->faker->date(), // Generates a random date
-                'event_location' => $this->faker->address, // Generates a random address
-                'organizer' => $this->faker->company, // Generates a random company name
-                'contact_person' => $this->faker->name, // Generates a random name
-                'contact_email' => $this->faker->email // Generates a random email
-            ];
-        }
-
+        $this->faker = \Faker\Factory::create('id_ID');
+        $events = Don::all();
+        $text = $this->faker->realText($maxNbChars = 200, $indexSize = 2);
         $data = [
-            'name' => $this->faker->name,
-            'id' => $this->faker->email,
-            'phone' => $this->faker->phoneNumber,
-            'address' => $this->faker->address,
-            'company' => $this->faker->company,
-            'events' => $events
+            'events' => $events,
+            'text' => $text,
+            'gambar' => Unsplash::getimg()
         ];
-        $lastRequest = $_COOKIE["last_image_request"] ?? null;
-        $waktu = date("H:i:s");
-        $diff = $lastRequest ? abs(strtotime($waktu) - strtotime($lastRequest)) : 0;
-        $minute = 60;
-        $fifteenMinutes = 15 * $minute;
 
-        if ($diff > $fifteenMinutes) {
-            $gambar = getImage();
-            setcookie("last_image_request", $waktu, time() + 15 * $minute);
-        } else {
-            $gambar = getPic();
-        }
-        $data["gambar"] = $gambar;
         View("index", $data);
     }
 }
