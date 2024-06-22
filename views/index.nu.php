@@ -20,6 +20,20 @@
 <div class="container-fluid mt--9">
     <div class="container mt-5 mb-3">
         <div class="row">
+          
+          <div class="col-md-4 py-3">
+    <div class="card p-3 mb-2 text-center" data-toggle="modal" data-target="#addEventModal">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+            <div class="icon p-3 m-1">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        <div>
+            <h5>Add New</h5>
+        </div>
+    </div>
+</div>
+          
             <?php foreach ($events as $event) :
             ?>
 
@@ -39,8 +53,8 @@
 </div>
 
 
-
-
+<nu-modal-addevent></nu-modal-addevent>
+<?= Components('confirmModal', ['id' => 'confirmModal']); ?>
 
 @section('scriptsheader')
 <style>
@@ -109,4 +123,30 @@
         color: #a5aec0
     }
 </style>
+@endsection
+
+
+
+@section('scriptsfooter')
+
+<script>
+    $(document).ready(function() {
+      
+        $('#form-type').on('submit', function(event) {
+            event.preventDefault();
+            $('#confirmModal').modal('show');
+        });
+        $('#confirmModalbtn').on('click', function() {
+            $('#form-type').unbind('submit').submit();
+            $('#confirmModal').modal('hide');
+        });
+
+
+        $('#confirmModal').on('hidden.bs.modal', function() {
+            $('#form-type')[0].reset();
+        });
+      
+    });
+</script>
+
 @endsection

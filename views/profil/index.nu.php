@@ -1,6 +1,6 @@
 @extends("layout.layout")
 
-<div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(<?= getImage() ?>); background-size: cover; background-position: center top;">
+<div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(<?= getpic() ?>); background-size: cover; background-position: center top;">
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-7"></span>
     <!-- Header container -->
@@ -55,7 +55,7 @@
                     </div>
                     <div class="text-center">
                         <h3>
-                            Jessica Jones<span class="font-weight-light">, 27</span>
+<?=$member->nama?>
                         </h3>
                         <div class="h5 font-weight-300">
                             <i class="ni location_pin mr-2"></i>Bucharest, Romania
