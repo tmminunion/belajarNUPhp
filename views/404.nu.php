@@ -6,23 +6,26 @@
         <div class="header-body">
 
             <!-- ******Header****** -->
-            <header class="header text-center">
+            <header class="header text-center" style="min-height:calc(100vh - 335px);">
                 <div class="container">
                     <div class="branding">
                         <h1 class="logo">
-                            <span aria-hidden="true" class="fas fa-exclamation-circle" style="font-size: xxx-large;"></span>
+                            <span aria-hidden="true" class="fas fa-exclamation-circle text-danger" style="font-size: 100px;"></span>
                             <p>
-                                <span class="text-highlight">Error </span>
+                                <span class="text-highlight" style="font-size: xxx-large;">Error </span>
                             </p>
                             <p>
-                            <h1 class="text-bold">404</h1>
+                            <h1 class=" text-bold">404
+                            </h1>
                             </p>
                         </h1>
                     </div>
                     <!--//branding-->
                     <div class="tagline">
                         <h1 class="logo text-warning">MAAF ...!! <br>HALAMAN TIDAK DITEMUKAN</h1>
-                        <h2><?= tanggal_sekarang() ?></h2>
+                        <?php if (isset($_GET['error'])) : ?>
+                            <h2><?= $_GET['error'] ?></h2>
+                        <?php endif; ?>
                     </div>
 
 

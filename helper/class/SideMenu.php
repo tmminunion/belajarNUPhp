@@ -13,16 +13,9 @@ class SideMenu
             ['slug' => 'home', 'name' => 'HOME', 'icon' => 'ni ni-world-2 text-primary', 'auth' => 'common', 'roles' => null],
             ['slug' => 'dashboard', 'name' => 'Dashboard', 'icon' => 'ni ni-tv-2 text-primary', 'auth' => 'common', 'roles' => null],
             ['slug' => 'transaksi', 'name' => 'Transaksi', 'icon' => 'ni ni-bullet-list-67 text-red', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'pembayaran', 'name' => 'Pembayaran', 'icon' => 'ni ni-money-coins text-green', 'auth' => true, 'roles' => [0, 1]],
+            ['slug' => 'pembayaran/kredit/kas', 'name' => 'Pembayaran', 'icon' => 'ni ni-money-coins text-green', 'auth' => true, 'roles' => [0, 1]],
             ['slug' => 'member', 'name' => 'Member', 'icon' => 'ni ni-single-02 text-yellow', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'setting', 'name' => 'Setting', 'icon' => 'ni ni-settings-gear-65 text-info', 'auth' => true, 'roles' => [1]],
-            // Pages that require login
-            ['slug' => 'auth/logout', 'name' => 'Logout', 'icon' => 'ni ni-button-power text-danger', 'auth' => true, 'roles' => null],
-            // Pages that require no login
-            ['slug' => 'auth/login', 'name' => 'Login', 'icon' => 'ni ni-key-25 text-info', 'auth' => false, 'roles' => null],
-            // Role-specific pages
-            ['slug' => 'admin/dashboard', 'name' => 'Admin Dashboard', 'icon' => 'ni ni-tv-2 text-primary', 'auth' => true, 'roles' => ['admin']],
-            ['slug' => 'user/profile', 'name' => 'Profile', 'icon' => 'ni ni-single-02 text-yellow', 'auth' => true, 'roles' => ['0', 'admin']],
+
         ];
 
         $isLoggedIn = self::isLogin();

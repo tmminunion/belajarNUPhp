@@ -57,6 +57,17 @@ class Controller
             exit;
         }
     }
+
+    public function cekjekpost()
+    {
+        $jenis = $_POST['type'];
+        $all = ['kredit', 'debit'];
+
+        if (!in_array($jenis, $all)) {
+            header("location: " . getBaseUrl() . "kesalahan?error=jenis harus kredit atau debit");
+            exit;
+        }
+    }
     public function checkCsrf($token)
     {
         if (isset($_SESSION['token_csrf']) && $_SESSION['token_csrf'] == $token) {

@@ -2,55 +2,79 @@
 
 use App\Model\member;
 use App\Core\Controller;
+use App\Model\Cerit;
 use App\Model\PaymentType;
+use App\Model\Tabung;
 use App\Model\transaction;
 
 class pembayaran extends Controller
 {
      public $auth = true;
-     public $role = [1];
-
+     private $create = [];
      public function __construct()
      {
           parent::__construct(); // Memanggil konstruktor dari kelas induk
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
                $this->cekpost();
-          }
-     }
-     public function index()
-     {
-          last_form();
-          $data["title"] = tanggal_sekarang();
-          $data["member"] = member::all();
-          $data["paymentType"] = PaymentType::all();
-          View("pembayaran/index", $data);
-     }
-     public function addtype()
-     {
-          if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          }
-     }
-     public function create()
-     {
-          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+               $this->cekjekpost();
                vPost(['member_id', 'jenis', 'keterangan']);
-
                $jumlah = str_replace(['Rp. ', '.'], '', $_POST['jumlah']); // Remove formatting before inserting
-               $create = [
-                    'judul' => KasNumber($_POST['jenis']),
+               $this->create = [
+                    'judul' => KasNumber($_POST['jenis'], $_POST['kriteria']),
                     'member_id' => $_POST['member_id'],
                     'jumlah' => $jumlah,
                     'payment_type' => $_POST['jenis'],
-                    'type' => 'kredit',
+                    'type' => $_POST['type'],
+                    'status' => 0,
                     'keterangan' => $_POST['keterangan'],
                     'date' => date('Y-m-d H:i:s'),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                     'input_by' => $_SESSION['login_member'],
                ];
+          }
+     }
+     public function index($kre = 'kredit', $d = 'kas')
+     {
+          last_form();
+          if (!in_array($kre, ['kredit', 'debit'])) {
+               to_url('home');
+               exit;
+          }
+          $data["title"] = tanggal_sekarang();
+          $data["member"] = member::all();
+          $data["paymentType"] = PaymentType::all();
+          $data["jenis"] = $d;
+          $data["type"] = $kre;
+          $data["judultype"] = ($kre == 'kredit') ? 'Pembayaran' : 'Pendebitan';
+          View("pembayaran/index", $data);
+     }
 
-               transaction::create($create);
-
+     public function post_kas()
+     {
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+               transaction::create($this->create);
+               unset($_SESSION['token_csrf']);
+               // Redirect to a success page
+               to_url("transaksi");
+               exit;
+          }
+     }
+     public function post_tabungan()
+     {
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+               Tabung::create($this->create);
+               unset($_SESSION['token_csrf']);
+               // Redirect to a success page
+               to_url("tabungan/transaksi");
+               exit;
+          }
+     }
+     public function post_donasi()
+     {
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+               Cerit::create($this->create);
+               unset($_SESSION['token_csrf']);
                // Redirect to a success page
                to_url("transaksi");
                exit;

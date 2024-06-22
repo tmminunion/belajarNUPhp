@@ -38,7 +38,7 @@
             <?php foreach ($events as $event) :
             ?>
 
-                <nu-card-cardcip data='{"id":"<?= $event['created_at'] ?>", "event_name":"<?= $event['eventid'] ?>"}' class='<?= $event['deskripsi'] ?>' icon="{{$icon}}">
+                <nu-card-cardcip data='{"id":"<?= $event['created_at'] ?>", "event_name":"<?= $event['eventid'] ?>"}' class='<?= $event['deskripsi'] ?>' icon="{{$icon}}" link_url="<?= $event['slug'] ?>">
                     <?= $event['nama_acara'] ?>
                 </nu-card-cardcip>
             <?php endforeach; ?>

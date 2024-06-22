@@ -19,10 +19,10 @@
                                                 <th scope="col">Transaksi</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Noreg</th>
-                                                <th scope="col">Tanggal</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col" style="width: 2%;"></th>
                                                 <th scope="col">Jumlah</th>
-
+                                                <th scope="col">Tanggal</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
@@ -39,13 +39,10 @@
                                                         <?= $value["judul"] ?>
                                                     </td>
                                                     <td>
-                                                        <?= $value->member->nama; ?>
+                                                        <?= strnama($value->member->nama); ?>
                                                     </td>
                                                     <td>
                                                         <?= $value->member->noreg; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?= $value->date; ?>
                                                     </td>
                                                     <td>
                                                         <span class="badge badge-dot mr-4">
@@ -58,10 +55,13 @@
                                                         </span>
                                                     </td>
 
+                                                    <td>Rp.</td>
+                                                    <td style="text-align:right;font-weight:bold;font-size:16px;">
+                                                        <?= number_format($value->jumlah, 0, ',', '.') . ' ,-'; ?>
 
+                                                    </td>
                                                     <td>
-                                                        <?= 'Rp. ' . number_format($value->jumlah, 0, ',', '.') . ' ,-'; ?>
-
+                                                        <?= $value->date; ?>
                                                     </td>
 
 

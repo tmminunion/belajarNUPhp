@@ -13,22 +13,22 @@
                 <img src="<?= getBaseUrl(); ?>assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
             </a>
 
-            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-
-
-                <?= App\Helper\SideMenu::render(); ?>
-                <!-- Navigation -->
+            <div class="collapse navbar-collapse mt--4" id="sidenav-collapse-main">
 
                 <hr class="my-3">
-
-
+                <h6 class="navbar-heading text-muted">MENU</h6>
+                <?= App\Helper\SideMenu::render(); ?>
+                <!-- Navigation -->
+                <hr class="my-3">
                 <h6 class="navbar-heading text-muted">Tabungan Tours</h6>
-
                 <?= App\Helper\SideMenuTab::render(); ?>
 
-
-
-
+                <hr class="my-3">
+                <h6 class="navbar-heading text-muted">Akun</h6>
+                <?= App\Helper\SideMenuAkun::render(); ?>
+                <div class="mb-5">
+                    <hr>
+                </div>
             </div>
         </div>
     </nav>

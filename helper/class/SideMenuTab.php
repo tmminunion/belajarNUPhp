@@ -11,11 +11,10 @@ class SideMenuTab
         self::$pages = [
             // Common pages
             ['slug' => 'tabungan', 'name' => 'Tabungan', 'icon' => 'ni ni-spaceship text-primary', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'dashboard', 'name' => 'Dashboard', 'icon' => 'ni ni-palette text-primary', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'transaksi', 'name' => 'Transaksi', 'icon' => 'ni ni-ui-04 text-red', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'pembayaran', 'name' => 'Pembayaran', 'icon' => 'ni ni-money-coins text-green', 'auth' => true, 'roles' => [0, 1]],
-          
-          
+            ['slug' => 'tabungan/transaksi', 'name' => 'Transaksi', 'icon' => 'ni ni-ui-04 text-red', 'auth' => 'common', 'roles' => null],
+            ['slug' => 'pembayaran/kredit/tabungan', 'name' => 'Pembayaran', 'icon' => 'ni ni-money-coins text-green', 'auth' => true, 'roles' => [0, 1]],
+
+
         ];
 
         $isLoggedIn = self::isLogin();
