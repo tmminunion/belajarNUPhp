@@ -11,9 +11,9 @@ class SideMenuTab
         self::$pages = [
             // Common pages
             ['slug' => 'tabungan', 'name' => 'Tabungan', 'icon' => 'ni ni-spaceship text-primary', 'auth' => 'common', 'roles' => null],
-            ['slug' => 'tabungan/transaksi', 'name' => 'Transaksi', 'icon' => 'ni ni-ui-04 text-red', 'auth' => 'common', 'roles' => null],
+            ['slug' => 'tabungan/transaksi', 'name' => 'Transaksi', 'icon' => 'ni ni-ui-04 text-blue', 'auth' => 'common', 'roles' => null],
             ['slug' => 'pembayaran/kredit/tabungan', 'name' => 'Pembayaran', 'icon' => 'ni ni-money-coins text-green', 'auth' => true, 'roles' => [0, 1]],
-
+            ['slug' => 'pembayaran/debit/tabungan', 'name' => 'Pendebitan', 'icon' => 'ni ni-money-coins text-red', 'auth' => true, 'roles' => [0, 1]],
 
         ];
 

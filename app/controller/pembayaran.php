@@ -3,6 +3,7 @@
 use App\Model\member;
 use App\Core\Controller;
 use App\Model\Cerit;
+use App\Model\Don;
 use App\Model\PaymentType;
 use App\Model\Tabung;
 use App\Model\transaction;
@@ -34,7 +35,7 @@ class pembayaran extends Controller
                ];
           }
      }
-     public function index($kre = 'kredit', $d = 'kas')
+     public function index($kre = 'kredit', $d = 'kas', $donid = null)
      {
           last_form();
           if (!in_array($kre, ['kredit', 'debit'])) {
@@ -47,6 +48,7 @@ class pembayaran extends Controller
           $data["jenis"] = $d;
           $data["type"] = $kre;
           $data["judultype"] = ($kre == 'kredit') ? 'Pembayaran' : 'Pendebitan';
+          $data["donid"] = $donid;
           View("pembayaran/index", $data);
      }
 
@@ -70,13 +72,20 @@ class pembayaran extends Controller
                exit;
           }
      }
-     public function post_donasi()
+     public function post_donasi($id)
      {
-          if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               Cerit::create($this->create);
-               unset($_SESSION['token_csrf']);
-               // Redirect to a success page
-               to_url("transaksi");
+          $don = Don::find($id);
+          if ($don) {
+               if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $this->create['don_id'] = $id;
+                    Cerit::create($this->create);
+                    unset($_SESSION['token_csrf']);
+                    // Redirect to a success page
+                    to_url("donasi/daftar/" . $id . "/" . $don->slug);
+                    exit;
+               }
+          } else {
+               to_url('home');
                exit;
           }
      }

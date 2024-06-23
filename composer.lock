@@ -2148,17 +2148,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nufatID/Nutemplete.git",
-                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162"
+                "reference": "59b2e667ec68b67147091b7ec37aceca081e6d6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/f2398e51204193ba7e3d7b821e757c9ee238b162",
-                "reference": "f2398e51204193ba7e3d7b821e757c9ee238b162",
+                "url": "https://api.github.com/repos/nufatID/Nutemplete/zipball/59b2e667ec68b67147091b7ec37aceca081e6d6d",
+                "reference": "59b2e667ec68b67147091b7ec37aceca081e6d6d",
                 "shasum": ""
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/phpqrcode/qrlib.php"
+                ],
                 "psr-4": {
                     "Nufat\\Nutemplete\\": "src/"
                 }
@@ -2175,9 +2178,9 @@
             "description": "untuk templete nuphp",
             "support": {
                 "issues": "https://github.com/nufatID/Nutemplete/issues",
-                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.3"
+                "source": "https://github.com/nufatID/Nutemplete/tree/v1.0.4"
             },
-            "time": "2024-06-22T04:50:27+00:00"
+            "time": "2024-06-23T06:58:41+00:00"
         },
         {
             "name": "overtrue/pinyin",

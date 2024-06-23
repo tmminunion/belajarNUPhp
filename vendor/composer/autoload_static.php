@@ -17,6 +17,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '06a34129a50df3d9257ee706cf3c875b' => __DIR__ . '/..' . '/illuminate/filesystem/functions.php',
         'dc1275c308c5b416beb314b6317daca2' => __DIR__ . '/..' . '/overtrue/pinyin/src/const.php',
+        '5199e152160bb9bda8b6b3584d59186f' => __DIR__ . '/..' . '/nufat/nutemplete/src/phpqrcode/qrlib.php',
         '20d070f712baf850388fce32c0390388' => __DIR__ . '/../..' . '/helper/index.php',
     );
 
@@ -354,6 +355,7 @@ class ComposerStaticInita25e700195aadc21a31ed90225e0b6aa
 
     public static $classMap = array (
         'App\\Helper\\SideMenu' => __DIR__ . '/../..' . '/helper/class/SideMenu.php',
+        'App\\Helper\\SideMenuAkun' => __DIR__ . '/../..' . '/helper/class/SideMenuAkun.php',
         'App\\Helper\\SideMenuTab' => __DIR__ . '/../..' . '/helper/class/SideMenuTab.php',
         'App\\Helper\\Unsplash' => __DIR__ . '/../..' . '/helper/class/Unsplash.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

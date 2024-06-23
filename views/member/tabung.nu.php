@@ -6,12 +6,12 @@
                 <!-- Table -->
                 <div class="row">
                     <div class="col">
-                        <div class="card bg-default shadow">
+                        <div class="card  shadow">
                             <div class="card-header bg-transparent border-0">
-                                <h2 class="text-white mb-0">Data Tabungan Member UB Assy</h2>
+                                <h2 class="mb-0">Data Tabungan Member UB Assy</h2>
                             </div>
                             <div class="table-responsive">
-                                <table class="table align-items-center table-dark table-flush">
+                                <table class="table align-items-center table-flush">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th scope="col" style="width: 5%">No</th>
@@ -20,7 +20,7 @@
                                             <th scope="col" style="width: 2%"></th>
                                             <th scope="col" style="width: 15%">Saldo</th>
                                             <th scope="col" style="width: 5%">Action</th>
-                                            <th scope="col"></th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,18 +51,7 @@
                                                 </td>
                                                 <td><a class="btn btn-sm btn-primary" href="<?= getBaseUrl() ?>transaksi/member/<?= $value["id"] ?>/1">Lihat Transaksi</a></td>
 
-                                                <td class="text-right">
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                            <a class="dropdown-item" href="<?= getBaseUrl() ?>transaksi/member/<?= $value["id"] ?>/1">Transaksi</a>
-                                                            <a class="dropdown-item" href="<?= getBaseUrl() ?>profil/member/<?= $value["id"] ?>/1">Frofil</a>
 
-                                                        </div>
-                                                    </div>
-                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -75,12 +64,12 @@
                                                 <?= number_format($totalSaldo, 0, ',', '.') ?>,-
                                             </th>
                                             <th></th>
-                                            <th scope="col"></th>
+
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="card-footer py-4 bg-default">
+                            <div class="card-footer py-4 ">
 
                             </div>
                         </div>

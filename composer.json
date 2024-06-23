@@ -29,8 +29,8 @@
     },
     "autoload": {
         "files": [
-            "helper/index.php"
-            
+            "helper/index.php",
+            "vendor/nufat/src/phpqrcode/qrlib.php"
         ],
         "psr-4": {
             "App\\Model\\": "app/Model/",

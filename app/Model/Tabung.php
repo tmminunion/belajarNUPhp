@@ -14,4 +14,8 @@ class Tabung extends Model
     {
         return $this->belongsTo(member::class, 'member_id');
     }
+    public function inputBy()
+    {
+        return $this->belongsTo(Member::class, 'input_by');
+    }
 }

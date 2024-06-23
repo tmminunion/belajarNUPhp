@@ -13,7 +13,7 @@
                 <img src="<?= getBaseUrl(); ?>assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
             </a>
 
-            <div class="collapse navbar-collapse mt--4" id="sidenav-collapse-main">
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
 
                 <hr class="my-3">
                 <h6 class="navbar-heading text-muted">MENU</h6>
@@ -26,11 +26,15 @@
                 <hr class="my-3">
                 <h6 class="navbar-heading text-muted">Akun</h6>
                 <?= App\Helper\SideMenuAkun::render(); ?>
-                <div class="mb-5">
+                <div>
                     <hr>
                 </div>
             </div>
+            <div class="collapse navbar-collapse px-2 bg-default" id="slapse-main">
+                <a href="https://nufat.id" class="nav-link pb-3 text-muted">Prod. &copy; 2024 nufat.id</a>
+            </div>
         </div>
+
     </nav>
 
     <div class="main-content" style="background: #7474BF;background: -webkit-linear-gradient(to right, #348AC7, #7474BF);background: linear-gradient(to right, #348AC7, #7474BF);min-height:calc(100vh - 80px);">

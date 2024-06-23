@@ -35,10 +35,8 @@
                 </div>
             </div>
 
-            <?php foreach ($events as $event) :
-            ?>
-
-                <nu-card-cardcip data='{"id":"<?= $event['created_at'] ?>", "event_name":"<?= $event['eventid'] ?>"}' class='<?= $event['deskripsi'] ?>' icon="{{$icon}}" link_url="<?= $event['slug'] ?>">
+            <?php foreach ($events as $event) : ?>
+                <nu-card-cardcip data='{"id":"<?= $event['id'] ?>", "date":"<?= $event['created_at'] ?>"}' class='<?= $event['deskripsi'] ?>' event_name="<?= $event['eventid'] ?>" date="<?= $event['created_at'] ?>" link_url="<?= $event['slug'] ?>">
                     <?= $event['nama_acara'] ?>
                 </nu-card-cardcip>
             <?php endforeach; ?>
@@ -53,10 +51,10 @@
 
 </div>
 
-
+<!-- modal tambah baru/ -->
 <nu-modal-addevent></nu-modal-addevent>
 <?= Components('confirmModal', ['id' => 'confirmModal']); ?>
-
+<!-- end tambah baru -->
 @section('scriptsheader')
 <style>
     .bg-gradient-primary-to-secondary {
@@ -122,6 +120,40 @@
 
     .text2 {
         color: #a5aec0
+    }
+
+    .grow-wrap {
+        /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+        display: grid;
+    }
+
+    .grow-wrap::after {
+        /* Note the weird space! Needed to preventy jumpy behavior */
+        content: attr(data-replicated-value) " ";
+
+        /* This is how textarea text behaves */
+        white-space: pre-wrap;
+
+        /* Hidden from view, clicks, and screen readers */
+        visibility: hidden;
+    }
+
+    .grow-wrap>textarea {
+        /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+        resize: none;
+
+        /* Firefox shows scrollbar on growth, you can hide like this. */
+        overflow: hidden;
+    }
+
+    .grow-wrap>textarea,
+    .grow-wrap::after {
+        /* Identical styling required!! */
+        padding: 0.5rem;
+        font: inherit;
+
+        /* Place on top of each other */
+        grid-area: 1 / 1 / 2 / 2;
     }
 </style>
 @endsection

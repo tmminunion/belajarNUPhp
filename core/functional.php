@@ -42,10 +42,6 @@ function res($status, $data)
     echo json_encode(['data' => $data]);
 }
 
-
-
-
-
 function textToSlug($text = '')
 {
     $text = trim($text);

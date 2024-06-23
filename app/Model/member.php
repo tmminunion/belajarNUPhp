@@ -22,4 +22,13 @@ class member extends Model
     {
         return $this->tabungan()->sum('jumlah');
     }
+
+    public function Donasi()
+    {
+        return $this->hasMany(Cerit::class, 'member_id');
+    }
+    public function getdonasi($don_id)
+    {
+        return $this->Donasi()->where('don_id', $don_id)->sum('jumlah');
+    }
 }

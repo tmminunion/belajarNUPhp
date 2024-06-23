@@ -43,3 +43,36 @@ function vPost(array $keys)
         }
     }
 }
+
+function getCurrentUrl()
+{
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $currentUrl = $protocol . '://' . $host . $requestUri;
+
+    // Encode the URL
+    return urlencode($currentUrl);
+}
+function decodeUrl($encodedUrl)
+{
+    return urldecode($encodedUrl);
+}
+
+function dateid($dateStr)
+{
+    $formatter = new IntlDateFormatter(
+        'id_ID', // Locale
+        IntlDateFormatter::LONG, // Date format
+        IntlDateFormatter::NONE, // Time format
+        'Asia/Jakarta', // Timezone
+        IntlDateFormatter::GREGORIAN, // Calendar type
+        'MMMM yyyy' // Pattern
+    );
+
+    // Convert date string to DateTime object
+    $date = new DateTime($dateStr);
+
+    // Format the date to "Bulan Tahun" in Indonesian
+    return $formatter->format($date);
+}
