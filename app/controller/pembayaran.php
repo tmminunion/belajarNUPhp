@@ -7,6 +7,7 @@ use App\Model\Don;
 use App\Model\PaymentType;
 use App\Model\Tabung;
 use App\Model\transaction;
+use App\Models\KirimWa;
 
 class pembayaran extends Controller
 {
@@ -55,19 +56,21 @@ class pembayaran extends Controller
      public function post_kas()
      {
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               transaction::create($this->create);
+               $transaction = transaction::create($this->create);
                unset($_SESSION['token_csrf']);
-               // Redirect to a success page
-               to_url("transaksi");
+               $transaction_id = $transaction->id;
+               KirimWa::kirim_kas($transaction_id);
+               to_url("transaksi/detail/$transaction_id");
                exit;
           }
      }
      public function post_tabungan()
      {
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               Tabung::create($this->create);
+               $transaction = Tabung::create($this->create);
                unset($_SESSION['token_csrf']);
-               // Redirect to a success page
+               $transaction_id = $transaction->id;
+               KirimWa::kirim_tabungan($transaction_id);
                to_url("tabungan/transaksi");
                exit;
           }
@@ -78,9 +81,10 @@ class pembayaran extends Controller
           if ($don) {
                if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $this->create['don_id'] = $id;
-                    Cerit::create($this->create);
+                    $transaction = Cerit::create($this->create);
                     unset($_SESSION['token_csrf']);
-                    // Redirect to a success page
+                    $transaction_id = $transaction->id;
+                    KirimWa::kirim_donasi($transaction_id);
                     to_url("donasi/daftar/" . $id . "/" . $don->slug);
                     exit;
                }
