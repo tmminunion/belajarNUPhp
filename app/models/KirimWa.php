@@ -60,8 +60,8 @@ class KirimWa
         $data1 = [
             'PostID' => $data->judul,
             'Telp' => $data->member->telp,
-            'base64PDF' => getBaseUrl() . "invoice/pdfkredit/kas/" . $id . "/invoice.pdf",
-            'link' => getBaseUrl() . "invoice/kredit/kas/" . $id
+            'base64PDF' => getBaseUrl() . "invoice/pdfkredit/donasi/" . $id . "/invoice.pdf",
+            'link' => getBaseUrl() . "invoice/kredit/donasi/" . $id
         ];
 
         $headers = [
