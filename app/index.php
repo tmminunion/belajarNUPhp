@@ -76,3 +76,23 @@ function dateid($dateStr)
     // Format the date to "Bulan Tahun" in Indonesian
     return $formatter->format($date);
 }
+
+function isMobile() {
+    // List of mobile user agents
+    $mobileAgents = [
+        'Android', 'iPhone', 'iPad', 'iPod', 'Opera Mini', 'IEMobile', 'Mobile',
+        'BlackBerry', 'webOS', 'Windows Phone', 'Nokia', 'Palm', 'Kindle', 'Silk'
+    ];
+
+    // Check if the user agent matches any of the mobile agents
+    foreach ($mobileAgents as $agent) {
+        if (stripos($_SERVER['HTTP_USER_AGENT'], $agent) !== false) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// Usage example
+?>
