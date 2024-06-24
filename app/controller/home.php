@@ -32,7 +32,7 @@ class home extends Controller
     public function index()
     {
         last_form();
-        $events = Don::orderBy('created_at', 'desc')->take(14)->get();
+        $events = Don::where('status',1)->orderBy('created_at', 'desc')->take(14)->get();
         $text = $this->faker->realText($maxNbChars = 200, $indexSize = 2);
         $data = [
             'events' => $events,
@@ -55,4 +55,6 @@ class home extends Controller
             exit;
         }
     }
+   
+    
 }

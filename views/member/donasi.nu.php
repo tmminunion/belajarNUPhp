@@ -8,9 +8,23 @@
                     <div class="col">
                         <div class="card  shadow">
                             <div class="card-header bg-transparent border-0 d-flex justify-content-between">
-                                <h2 class="mb-0 " style="text-transform:uppercase">Donasi <?= $don->nama_acara ?></h2>
-                                <a href="<?= getBaseUrl(); ?>pembayaran/kredit/donasi/<?= $don->id ?>" class="btn btn-primary">Input Donasi</a>
-                            </div>
+    <div class="col-md-8 d-flex">
+        <h2 class="mb-0" style="text-transform:uppercase">Donasi <?= $don->nama_acara ?></h2>
+      
+    </div>
+    <div class="col-md-4 d-flex justify-content-end">
+        <a href="<?= getBaseUrl(); ?>pembayaran/kredit/donasi/<?= $don->id ?>" class="btn btn-primary ml-3 bg-success" id="tkredit" style="display: <?= ($don->status == 1) ? 'block' : 'none'; ?>;">Input Donasi</a>
+        <div class="dropdown">
+            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                <a class="dropdown-item" href="#">Lihat Detail</a>
+                <a class="dropdown-item" href="#">Lihat Invoice</a>
+            </div>
+        </div>
+    </div>
+</div>
 
                             <div class="table-responsive">
                                 <table class="table align-items-center table-yellow table-flush">
@@ -71,9 +85,19 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="card-footer py-4 ">
-
-                            </div>
+                           
+                             
+               <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
+    <div class="col-md-8 d-flex">
+      
+        <a href="<?= getBaseUrl(); ?>pembayaran/kredit/donasi/<?= $don->id ?>" class="btn btn-primary ml-3 bg-danger" id="tdebit" style="display: <?= ($don->status == 1) ? 'block' : 'none'; ?>;">DEBIT</a>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end">
+      <input type="checkbox" id="toggle-event" <?= ($don->status==1)?"checked":"" ?> data-toggle="toggle" data-on="Aktif" data-off="Sudah Selesai" data-onstyle="primary" data-offstyle="danger">
+<div id="console-event"></div>
+    </div>
+</div>              
+                      
                         </div>
                     </div>
                 </div>
@@ -81,3 +105,42 @@
         </div>
     </div>
 </div>
+
+@section('scriptsheader')
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+@endsection
+@section('scriptsfooter')
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script>
+  $(function() {
+    $('#toggle-event').change(function() {
+      var attrib = $(this).prop('checked');
+      var dataToSend = attrib ? 1 : 2;
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+      // Tampilkan atau sembunyikan elemen
+      if (attrib) {
+        $("#tdebit").show();
+        $("#tkredit").show();
+      } else {
+        $("#tdebit").hide();
+        $("#tkredit").hide();
+      }
+
+      // Kirim data menggunakan AJAX
+      $.ajax({
+        url: '<?= getBaseUrl()?>post/update', // Ganti dengan URL endpoint Anda yang tepat
+        method: 'POST',
+        data: { data: dataToSend, csrf: csrfToken, id :<?= $don->id ?> },
+        dataType: 'json',
+        success: function(response) {
+          console.log('Response:', response);
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  });
+</script>
+@endsection

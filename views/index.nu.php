@@ -156,10 +156,8 @@
         grid-area: 1 / 1 / 2 / 2;
     }
 </style>
+
 @endsection
-
-
-
 @section('scriptsfooter')
 
 <script>
