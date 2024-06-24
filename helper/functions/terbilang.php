@@ -13,11 +13,11 @@ function terbilang($number)
     } elseif ($number < 100) {
         $result = terbilang(floor($number / 10)) . ' puluh ' . terbilang($number % 10);
     } elseif ($number < 200) {
-        $result = ' seratus' . terbilang($number - 100);
+        $result = ' seratus ' . terbilang($number - 100);
     } elseif ($number < 1000) {
         $result = terbilang(floor($number / 100)) . ' ratus ' . terbilang($number % 100);
     } elseif ($number < 2000) {
-        $result = ' seribu' . terbilang($number - 1000);
+        $result = ' seribu ' . terbilang($number - 1000);
     } elseif ($number < 1000000) {
         $result = terbilang(floor($number / 1000)) . ' ribu ' . terbilang($number % 1000);
     } elseif ($number < 1000000000) {

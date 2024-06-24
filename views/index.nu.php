@@ -36,10 +36,11 @@
             </div>
 
             <?php foreach ($events as $event) : ?>
-                <nu-card-cardcip data='{"id":"<?= $event['id'] ?>", "date":"<?= $event['created_at'] ?>"}' class='<?= $event['deskripsi'] ?>' event_name="<?= $event['eventid'] ?>" date="<?= $event['created_at'] ?>" link_url="<?= $event['slug'] ?>">
-                    <?= $event['nama_acara'] ?>
+                <nu-card-cardcip data='{"id":"<?= $event->id ?>", "date":"<?= $event->created_at ?>"}' class='<?= $event->deskripsi ?>' jum="<?= $event->getdonasi($event->id) ?>" event_name="<?= $event->eventid ?>" date="<?= $event->created_at ?>" link_url="<?= $event->slug ?>">
+                    <?= $event->nama_acara ?>
                 </nu-card-cardcip>
             <?php endforeach; ?>
+
 
 
 
@@ -93,13 +94,13 @@
     }
 
     .badge span {
-        background-color: #fffbec;
+        background-color: green;
         width: 60px;
         height: 25px;
         padding-bottom: 3px;
         border-radius: 5px;
         display: flex;
-        color: #fed85d;
+        color: #fff;
         justify-content: center;
         align-items: center
     }

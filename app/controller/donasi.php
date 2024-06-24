@@ -29,6 +29,14 @@ class donasi extends Controller
      {
           $members = member::with('Donasi')->get();
           $don =  Don::find($id);
+          $own_id = $don->member_id;
+          $memberlogin = member_login();
+          $data["myown"] = false;
+          if ($memberlogin) {
+               if ($memberlogin->id == $own_id) {
+                    $data["myown"] = true;
+               }
+          }
           // Inisialisasi array untuk menyimpan saldo tiap member
           $memberSaldo = [];
           $totalSaldo = Cerit::where('don_id', $id)->sum('jumlah');
