@@ -25,7 +25,7 @@ class member extends Model
 
     public function Donasi()
     {
-        return $this->hasMany(Cerit::class, 'member_id');
+        return $this->hasMany(Cerit::class, 'member_id')->where('type', 'kredit');
     }
     public function getdonasi($don_id)
     {

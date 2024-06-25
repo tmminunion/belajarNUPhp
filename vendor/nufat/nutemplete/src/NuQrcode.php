@@ -6,7 +6,6 @@ class NuQrcode
 {
     public function qrcode($text = "https://bungtemin.net")
     {
-        include "phpqrcode/qrlib.php";
         $size = 12; // Ukuran gambar QR code
         $errorCorrectionLevel = "L"; // Level koreksi kesalahan (L, M, Q, H)
         $margin = 1; // Margin di sekeliling QR code

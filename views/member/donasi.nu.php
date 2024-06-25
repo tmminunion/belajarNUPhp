@@ -9,7 +9,7 @@
                         <div class="card  shadow">
                             <div class="card-header bg-transparent border-0 d-flex justify-content-between">
                                 <div class="col-md-8 d-flex">
-                                    <h2 class="mb-0" style="text-transform:uppercase">Donasi <?= $don->nama_acara ?></h2>
+                                    <h2 class="mb-0" style="text-transform:uppercase"><?= $don->nama_acara ?></h2>
 
                                 </div>
                                 <div class="col-md-4 d-flex justify-content-end">
@@ -21,7 +21,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Lihat Detail</a>
+                                            <a class="dropdown-item" href="<?= getBaseUrl(); ?>donasi/<?= $don->id . "/" . $don->slug ?>">Lihat Detail</a>
                                             <a class="dropdown-item" href="#">Lihat Invoice</a>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                 <?php if ($myown) { ?>
                                     <div class="col-md-8 d-flex">
 
-                                        <a href="<?= getBaseUrl(); ?>pembayaran/kredit/donasi/<?= $don->id ?>" class="btn btn-primary ml-3 bg-danger" id="tdebit" style="display: <?= ($don->status == 1) ? 'block' : 'none'; ?>;">DEBIT</a>
+                                        <a href="<?= getBaseUrl(); ?>pembayaran/debit/donasi/<?= $don->id ?>" class="btn btn-primary ml-3 bg-danger" id="tdebit" style="display: <?= ($don->status == 1) ? 'block' : 'none'; ?>;">DEBIT</a>
                                     </div>
                                     <div class="col-md-4 d-flex justify-content-end">
                                         <input type="checkbox" id="toggle-event" <?= ($don->status == 1) ? "checked" : "" ?> data-toggle="toggle" data-on="Aktif" data-off="Sudah Selesai" data-onstyle="primary" data-offstyle="danger">
