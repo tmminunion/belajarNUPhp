@@ -10,7 +10,8 @@ use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\Factory;
 use Illuminate\View\FileViewFinder;
 use App\Core\Csrf;
-
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 function views($viewName, $templateData)
 {
     // Note that you can set several directories where your templates are located

@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3b8b3c606b3f9b3b2b1d4203c35529a468269738',
+        'reference' => '7e5af2a9339951ad176d6588162d26964da83daf',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -95,6 +95,15 @@
             'aliases' => array(
                 0 => '9999999-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'graham-campbell/result-type' => array(
+            'pretty_version' => '1.1.x-dev',
+            'version' => '1.1.9999999.9999999-dev',
+            'reference' => 'fbd48bce38f73f8a4ec8583362e732e4095e5862',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../graham-campbell/result-type',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
@@ -297,6 +306,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'midtrans/midtrans-php' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '4929d87da0db94404e69ba43b967a98701572370',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../midtrans/midtrans-php',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'nesbot/carbon' => array(
             'pretty_version' => '2.x-dev',
             'version' => '2.9999999.9999999.9999999-dev',
@@ -320,7 +340,7 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3b8b3c606b3f9b3b2b1d4203c35529a468269738',
+            'reference' => '7e5af2a9339951ad176d6588162d26964da83daf',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -344,6 +364,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../overtrue/pinyin',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'phpoption/phpoption' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '416ca2ac2a84555b785a98002d613fe13d1d1c2f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoption/phpoption',
+            'aliases' => array(
+                0 => '1.9.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'psr/cache' => array(
@@ -472,7 +503,7 @@
         'sabberworm/php-css-parser' => array(
             'pretty_version' => 'v8.x-dev',
             'version' => '8.9999999.9999999.9999999-dev',
-            'reference' => 'b48925e53777c5a97c2273aaf88bb7ebacb46b67',
+            'reference' => '7d413c8f2c50ac9275b4a85e780b75494b2beca0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
@@ -540,6 +571,15 @@
             ),
             'dev_requirement' => false,
         ),
+        'symfony/polyfill-ctype' => array(
+            'pretty_version' => '1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'reference' => '0424dff1c58f028c451efff2045f5d92410bd540',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
@@ -594,6 +634,17 @@
             'provided' => array(
                 0 => '2.3|3.0',
             ),
+        ),
+        'vlucas/phpdotenv' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '334f4952967f3ee6cdb2004e05e0bd01b525d56b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../vlucas/phpdotenv',
+            'aliases' => array(
+                0 => '5.6.x-dev',
+            ),
+            'dev_requirement' => false,
         ),
         'voku/portable-ascii' => array(
             'pretty_version' => '2.0.1',
