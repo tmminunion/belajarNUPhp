@@ -21,6 +21,6 @@ class Don extends Model
     }
     public function getdonasi($don_id)
     {
-        return $this->Donasi()->where('don_id', $don_id)->sum('jumlah');
+        return $this->Donasi()->where('don_id', $don_id)->where('type','kredit')->sum('jumlah');
     }
 }

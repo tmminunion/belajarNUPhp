@@ -2,6 +2,7 @@
 
 use App\Model\Cerit;
 use App\Model\member;
+use App\Model\Imgclamp;
 use App\Core\Controller;
 use App\Model\Don;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -175,15 +176,17 @@ class donasi extends Controller
 
           $total_members = member::count();
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
-
+$event = Don::with('member')->find($id);
           // Load view and pass the data
-
+$images = Imgclamp::where('cer_id', $id)->get();
           ob_start();
           Views('pdf.donasi', [
                'transactions' => $transactions,
                'totals' => $totals,
                'saldo_per_anggota' => $saldo_per_anggota,
                'total_members' => $total_members,
+               'event' =>$event,
+               'images'=>$images
           ]);
           $html = ob_get_clean();
 

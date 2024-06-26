@@ -33,3 +33,4 @@ $capsule->addConnection([
 
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+//$capsule->table('imgclamps')->truncate();
