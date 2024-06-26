@@ -241,7 +241,7 @@
                     if ($count % 2 == 0) {
                         echo '<tr>';
                     }
-                    echo '<td style="width:50%;"><img src="data:' . $image->mime . ';base64,' . $image->base64 . '" class="img-fluid" height="700" /></td>';
+                    echo '<td style="width:50%;"><img src="data:' . $image->mime . ';base64,' . $image->base64 . '" class="img-fluid" height="800" /></td>';
                     if ($count % 2 == 1) {
                         echo '</tr>';
                     }

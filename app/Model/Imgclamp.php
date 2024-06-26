@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Imgclamp extends Model
 {
   public $timestamps = true;
-    protected $fillable = ['member_id', 'type', 'mime', 'base64' , 'cer_id'];
+  protected $fillable = ['member_id', 'type', 'mime', 'base64', 'don_id'];
 }

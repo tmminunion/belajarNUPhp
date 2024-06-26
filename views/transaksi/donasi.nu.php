@@ -104,12 +104,15 @@
                                 </div>
                                 <hr>
                                 <div class="row mt-2">
+                                    <?php if ($myown) { ?>
+                                        <div class="col-2">
+                                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#uploadModal">
+                                                Upload File
+                                            </button>
+                                        </div>
+                                    <?php } ?>
                                     <div class="col"></div>
-                                    <div class="col-2">
-                                     <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#uploadModal">
-            Upload File
-        </button>
-                                    </div>
+
                                     <div class="col-2">
                                         <a href="<?php echo getBaseUrl() . "donasi/excel/" . $id; ?>" class="btn btn-primary btn-block">Export Excel</a>
                                     </div>
@@ -130,76 +133,76 @@
     </div>
 </div>
 
-    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadModalLabel">Upload File</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="uploadForm">
-                        <div class="form-group">
-                            <label for="fileInput">Choose file</label>
-                            <input type="file" class="form-control-file" id="fileInput" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </form>
-                </div>
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload File</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="fileInput">Choose file</label>
+                        <input type="file" class="form-control-file" id="fileInput" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
             </div>
         </div>
     </div>
-    
-    
+</div>
+
+
 @section('scriptsfooter')
-    <script>
-        $(document).ready(function() {
-            $('#uploadForm').on('submit', function(e) {
-                e.preventDefault();
+<script>
+    $(document).ready(function() {
+        $('#uploadForm').on('submit', function(e) {
+            e.preventDefault();
 
-                var fileInput = $('#fileInput')[0].files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var base64String = e.target.result.split(',')[1];
-                    var mimeType = fileInput.type;
-                    
-                    $.ajax({
-                        url: '<?= getBaseUrl()  ?>upload/base',
-                        method: 'POST',
-                        data: {
-                            file: base64String,
-                            mime: mimeType
-                        },
-                        success: function(response) {
-                            alert('File uploaded successfully!');
-                            $('#uploadModal').modal('hide');
-                         //   loadImages(); // Refresh the images table
-                        },
-                        error: function() {
-                            alert('Error uploading file.');
-                        }
-                    });
-                };
-                reader.readAsDataURL(fileInput);
-            });
+            var fileInput = $('#fileInput')[0].files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var base64String = e.target.result.split(',')[1];
+                var mimeType = fileInput.type;
 
-            function loadImages() {
                 $.ajax({
-                    url: 'fetch_images.php',
-                    method: 'GET',
-                    success: function(data) {
-                        $('#imagesTable tbody').html(data);
+                    url: '<?= getBaseUrl() . "upload/base/" . $id ?>',
+                    method: 'POST',
+                    data: {
+                        file: base64String,
+                        mime: mimeType
+                    },
+                    success: function(response) {
+                        alert('File uploaded successfully!');
+                        $('#uploadModal').modal('hide');
+                        //   loadImages(); // Refresh the images table
                     },
                     error: function() {
-                        alert('Error fetching images.');
+                        alert('Error uploading file.');
                     }
                 });
-            }
-
-            // Load images on page load
-            //loadImages();
+            };
+            reader.readAsDataURL(fileInput);
         });
-    </script>
-    @endsection
+
+        function loadImages() {
+            $.ajax({
+                url: 'fetch_images.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#imagesTable tbody').html(data);
+                },
+                error: function() {
+                    alert('Error fetching images.');
+                }
+            });
+        }
+
+        // Load images on page load
+        //loadImages();
+    });
+</script>
+@endsection

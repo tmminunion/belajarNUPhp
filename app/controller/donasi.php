@@ -12,6 +12,7 @@ use Dompdf\Options;
 
 class donasi extends Controller
 {
+
      public function index($id)
      {
           $page = 1;
@@ -33,16 +34,27 @@ class donasi extends Controller
                ->skip($offset)
                ->take($perPage)
                ->get();
+          $don = Don::with('member')->find($id);
+          $own_id = $don->member_id;
+          $memberlogin = member_login();
+          $datamyown = false;
+          if ($memberlogin) {
+               if ($memberlogin->id == $own_id) {
+                    $datamyown = true;
+               }
+          }
           $total_members = member::count();
 
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
+
           return view('transaksi/donasi', [
                'transactions' => $transactions,
                'currentPage' => $page,
                'perPage' => $perPage,
                'totals' => $totals,
                'saldo_per_anggota' => $saldo_per_anggota,
-               'id' => $id
+               'id' => $id,
+               'myown' => $datamyown
 
           ]);
      }
@@ -176,17 +188,19 @@ class donasi extends Controller
 
           $total_members = member::count();
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
-$event = Don::with('member')->find($id);
+          $event = Don::with('member')->find($id);
           // Load view and pass the data
-$images = Imgclamp::where('cer_id', $id)->get();
+          $images = Imgclamp::where('don_id', $id)
+               ->where('type', 'donasi')
+               ->get();
           ob_start();
           Views('pdf.donasi', [
                'transactions' => $transactions,
                'totals' => $totals,
                'saldo_per_anggota' => $saldo_per_anggota,
                'total_members' => $total_members,
-               'event' =>$event,
-               'images'=>$images
+               'event' => $event,
+               'images' => $images
           ]);
           $html = ob_get_clean();
 
