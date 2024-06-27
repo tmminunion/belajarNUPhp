@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Midtran extends Model
 {
-    use HasFactory, SoftDeletes;
-
-    protected $table = 'transactions';
 
     protected $fillable = [
         'member_id',
@@ -22,6 +19,7 @@ class Midtran extends Model
         'keterangan',
         'payment_type',
         'input_by',
+        'snap_token'
     ];
 
     protected $dates = [

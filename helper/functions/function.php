@@ -56,6 +56,19 @@ function KasNumber($typeId, $jenis)
     return $kasNumber;
 }
 
+function midNumber($jenis)
+{
+    $faker = \Faker\Factory::create('id_ID');
+    $currentDate = Carbon::now();
+    $month = $currentDate->format('m');
+    $year = $currentDate->format('y');
+
+
+    $kasNumber = $jenis . '-' . $year . $faker->regexify('[A-Z]{3}[0-9]{5}') . $month;
+
+    return $kasNumber;
+}
+
 /**
  * Periksa apakah pengguna telah login.
  *

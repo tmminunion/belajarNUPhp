@@ -1,11 +1,6 @@
 <?php
 
-
-
-
 use App\Core\Controller;
-
-use Illuminate\Support\Facades\Log;
 use App\Model\Midtran;
 
 class webhook extends Controller
@@ -32,17 +27,20 @@ class webhook extends Controller
                 case 'capture':
                 case 'settlement':
                     $transaction->status = 1; // Sukses
+                    $transaction->save();
                     break;
                 case 'deny':
                 case 'expire':
                 case 'cancel':
                     $transaction->status = 0; // Gagal
+                    $transaction->save();
+
                     break;
                 default:
                     return res(400, ['message' => 'Unhandled transaction status']);
             }
 
-            $transaction->save();
+
 
             return res(200, ['message' => 'Transaction updated successfully']);
         }
