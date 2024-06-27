@@ -43,6 +43,7 @@ class pembayaran extends Controller
                to_url('home');
                exit;
           }
+          
           $data["title"] = tanggal_sekarang();
           $data["member"] = member::all();
           $data["paymentType"] = PaymentType::all();
