@@ -64,7 +64,7 @@ function midNumber($jenis)
     $year = $currentDate->format('y');
 
 
-    $kasNumber = $jenis . '-' . $year . $faker->regexify('[A-Z]{3}[0-9]{5}') . $month;
+    $kasNumber = $jenis . $year . $faker->regexify('[A-Z]{3}[0-9]{6}') . $month;
 
     return $kasNumber;
 }

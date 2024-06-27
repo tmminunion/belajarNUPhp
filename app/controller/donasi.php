@@ -185,7 +185,7 @@ class donasi extends Controller
                ->skip($offset)
                ->take($perPage)
                ->get();
-
+          $groupedTransactions = $transactions->groupBy('member_id');
           $total_members = member::count();
           $saldo_per_anggota = ($total_members > 0) ? round($totals->saldo_akhir / $total_members) : 0;
           $event = Don::with('member')->find($id);
@@ -200,7 +200,8 @@ class donasi extends Controller
                'saldo_per_anggota' => $saldo_per_anggota,
                'total_members' => $total_members,
                'event' => $event,
-               'images' => $images
+               'images' => $images,
+               'groupedTransactions' => $groupedTransactions
           ]);
           $html = ob_get_clean();
 

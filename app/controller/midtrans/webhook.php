@@ -9,9 +9,10 @@ class Webhook extends Controller
     {
         // Ambil payload dari Midtrans
         $payload = json_decode(file_get_contents('php://input'), true);
-
+        $transactionStatus = $payload['transaction_status'];
+        $orderId = $payload['order_id'];
         if (!is_null($payload)) {
-            $filename = 'midtrans_payload_' . date('Y-m-d_H-i-s') . '.txt';
+            $filename = $orderId . '.json';
             $file_path = __DIR__ . '/../../../datasem/' . $filename; // Ganti dengan path direktori yang sesuai
             file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
         }
@@ -20,10 +21,9 @@ class Webhook extends Controller
 
 
         // Proses payload sesuai dengan status transaksi
-        $transactionStatus = $payload['transaction_status'];
-        $orderId = $payload['order_id'];
 
-        $transaction = Midtran::where('order_id', $orderId)->first();
+
+        $transaction = Midtran::where('judul', $orderId)->first();
 
         if ($transaction) {
             switch ($transactionStatus) {
