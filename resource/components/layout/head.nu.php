@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="Deskripsi Singkat Situs : KAS UB" />
+<!-- Mendeklarasikan warna yang muncul pada address bar Chrome versi seluler -->
+<meta name="theme-color" content="#414f57" />
+<!-- Mendeklarasikan ikon untuk iOS -->
     <meta name="csrf-token" content="<?= App\core\Csrf::get(); ?>">
     <title>
         UNDERBODY ASSY - KAS KEUANGAN
     </title>
     <!-- Favicon -->
     <link href="<?= getBaseUrl(); ?>assets/img/brand/favicon.png" rel="icon" type="image/png">
+     <link href="<?= getBaseUrl(); ?>manifest.json" rel="manifest">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
