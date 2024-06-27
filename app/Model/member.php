@@ -31,4 +31,13 @@ class member extends Model
     {
         return $this->Donasi()->where('don_id', $don_id)->sum('jumlah');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'member_id', 'id');
+    }
+
+    public function getEmail()
+    {
+        return $this->user ? $this->user->email : null;
+    }
 }

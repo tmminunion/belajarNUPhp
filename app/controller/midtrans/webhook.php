@@ -3,24 +3,28 @@
 use App\Core\Controller;
 use App\Model\Midtran;
 
-class webhook extends Controller
+class Webhook extends Controller
 {
-    public function handleWebhook($request)
+    public function index()
     {
         // Ambil payload dari Midtrans
-        $payload = $request->all();
+        $payload = json_decode(file_get_contents('php://input'), true);
+        $filename = 'midtrans_payload_' . date('Y-m-d_H-i-s') . '.txt';
+        $file_path = __DIR__ . '/../../../datasem/' . $filename; // Ganti dengan path direktori yang sesuai
+        file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
+
 
         // Validasi signature key (opsional)
-        $signatureKey = $request->header('X-Callback-Signature-Key');
+        $signatureKey = $_SERVER['HTTP_X_CALLBACK_SIGNATURE_KEY'];
         if (!$this->isValidSignature($signatureKey, $payload)) {
-            return res(400, ['message' => 'Invalid signature']);
+            return $this->res(400, ['message' => 'Invalid signature']);
         }
 
         // Proses payload sesuai dengan status transaksi
         $transactionStatus = $payload['transaction_status'];
         $orderId = $payload['order_id'];
 
-        $transaction = Midtran::where('id', $orderId)->first();
+        $transaction = Midtran::where('order_id', $orderId)->first();
 
         if ($transaction) {
             switch ($transactionStatus) {
@@ -34,23 +38,36 @@ class webhook extends Controller
                 case 'cancel':
                     $transaction->status = 0; // Gagal
                     $transaction->save();
-
                     break;
                 default:
-                    return res(400, ['message' => 'Unhandled transaction status']);
+                    return $this->res(400, ['message' => 'Unhandled transaction status']);
             }
 
-
-
-            return res(200, ['message' => 'Transaction updated successfully']);
+            return $this->res(200, ['message' => 'Transaction updated successfully']);
         }
 
-        return res(404, ['message' => 'Transaction not found']);
+        return $this->res(404, ['message' => 'Transaction not found']);
     }
 
     private function isValidSignature($signatureKey, $payload)
     {
         // Implementasikan validasi signature key sesuai dengan dokumentasi Midtrans
-        return true;
+        $serverKey = $_ENV['MIDTRANS_SERVER_KEY'];
+        $orderId = $payload['order_id'];
+        $statusCode = $payload['status_code'];
+        $grossAmount = $payload['gross_amount'];
+        $inputSignature = $payload['signature_key'];
+
+        $mySignature = hash('sha512', $orderId . $statusCode . $grossAmount . $serverKey);
+
+        return $inputSignature === $mySignature;
+    }
+
+    private function res($status, $data)
+    {
+        http_response_code($status);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit();
     }
 }

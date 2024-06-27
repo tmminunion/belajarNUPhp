@@ -43,9 +43,6 @@ class pembayaran extends Controller
     }
     public function post_kas()
     {
-        // Set Your server key
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nama = $_POST['Nama'];
             $noreg = $_POST['Noreg'];
@@ -76,21 +73,21 @@ class pembayaran extends Controller
                 'email' => member_login()->email,
                 'phone' => member_login()->telp,
             );
-            // 
+
             $enable_payments = array('mandiri_clickpay', 'echannel', 'gopay', 'bca_klikbca', 'bca_klikpay', 'bri_epay', 'permata_va', 'bni_va', 'other_va', 'shopeepay');
+
+            // Add finish_redirect_url
+            $finish_redirect_url = getBaseUrl() . 'midtrans/webhook';
+
             $transaction = array(
                 'transaction_details' => $transaction_details,
                 'enabled_payments' => $enable_payments,
                 'item_details' => $item_details,
-                'customer_details' => $customer_details,
+                'customer_details' => $customer_details
             );
-
-
-
 
             try {
                 $snapToken = Snap::getSnapToken($transaction);
-
 
                 $create = [
                     'judul' => $judul,
@@ -111,11 +108,9 @@ class pembayaran extends Controller
             } catch (Exception $e) {
                 echo json_encode(['error' => $e->getMessage()]);
             }
-
-            //     
-
         }
     }
+
 
     public function coreapi()
     {

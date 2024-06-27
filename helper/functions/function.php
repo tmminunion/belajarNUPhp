@@ -98,8 +98,9 @@ function member_login()
         // Jika telah diatur, dapatkan ID anggota dari sesi
         $memberId = $_SESSION['login_member'];
 
+
         // Temukan anggota menggunakan ID anggota
-        $member = member::find($memberId);
+        $member = Member::with('user')->find($memberId);
 
         // Kembalikan objek anggota
         return $member;
