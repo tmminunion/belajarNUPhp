@@ -9,16 +9,15 @@ class Webhook extends Controller
     {
         // Ambil payload dari Midtrans
         $payload = json_decode(file_get_contents('php://input'), true);
-        $filename = 'midtrans_payload_' . date('Y-m-d_H-i-s') . '.txt';
-        $file_path = __DIR__ . '/../../../datasem/' . $filename; // Ganti dengan path direktori yang sesuai
-        file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
 
+        if (!is_null($payload)) {
+            $filename = 'midtrans_payload_' . date('Y-m-d_H-i-s') . '.txt';
+            $file_path = __DIR__ . '/../../../datasem/' . $filename; // Ganti dengan path direktori yang sesuai
+            file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
+        }
 
         // Validasi signature key (opsional)
-        $signatureKey = $_SERVER['HTTP_X_CALLBACK_SIGNATURE_KEY'];
-        if (!$this->isValidSignature($signatureKey, $payload)) {
-            return $this->res(400, ['message' => 'Invalid signature']);
-        }
+
 
         // Proses payload sesuai dengan status transaksi
         $transactionStatus = $payload['transaction_status'];
