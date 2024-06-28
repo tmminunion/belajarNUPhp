@@ -1,6 +1,6 @@
 @extends("layout.layout")
 
-<?php $slot = 'kas'; ?>
+<?php $slot = $jenis; ?>
 
 <div class="header  pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 600px;  background: linear-gradient(150deg, #39ef74, #4600f1 100%); background-size: cover; background-position: center top;">
 
@@ -28,7 +28,7 @@
                         <div class="pl-lg-4">
                             <div id="result-json"></div>
                         </div>
-                        <form action="<?= getBaseUrl() . "midtrans/pembayaran/post_" . $slot . ($donid != null ? '/' . $donid : ''); ?>" method="post" id="formbayar">
+                        <form action="<?= getBaseUrl() . "midtrans/pembayaran/post" . ($donid != null ? '/' . $donid : ''); ?>" method="post" id="formbayar">
 
                             <div class="pl-lg-4">
                                 <div class="row">
@@ -59,20 +59,11 @@
                                         </div>
                                     </div>
                                     <?php if ($slot == 'kas') : ?>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-country">Type Transaksi</label>
-                                                <select class="form-control form-control-alternative" name="jenis">
-                                                    <?php foreach ($paymentType as $jenis) : ?>
-                                                        <option value="<?= $jenis['id'] ?>"><?= $jenis['name'] ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" name="jenis" readonly value="KAS">
                                     <?php elseif ($slot == 'donasi') : ?>
-                                        <input type="hidden" name="jenis" readonly value="2">
+                                        <input type="hidden" name="jenis" readonly value="DON">
                                     <?php else : ?>
-                                        <input type="hidden" name="jenis" readonly value="<?= Carbon\Carbon::now()->format('Y') ?>">
+                                        <input type="hidden" name="jenis" readonly value="TAB">
                                     <?php endif; ?>
                                 </div>
 
@@ -104,11 +95,9 @@
                                 </div>
                             </div>
                             <div class="row" id="submitbayar" style="display: block;">
-                                <div class="col-6 text-right px-3">
-                                    <a href="<?= getBaseUrl() . "pembayaran"; ?>" class="btn btn-secondary btn-lg btn-block mt-4" role="button" aria-pressed="true"><i class="fas fa-ban"></i> Clear</a>
-                                </div>
-                                <div class="col-6 text-left">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-4" role="button" aria-pressed="true"><i class="fas fa-paper-plane"></i> Submit Pembayaran</button>
+                                <div class="col-md-6 offset-md-3">
+                                    <a href="<?= getBaseUrl() . "midtrans/pembayaran" . $slot; ?>" class="btn btn-secondary btn-lg mr-3 mt-4" role="button" aria-pressed="true"><i class="fas fa-ban"></i> Clear</a>
+                                    <button type="submit" class="btn btn-primary btn-lg mt-4" role="button" aria-pressed="true"><i class="fas fa-paper-plane"></i> Submit Pembayaran</button>
                                 </div>
                             </div>
                         </form>

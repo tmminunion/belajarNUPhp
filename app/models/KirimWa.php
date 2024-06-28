@@ -9,6 +9,9 @@ use App\Model\transaction;
 
 class KirimWa
 {
+    private static $endpoint = 'https://bungtemin.net/invoice/PostData'; // Ganti dengan URL endpoint Node.js Anda
+    private static $apiKey = 'Nurani110'; // Sesuaikan dengan format autentikasi yang digunakan oleh API
+
     public static function kirim_kas($id)
     {
         $client = new Client();
@@ -20,13 +23,9 @@ class KirimWa
             'link' => getBaseUrl() . "invoice/kredit/kas/" . $id
         ];
 
-        $headers = [
-            'apikey' => 'Nurani110' // Sesuaikan dengan format autentikasi yang digunakan oleh API
-        ];
+        $headers = ['apikey' => self::$apiKey];
 
-        $url1 = 'https://bungtemin.net/invoice/PostData'; // Ganti dengan URL endpoint Node.js Anda
-
-        $response = $client->request('POST', $url1, [
+        $response = $client->request('POST', self::$endpoint, [
             'headers' => $headers,
             'json' => $data1
         ]);
@@ -42,13 +41,9 @@ class KirimWa
             'link' => getBaseUrl() . "invoice/kredit/tabungan/" . $id
         ];
 
-        $headers = [
-            'apikey' => 'Nurani110' // Sesuaikan dengan format autentikasi yang digunakan oleh API
-        ];
+        $headers = ['apikey' => self::$apiKey];
 
-        $url1 = 'https://bungtemin.net/invoice/PostData'; // Ganti dengan URL endpoint Node.js Anda
-
-        $response = $client->request('POST', $url1, [
+        $response = $client->request('POST', self::$endpoint, [
             'headers' => $headers,
             'json' => $data1
         ]);
@@ -64,13 +59,9 @@ class KirimWa
             'link' => getBaseUrl() . "invoice/kredit/donasi/" . $id
         ];
 
-        $headers = [
-            'apikey' => 'Nurani110' // Sesuaikan dengan format autentikasi yang digunakan oleh API
-        ];
+        $headers = ['apikey' => self::$apiKey];
 
-        $url1 = 'https://bungtemin.net/invoice/PostData'; // Ganti dengan URL endpoint Node.js Anda
-
-        $response = $client->request('POST', $url1, [
+        $response = $client->request('POST', self::$endpoint, [
             'headers' => $headers,
             'json' => $data1
         ]);
