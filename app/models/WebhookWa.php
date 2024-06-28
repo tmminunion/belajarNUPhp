@@ -4,11 +4,11 @@ namespace App\Models;
 
 
 use GuzzleHttp\Client;
-use App\Model\Midtran as transaction;
+
 
 class WebhookWa
 {
-    private static $endpoint = 'https://bungtemin.net/invoice/PostData'; // Ganti dengan URL endpoint Node.js Anda
+    private static $endpoint = 'https://bungtemin.net/invoice/PostNotif'; // Ganti dengan URL endpoint Node.js Anda
     private static $apiKey = 'Nurani110'; // Sesuaikan dengan format autentikasi yang digunakan oleh API
 
     public static function kirim_notifadmin($data)
