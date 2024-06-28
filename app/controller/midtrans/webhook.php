@@ -2,6 +2,7 @@
 
 use App\Core\Controller;
 use App\Model\Midtran;
+use App\Models\WebhookWa;
 
 class Webhook extends Controller
 {
@@ -17,7 +18,7 @@ class Webhook extends Controller
             file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
         }
 
-        $transaction = Midtran::where('judul', $orderId)->first();
+        $transaction = Midtran::with('member')->where('judul', $orderId)->first();
 
         if ($transaction) {
             switch ($transactionStatus) {
@@ -25,6 +26,16 @@ class Webhook extends Controller
                 case 'settlement':
                     $transaction->status = 1; // Sukses
                     $transaction->save();
+                    WebhookWa::kirim_notifadmin([
+                        'member_id' => $transaction->member_id,
+                        'judul' => $transaction->judul,
+                        'type' => $transaction->type,
+                        'jumlah' => $transaction->jumlah,
+                        'payment_type' => $transaction->payment_type,
+                        'status' => $transaction->status,
+                        'keterangan' => $transaction->keterangan,
+                        'nama' => $transaction->member->nama,
+                    ]);
                     break;
                 case 'deny':
                 case 'expire':
@@ -41,7 +52,4 @@ class Webhook extends Controller
 
         return $this->res(404, ['message' => 'Transaction not found']);
     }
-
-
-  
 }
