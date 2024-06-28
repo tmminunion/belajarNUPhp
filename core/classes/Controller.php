@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Core;
-
 use App\Core\Auth;
 
 
@@ -86,5 +85,12 @@ class Controller
     {
         require_once 'app/controller/' . $m . '.php';
         return new $m;
+    }
+      public function res($status, $data)
+    {
+        http_response_code($status);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit();
     }
 }

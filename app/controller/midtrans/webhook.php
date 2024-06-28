@@ -17,12 +17,6 @@ class Webhook extends Controller
             file_put_contents($file_path, json_encode($payload, JSON_PRETTY_PRINT));
         }
 
-        // Validasi signature key (opsional)
-
-
-        // Proses payload sesuai dengan status transaksi
-
-
         $transaction = Midtran::where('judul', $orderId)->first();
 
         if ($transaction) {
@@ -48,25 +42,6 @@ class Webhook extends Controller
         return $this->res(404, ['message' => 'Transaction not found']);
     }
 
-    private function isValidSignature($signatureKey, $payload)
-    {
-        // Implementasikan validasi signature key sesuai dengan dokumentasi Midtrans
-        $serverKey = $_ENV['MIDTRANS_SERVER_KEY'];
-        $orderId = $payload['order_id'];
-        $statusCode = $payload['status_code'];
-        $grossAmount = $payload['gross_amount'];
-        $inputSignature = $payload['signature_key'];
 
-        $mySignature = hash('sha512', $orderId . $statusCode . $grossAmount . $serverKey);
-
-        return $inputSignature === $mySignature;
-    }
-
-    private function res($status, $data)
-    {
-        http_response_code($status);
-        header('Content-Type: application/json');
-        echo json_encode($data);
-        exit();
-    }
+  
 }
