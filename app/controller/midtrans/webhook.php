@@ -26,7 +26,7 @@ class Webhook extends Controller
                 case 'settlement':
                     $transaction->status = 1; // Sukses
                     $transaction->save();
-                    $data = "Bang Ada Transfer masuk dari : " . $transaction->member->nama . " dengan nomer " . $transaction->judul;
+                    $data = "Bang Ada Transfer masuk dari \nNama : " . $transaction->member->nama . " \nnomer " . $transaction->judul . "\njumlah : Rp " . $transaction->jumlah;
                     WebhookWa::kirim_notifadmin($data);
                     break;
                 case 'deny':
