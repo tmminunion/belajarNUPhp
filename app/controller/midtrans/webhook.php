@@ -2,6 +2,7 @@
 
 use App\Core\Controller;
 use App\Model\Midtran;
+use App\Models\ModelPembayaran;
 use App\Models\WebhookWa;
 
 class Webhook extends Controller
@@ -26,6 +27,7 @@ class Webhook extends Controller
                 case 'settlement':
                     $transaction->status = 1; // Sukses
                     $transaction->save();
+                    ModelPembayaran::index($orderId);
                     $data = "Bang Ada Transfer masuk dari \nNama : " . $transaction->member->nama . " \nnomer " . $transaction->judul . "\njumlah : Rp " . $transaction->jumlah;
                     WebhookWa::kirim_notifadmin($data);
                     break;
