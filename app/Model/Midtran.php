@@ -30,6 +30,6 @@ class Midtran extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class, 'member_id');
+        return $this->belongsTo(member::class, 'member_id');
     }
 }

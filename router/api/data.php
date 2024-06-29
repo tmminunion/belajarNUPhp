@@ -1,14 +1,16 @@
 <?php
 
-class data
-{
-    public function index()
-    {
-        echo "data public";
-    }
+use App\Core\Controller;
+use App\Model\Cerit;
 
-    public function dodol()
+class data extends Controller
+{
+    public function index($id)
     {
-        echo "data public";
+        $data = Cerit::with(['member'])
+            ->where('don_id', $id)
+            ->where('type', 'kredit')
+            ->get();
+        res(200, $data);
     }
 }

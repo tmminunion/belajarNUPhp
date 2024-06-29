@@ -26,16 +26,8 @@ class Webhook extends Controller
                 case 'settlement':
                     $transaction->status = 1; // Sukses
                     $transaction->save();
-                    WebhookWa::kirim_notifadmin([
-                        'member_id' => $transaction->member_id,
-                        'judul' => $transaction->judul,
-                        'type' => $transaction->type,
-                        'jumlah' => $transaction->jumlah,
-                        'payment_type' => $transaction->payment_type,
-                        'status' => $transaction->status,
-                        'keterangan' => $transaction->keterangan,
-                        'nama' => $transaction->member->nama,
-                    ]);
+                    $data = "Bang Ada Transfer masuk dari : " . $transaction->member->nama . " dengan nomer " . $transaction->judul;
+                    WebhookWa::kirim_notifadmin($data);
                     break;
                 case 'deny':
                 case 'expire':
