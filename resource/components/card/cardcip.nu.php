@@ -25,6 +25,9 @@
                 </div>
             </div>
         </a> <!-- Close the link tag -->
+        <div class="d-flex justify-content-center align-items-end" style="height:50px;">
+            <a href="<?= getBaseUrl() ?>midtrans/pembayaran/donasi/{{id}}" class="btn btn-primary btn-sm mt-3" style="width:100%;">E-Payment</a>
+        </div>
     </div>
 
 </div>

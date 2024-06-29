@@ -19,6 +19,7 @@ class Midtran extends Model
         'keterangan',
         'payment_type',
         'input_by',
+        'don_id',
         'snap_token'
     ];
 

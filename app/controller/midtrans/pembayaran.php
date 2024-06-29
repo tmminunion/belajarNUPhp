@@ -31,7 +31,7 @@ class pembayaran extends Controller
         $data["donid"] = $donid;
         View("pembayaran/midtrans", $data);
     }
-    public function post()
+    public function post($don = null)
     {
 
 
@@ -93,7 +93,8 @@ class pembayaran extends Controller
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                     'input_by' => $_SESSION['login_member'],
-                    'snap_token' => $snapToken
+                    'snap_token' => $snapToken,
+                    'don_id' => $don,
                 ];
                 $transaction = Datmid::create($create);
                 echo json_encode(['snapToken' => $snapToken]);

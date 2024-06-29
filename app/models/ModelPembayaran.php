@@ -5,13 +5,17 @@ namespace App\Models;
 use App\Model\Tabung;
 use App\Model\Cerit;
 use App\Model\Midtran;
-use App\Model\Transaction;
+use App\Model\transaction as Transaction;
 
 class ModelPembayaran
 {
      public static function index($data)
      {
           $ambilmid = Midtran::where('judul', $data)->first();
+          if (!$ambilmid) {
+               return 'Midtrans data not found';
+          }
+
           $prefix = substr($data, 0, 3);
           $datain = [
                'judul' => $ambilmid->judul,
@@ -22,44 +26,57 @@ class ModelPembayaran
                'status' => 0,
                'keterangan' => $ambilmid->keterangan,
                'date' => $ambilmid->date,
-               'created_at' => date('Y-m-d H:i:s'),
-               'updated_at' => date('Y-m-d H:i:s'),
+               'created_at' => now(),
+               'updated_at' => now(),
                'input_by' => $ambilmid->input_by,
+               'don_id' => $ambilmid->don_id,
           ];
 
           switch ($prefix) {
                case 'KAS':
-                    return self::createOrUpdateTransaction($datain);
+                    return self::createOrUpdateTransaction($datain, $ambilmid);
                case 'TAB':
-                    return self::createOrUpdateTabung($datain);
+                    return self::createOrUpdateTabung($datain, $ambilmid);
                case 'DON':
-                    return self::createOrUpdateCerit($datain);
+                    return self::createOrUpdateCerit($datain, $ambilmid);
                default:
                     return 'UNKNOWN';
           }
      }
 
-     private static function createOrUpdateTransaction($data)
+     private static function createOrUpdateTransaction($data, $midtran)
      {
-          return Transaction::updateOrCreate(
+          $transaction = Transaction::updateOrCreate(
                ['judul' => $data['judul']],
                $data
           );
+          if ($transaction) {
+               $midtran->delete();
+          }
+          return $transaction;
      }
 
-     private static function createOrUpdateTabung($data)
+     private static function createOrUpdateTabung($data, $midtran)
      {
-          return Tabung::updateOrCreate(
+          $tabung = Tabung::updateOrCreate(
                ['judul' => $data['judul']],
                $data
           );
+          if ($tabung) {
+               $midtran->delete();
+          }
+          return $tabung;
      }
 
-     private static function createOrUpdateCerit($data)
+     private static function createOrUpdateCerit($data, $midtran)
      {
-          return Cerit::updateOrCreate(
+          $cerit = Cerit::updateOrCreate(
                ['judul' => $data['judul']],
                $data
           );
+          if ($cerit) {
+               $midtran->delete();
+          }
+          return $cerit;
      }
 }
