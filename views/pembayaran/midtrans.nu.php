@@ -191,14 +191,14 @@
                         language: 'id',
                         onSuccess: function(result) {
 
-                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
+                            window.location.href = '<?= get_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
                         },
                         onPending: function(result) {
-                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
+                            window.location.href = '<?= get_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
                         },
                         onError: function(result) {
 
-                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=failed';
+                            window.location.href = '<?= get_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=failed';
                         },
                         onClose: function() {
                             console.log('Customer closed the popup without finishing the payment');

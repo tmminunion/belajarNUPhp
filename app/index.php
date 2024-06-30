@@ -12,6 +12,13 @@ function to_url($url)
     header("Location: " . getBaseUrl() . $url);
     exit;
 }
+
+function get_url($url)
+{
+    // hapus token csrf saja
+
+    return getBaseUrl() . $url;
+}
 function Component($component, $variables = [])
 {
     $templateEngine = new \Nufat\Nutemplete\Template();
@@ -77,7 +84,8 @@ function dateid($dateStr)
     return $formatter->format($date);
 }
 
-function isMobile() {
+function isMobile()
+{
     // List of mobile user agents
     $mobileAgents = [
         'Android', 'iPhone', 'iPad', 'iPod', 'Opera Mini', 'IEMobile', 'Mobile',
@@ -95,4 +103,3 @@ function isMobile() {
 }
 
 // Usage example
-?>

@@ -30,6 +30,7 @@ class pembayaran extends Controller
         $hanna["judultype"] = 'Pembayaran';
         $hanna["donid"] = $hannaku;
         View("pembayaran/midtrans", $hanna);
+        //View('404');
     }
     public function post($don = null)
     {
