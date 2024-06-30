@@ -37,7 +37,7 @@ class tabungan extends Controller
                ->take($perPage)
                ->get();
 
-          return View('transaksi/index', [
+          return View('transaksi/tabung', [
                'transactions' => $transactions,
                'currentPage' => $page,
                'perPage' => $perPage,

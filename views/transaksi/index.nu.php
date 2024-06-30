@@ -36,7 +36,7 @@
                                                         <?= $nomor + 1 ?>
                                                     </td>
                                                     <td>
-                                                        <?= $value["judul"] ?>
+                                                        <a href="<?= getBaseUrl() . "pembayaran/resume/kas/" . $value["judul"]; ?>"> <?= $value["judul"] ?></a>
                                                     </td>
                                                     <td>
                                                         <?= strnama($value->member->nama); ?>
@@ -71,9 +71,9 @@
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                <a class="dropdown-item" href="#">Lihat Detail</a>
+                                                                <a class="dropdown-item" href="<?= getBaseUrl() . "pembayaran/resume/kas/" . $value["judul"]; ?>">Lihat Detail</a>
                                                                 <a class="dropdown-item" href="#">Lihat Invoice</a>
-                                                                
+
                                                             </div>
                                                         </div>
                                                     </td>
@@ -86,10 +86,10 @@
                                 <div class="card-footer py-4">
                                     <div class="d-flex justify-content-between">
                                         <?php if ($currentPage > 1) : ?>
-                                            <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage - 1; ?>" class="btn btn-primary">Previous</a>
+                                            <a href="<?= getBaseUrl() . "transaksi/data/" . $currentPage - 1; ?>" class="btn btn-primary">Previous</a>
                                         <?php endif; ?>
                                         <?php if (count($transactions) == $perPage) : ?>
-                                            <a href="<?php echo getBaseUrl() . "transaksi/data/" . $currentPage + 1; ?>" class="btn btn-primary">Next</a>
+                                            <a href="<?= getBaseUrl() . "transaksi/data/" . $currentPage + 1; ?>" class="btn btn-primary">Next</a>
                                         <?php endif; ?>
                                     </div>
                                 </div>

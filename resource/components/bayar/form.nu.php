@@ -1,4 +1,3 @@
-
 <div class="col-xl-8 order-xl-1 mt-3">
     <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
@@ -45,9 +44,12 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-jumlah">Jumlah Rupiah</label>
-                                <input id="input-jumlah" class="form-control form-control-alternative" type="text" placeholder="Rp. 0" name="jumlah" required>
+                                <input id="input-jumlah" class="form-control form-control-alternative" type="text" value="Rp. 50.000" name="jumlah" required>
+                                <p id="output-terbilang" class="terbilang-box"></p>
                             </div>
+
                         </div>
+
                         <?php if ($slot == 'kas') : ?>
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -67,6 +69,7 @@
                     </div>
 
                 </div>
+
                 <div class="pl-lg-4">
                     <div class="form-group">
                         <label>Keterangan</label>
@@ -131,6 +134,12 @@
 
         /* Place on top of each other */
         grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .terbilang-box {
+        padding: 10px;
+        font-style: italic;
+        color: gray;
     }
 </style>
 @endsection

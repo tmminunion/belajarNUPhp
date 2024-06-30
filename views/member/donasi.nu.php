@@ -111,10 +111,13 @@
 </div>
 
 @section('scriptsheader')
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="<?= getBaseUrl(); ?>assets/css/main/btogel.css">
+
 @endsection
 @section('scriptsfooter')
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="<?= getBaseUrl(); ?>assets/js/main/btogel.js"></script>
+
 <script>
     $(function() {
         $('#toggle-event').change(function() {

@@ -10,7 +10,15 @@ class pdfkredit extends invoiceModel
     public function donasi($id)
     {
         // Fetch data from the database
-        $data["mod"] = Cerit::with(['member', 'inputBy', 'donasi'])->find($id);
+        $datana = Cerit::with(['member', 'inputBy', 'donasi'])->find($id);
+        if (!$datana) {
+            $datana = Cerit::with(['member', 'inputBy', 'donasi'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
 
         // Generate QR code as base64
@@ -20,7 +28,15 @@ class pdfkredit extends invoiceModel
     }
     public function tabungan($id)
     {
-        $data["mod"] = Tabung::with(['member', 'inputBy'])->find($id);
+        $datana = Tabung::with(['member', 'inputBy'])->find($id);
+        if (!$datana) {
+            $datana = Tabung::with(['member', 'inputBy'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
         $data["urlcurrent"] = getCurrentUrl();
         $data["title"] = 'Setoran Tabungan Underbody';
@@ -29,7 +45,15 @@ class pdfkredit extends invoiceModel
     }
     public function kas($id)
     {
-        $data["mod"] = transaction::with(['member', 'inputBy'])->find($id);
+        $datana = transaction::with(['member', 'inputBy'])->find($id);
+        if (!$datana) {
+            $datana = transaction::with(['member', 'inputBy'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
         $data["urlcurrent"] = getCurrentUrl();
         $data["title"] = 'Setoran Kas Bulanan Underbody';

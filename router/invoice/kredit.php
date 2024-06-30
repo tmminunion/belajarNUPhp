@@ -8,26 +8,53 @@ class kredit
 {
     public function donasi($id)
     {
-        $data["mod"] = Cerit::with(['member', 'inputBy', 'donasi'])->find($id);
+        $datana = Cerit::with(['member', 'inputBy', 'donasi'])->find($id);
+        if (!$datana) {
+            $datana = Cerit::with(['member', 'inputBy', 'donasi'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
         $data["urlcurrent"] = getCurrentUrl();
         $data["title"] = 'Setoran Donasi Underbody';
-        View('invoice/simple', $data);
+        $data['model'] = 'don';
+        View('invoice/tabung', $data);
     }
     public function tabungan($id)
     {
-        $data["mod"] = Tabung::with(['member', 'inputBy'])->find($id);
+        $datana = Tabung::with(['member', 'inputBy'])->find($id);
+        if (!$datana) {
+            $datana = Tabung::with(['member', 'inputBy'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
         $data["urlcurrent"] = getCurrentUrl();
         $data["title"] = 'Setoran Tabungan Underbody';
+        $data['model'] = 'tab';
         View('invoice/tabung', $data);
     }
     public function kas($id)
     {
-        $data["mod"] = transaction::with(['member', 'inputBy'])->find($id);
+        $datana = transaction::with(['member', 'inputBy'])->find($id);
+        if (!$datana) {
+            $datana = transaction::with(['member', 'inputBy'])->where('judul', $id)->first();
+        }
+        if (!$datana) {
+            View('404');
+            exit();
+        }
+        $data["mod"] = $datana;
         $data["title"] = "Kredit";
         $data["urlcurrent"] = getCurrentUrl();
         $data["title"] = 'Setoran Kas Bulanan Underbody';
+        $data['model'] = 'tab';
         View('invoice/tabung', $data);
     }
 }

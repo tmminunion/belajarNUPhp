@@ -56,6 +56,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-jumlah">Jumlah Rupiah</label>
                                             <input id="input-jumlah" class="form-control form-control-alternative" type="text" value="Rp. 50.000" name="jumlah" required>
+                                            <p id="output-terbilang" class="terbilang-box"></p>
                                         </div>
                                     </div>
                                     <?php if ($slot == 'kas') : ?>
@@ -87,10 +88,12 @@
                             <div class="pl-lg-4">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-payment-method">Metode Pembayaran</label>
-                                    <select class="form-control form-control-alternative" id="input-payment-method" name="payment_method">
-                                        <option value="gopay">GoPay</option>
-                                        <option value="bank_transfer">Transfer Bank</option>
-                                        <option value="debit_card">Kartu Debit</option>
+                                    <select class="form-control form-control-alternative" id="paymentMethod" name="payment_method">
+                                        <option value="deep">GoPay Aplikasi</option>
+                                        <option value="snap">Transfer Bank</option>
+                                        <option value="snap">Gopay Qrcode</option>
+                                        <option value="snap">Shopeepay Qrcode</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -158,7 +161,8 @@
             $('#confirmModal2').modal('hide');
         });
     });
-
+</script>
+<script>
     function submit() {
         $("#submitbayar").hide();
         Swal.fire({
@@ -171,6 +175,7 @@
         });
         var form = document.getElementById('formbayar');
         var formData = new FormData(form);
+        var paymentMethod = document.getElementById('paymentMethod').value;
 
         fetch(form.action, {
                 method: 'POST',
@@ -178,8 +183,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.snapToken) {
-                    Swal.close();
+                Swal.close();
+                if (paymentMethod === 'deep' && data.deeplinkUrl) {
+                    window.location.href = data.deeplinkUrl;
+                } else if (paymentMethod === 'snap' && data.snapToken) {
                     snap.pay(data.snapToken, {
                         language: 'id',
                         onSuccess: function(result) {
@@ -187,57 +194,54 @@
                             console.log('data id = ', result.order_id);
                             console.log('data transaction_status = ', result.transaction_status);
                             console.log('data gross_amount = ', result.gross_amount);
+                            // Redirect to index page after success
+                            window.location.href = 'index.php';
                         },
                         onPending: function(result) {
-
-                            //  document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
                         },
                         onError: function(result) {
-
-                            //  document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                        },
+                        onClose: function() {
+                            console.log('Customer closed the popup without finishing the payment');
                         }
                     });
                 } else {
-                    console.error('Failed to get Snap token:', data);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Payment Error',
+                        text: data.message || 'Invalid payment method or missing token/URL.'
+                    });
+                    console.error('Failed to process payment:', data);
                 }
             })
             .catch(error => {
+                Swal.close();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'An error occurred',
+                    text: error.message || 'Please try again later.'
+                });
                 console.error('Error:', error);
             });
-    };
+    }
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var inputRupiah = document.getElementById('input-jumlah');
-        inputRupiah.addEventListener('keyup', function(e) {
-            this.value = formatRupiah(this.value, 'Rp. ');
-        });
-
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-                split = number_string.split(','),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            if (ribuan) {
-                var separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? prefix + rupiah : '');
-        }
-    });
-</script>
+<script src="<?= getBaseUrl(); ?>assets/js/main/terbilang.js"></script>
 
 @endsection
 
 
 @section('scriptsheader')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="<?= getBaseUrl(); ?>assets/css/main/sweat.min.css">
+<script src="<?= getBaseUrl(); ?>assets/js/main/sweat.js"></script>
 <style>
+    .terbilang-box {
+        padding: 10px;
+        font-style: italic;
+        color: gray;
+    }
+
     .grow-wrap {
         /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
         display: grid;

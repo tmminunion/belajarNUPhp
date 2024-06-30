@@ -46,7 +46,7 @@
                                                     <?= $nomor + 1 ?>
                                                 </td>
                                                 <td>
-                                                    <?= $value["judul"] ?>
+                                                    <a href="<?= getBaseUrl() . "pembayaran/resume/donasi/" . $value["judul"]; ?>"> <?= $value["judul"] ?></a>
                                                 </td>
                                                 <td>
                                                     <?= strnama($value->member->nama); ?>
@@ -81,7 +81,7 @@
                                                             <i class="fas fa-ellipsis-v"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                            <a class="dropdown-item" href="#">Lihat Detail</a>
+                                                            <a class="dropdown-item" href="<?= getBaseUrl() . "pembayaran/resume/donasi/" . $value["judul"]; ?>">Lihat Detail</a>
                                                             <a class="dropdown-item" href="#">Lihat Invoice</a>
 
                                                         </div>

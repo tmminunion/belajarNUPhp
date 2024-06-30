@@ -1,13 +1,15 @@
 <?php
 
-use App\Model\member;
-use App\Core\Controller;
-use App\Model\Cerit;
 use App\Model\Don;
-use App\Model\PaymentType;
+use App\Model\Cerit;
+
+use App\Model\member;
 use App\Model\Tabung;
-use App\Model\transaction;
 use App\Models\KirimWa;
+use App\Core\Controller;
+use App\Models\PemModel;
+use App\Model\PaymentType;
+use App\Model\transaction;
 
 class pembayaran extends Controller
 {
@@ -43,7 +45,7 @@ class pembayaran extends Controller
                to_url('home');
                exit;
           }
-          
+
           $data["title"] = tanggal_sekarang();
           $data["member"] = member::all();
           $data["paymentType"] = PaymentType::all();
@@ -93,5 +95,11 @@ class pembayaran extends Controller
                to_url('home');
                exit;
           }
+     }
+     public function resume($jenis, $id)
+     {
+          $data = PemModel::pilih($jenis, $id);
+          $data['jenis'] = $jenis;
+          View("profil/payment", $data);
      }
 }

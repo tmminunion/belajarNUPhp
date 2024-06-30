@@ -77,7 +77,7 @@
 
 
 @section('scriptsfooter')
-
+<script src="<?= getBaseUrl(); ?>assets/js/main/terbilang.js"></script>
 <script>
     $(document).ready(function() {
         $('#formbayar').on('submit', function(event) {
@@ -116,29 +116,6 @@
         });
     });
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var inputRupiah = document.getElementById('input-jumlah');
-        inputRupiah.addEventListener('keyup', function(e) {
-            this.value = formatRupiah(this.value, 'Rp. ');
-        });
 
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-                split = number_string.split(','),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            if (ribuan) {
-                var separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? prefix + rupiah : '');
-        }
-    });
-</script>
 
 @endsection
