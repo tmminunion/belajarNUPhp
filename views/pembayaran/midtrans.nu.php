@@ -167,7 +167,7 @@
         $("#submitbayar").hide();
         Swal.fire({
             title: 'Loading...',
-            html: 'Please wait a moment.',
+            html: 'mohon tunggu sebentar....',
             allowOutsideClick: false,
             didOpen: () => {
                 Swal.showLoading()
@@ -190,18 +190,15 @@
                     snap.pay(data.snapToken, {
                         language: 'id',
                         onSuccess: function(result) {
-                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                            console.log('data id = ', result.order_id);
-                            console.log('data transaction_status = ', result.transaction_status);
-                            console.log('data gross_amount = ', result.gross_amount);
-                            // Redirect to index page after success
-                            window.location.href = 'index.php';
+
+                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
                         },
                         onPending: function(result) {
-                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=success';
                         },
                         onError: function(result) {
-                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+
+                            window.location.href = '<?= to_url('midtrans/check') ?>?order_id=' + result.order_id + '&result=failed';
                         },
                         onClose: function() {
                             console.log('Customer closed the popup without finishing the payment');

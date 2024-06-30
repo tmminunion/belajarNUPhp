@@ -80,7 +80,7 @@ class pembayaran extends Controller
                         'customer_details' => $customer_details,
                         'gopay' => array(
                             'enable_callback' => true,
-                            'callback_url' => 'https://underbody.nufat.id/midtrans/webhook', // Replace with your actual callback URL
+                            'callback_url' => getBaseUrl() . 'midtrans/check', // Replace with your actual callback URL
                         ),
                     );
 
@@ -111,6 +111,7 @@ class pembayaran extends Controller
                         'snap_token' =>  $deeplinkUrl,
                         'don_id' => $don,
                     ];
+                    $transaction = Datmid::create($create);
                     echo json_encode(['deeplinkUrl' => $deeplinkUrl]);
                 } else {
                     $enable_payments = array('cimb_clicks', 'mandiri_clickpay', 'echannel', 'gopay', 'bca_klikbca', 'bca_klikpay', 'bri_epay', 'permata_va', 'bni_va', 'other_va', 'shopeepay');
@@ -150,59 +151,6 @@ class pembayaran extends Controller
 
         }
     }
-
-
-    public function deep()
-    {
-
-
-        $nama = 'nufat';
-        $noreg = 'dodol';
-        $ddd = 100000;
-        $jumlah = str_replace('Rp. ', '', $ddd);
-        $jumlah = str_replace('.', '', $jumlah);
-        $keterangan = 'bayar jiii';
-        $payment_method = 'gopay';
-        $jenis = 'KAS';
-
-        $transaction_details = array(
-            'order_id' => uniqid(),
-            'gross_amount' => (int) $jumlah,
-        );
-
-        $item_details = array(
-            array(
-                'id' => 'a1',
-                'price' => (int) $jumlah,
-                'quantity' => 1,
-                'name' => $keterangan,
-            )
-        );
-
-        $customer_details = array(
-            'first_name' => $nama,
-            'last_name' => $noreg,
-            'email' => 'customer@example.com',
-            'phone' => '08111222333',
-        );
-
-        $transaction = array(
-            'payment_type' => 'gopay',
-            'transaction_details' => $transaction_details,
-            'item_details' => $item_details,
-            'customer_details' => $customer_details,
-            'gopay' => array(
-                'enable_callback' => true,
-                'callback_url' => 'https://underbody.nufat.id/midtrans/webhook', // Replace with your actual callback URL
-            ),
-        );
-
-        try {
-            $response = \Midtrans\CoreApi::charge($transaction);
-            $deeplinkUrl = $response;
-            echo json_encode(['deeplinkUrl' => $deeplinkUrl]);
-        } catch (Exception $e) {
-            echo json_encode(['error' => $e->getMessage()]);
-        }
-    }
 }
+
+//https://underbody.nufat.id/midtrans/webhook?order_id=KAS0624IKJ487785&result=success
