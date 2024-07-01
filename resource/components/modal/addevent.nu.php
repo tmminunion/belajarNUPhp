@@ -37,7 +37,7 @@
              alert("Nama Event harus diisi");
              return false;
          }
-         document.getElementById("form-type").action = "<?= getBaseUrl() ?>home/addnew";
+         document.getElementById("form-type").action = "/home/addnew";
          return true;
      }
  </script>
