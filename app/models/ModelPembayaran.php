@@ -53,6 +53,7 @@ class ModelPembayaran
           if ($transaction) {
                $midtran->delete();
           }
+          KirimWanew::kirim_kas($transaction->id);
           return $transaction;
      }
 
@@ -65,6 +66,7 @@ class ModelPembayaran
           if ($tabung) {
                $midtran->delete();
           }
+          KirimWanew::kirim_tabungan($tabung->id);
           return $tabung;
      }
 
@@ -77,6 +79,7 @@ class ModelPembayaran
           if ($cerit) {
                $midtran->delete();
           }
+          KirimWanew::kirim_donasi($cerit->id);
           return $cerit;
      }
 }

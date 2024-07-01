@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '58b55bd45918d701ca3b6591174a39a492753356',
+        'reference' => 'c844356146385b09555639068b7c4c96c339e151',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -367,7 +367,7 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '58b55bd45918d701ca3b6591174a39a492753356',
+            'reference' => 'c844356146385b09555639068b7c4c96c339e151',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -14,6 +14,7 @@ class Pesan extends Model
         'nomor',
         'jenis',
         'lampiran',
+        'text',
     ];
 
     protected $dates = [

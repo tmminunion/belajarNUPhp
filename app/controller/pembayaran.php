@@ -5,7 +5,7 @@ use App\Model\Cerit;
 
 use App\Model\member;
 use App\Model\Tabung;
-use App\Models\KirimWa;
+use App\Models\KirimWanew as KirimWa;
 use App\Core\Controller;
 use App\Models\PemModel;
 use App\Model\PaymentType;
