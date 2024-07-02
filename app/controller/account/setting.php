@@ -1,5 +1,5 @@
 <?php
-use App\Core\Auth;
+
 use App\Core\Controller;
 use App\Model\User;
 class setting extends Controller
@@ -7,8 +7,8 @@ class setting extends Controller
   public $auth = true;
   public function index()
   {
-  
-    View("profil/akunsett");
+  $user = User::find($_SESSION['login']);
+    View("profil/akunsett", $user);
   }
   
   public function updatePassword()

@@ -77,27 +77,19 @@
                 <!-- Form untuk pengaturan lainnya -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5>Pengaturan Lainnya</h5>
+                        <h5>Perbarui Profil</h5>
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label for="language">Bahasa</label>
-                                <select class="form-control" id="language">
-                                    <option>Bahasa Indonesia</option>
-                                    <option>Inggris</option>
-                                    <option>Jepang</option>
-                                </select>
+                                <label for="name">Nama</label>
+                                <input type="text" class="form-control" id="name" placeholder="Masukkan nama">
                             </div>
                             <div class="form-group">
-                                <label for="timezone">Zona Waktu</label>
-                                <select class="form-control" id="timezone">
-                                    <option>(GMT+07:00) Jakarta</option>
-                                    <option>(GMT+08:00) Manila</option>
-                                    <option>(GMT+09:00) Tokyo</option>
-                                </select>
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </form>
                     </div>
                 </div>
