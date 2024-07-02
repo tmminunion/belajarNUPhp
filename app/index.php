@@ -30,8 +30,6 @@ function Components($file, $data = [])
     $theme = new \Nufat\Nutemplete\Render(__dir__ . '/../resource/components');
     echo $theme->render($file . '.nu.php', $data);
 }
-
-
 function last_form()
 {
     $_SESSION['last_form'] = $_SERVER['REQUEST_URI'];

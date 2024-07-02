@@ -27,7 +27,13 @@ function View($file, $data = [])
     $theme = new \Nufat\Nutemplete\Render(__DIR__ . '/../views');
     echo $theme->render($file . '.nu.php', $data);
 }
-
+function Element($file, $data = [])
+{
+    // Naik satu folder dari direktori saat ini
+    $parentDir = dirname(__DIR__);
+    $theme = new \Nufat\Nutemplete\Render($parentDir . '/resource/element');
+    echo $theme->render($file . '.nu.php', $data);
+}
 function response($status, $data)
 {
     header("Content-Type: application/json");
