@@ -17,7 +17,7 @@ class Email
         $mail = new PHPMailer(true);
         try {
             // Server settings
-            $mail->SMTPDebug = 2; // Enable verbose debug output
+            $mail->SMTPDebug = 0; // Enable verbose debug output
             $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = $this->SMTPhost; // Specify main and backup SMTP servers
             $mail->SMTPAuth = true; // Enable SMTP authentication
@@ -25,6 +25,15 @@ class Email
             $mail->Password = $this->password; // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587; // TCP port to connect to (587 for TLS, 465 for SSL)
+
+            // Validate email addresses
+            if (!filter_var($this->senderEmail, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception('Invalid sender email address');
+            }
+
+            if (!filter_var($reciever, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception('Invalid receiver email address');
+            }
 
             // Recipients
             $mail->setFrom($this->senderEmail, $this->senderName);
@@ -38,7 +47,6 @@ class Email
             $mail->AltBody = strip_tags($body);
 
             $mail->send();
-            echo "Message has been sent\n";
             return true;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}\n";

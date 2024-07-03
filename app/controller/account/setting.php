@@ -71,7 +71,7 @@ class setting extends Controller
         $user->save();
 
         // Send activation email
-        $activation_link = getBaseUrl() . "account/activateEmail?token=" . $token;
+        $activation_link = getBaseUrl() . "account/setting/activateEmail?token=" . $token;
         $subject = "Aktivasi Email Baru Anda";
         $message = "Klik link berikut untuk mengaktifkan email Anda: " . $activation_link;
 

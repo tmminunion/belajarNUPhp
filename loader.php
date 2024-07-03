@@ -12,6 +12,9 @@ use Illuminate\View\FileViewFinder;
 use App\Core\Csrf;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+
+
+
 function views($viewName, $templateData)
 {
     // Note that you can set several directories where your templates are located
@@ -39,7 +42,7 @@ function views($viewName, $templateData)
     // Render template
     echo $viewFactory->make($viewName, $templateData)->render();
 }
-
+require_once('core/config.php');
 require_once('core/functional.php');
 require_once('core/Connection.php');
 require_once('app/index.php');

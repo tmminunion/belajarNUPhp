@@ -11,7 +11,7 @@ class SideMenuAkun
         self::$pages = [
             // Common pages
 
-            ['slug' => 'setting', 'name' => 'Setting', 'icon' => 'ni ni-settings-gear-65 text-info', 'auth' => true, 'roles' => [1]],
+            ['slug' => 'account/setting', 'name' => 'Setting', 'icon' => 'ni ni-settings-gear-65 text-info', 'auth' => true, 'roles' => [1]],
             // Pages that require login
             ['slug' => 'auth/logout', 'name' => 'Logout', 'icon' => 'ni ni-button-power text-danger', 'auth' => true, 'roles' => null],
             // Pages that require no login
