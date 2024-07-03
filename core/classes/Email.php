@@ -7,17 +7,52 @@ use PHPMailer\PHPMailer\Exception;
 
 class Email
 {
-    private $senderName = EMAIL_NAMA;
-    private $senderEmail = EMAIL_ADR;
-    private $password = EMAIL_PASS;
-    private $SMTPhost = SMTP_HOST;
+    private $senderName;
+    private $senderEmail;
+    private $password;
+    private $SMTPhost;
 
-    public function sendMail($reciever, $subject = "Test subject", $body = "Test body")
+    public function __construct()
+    {
+        $this->senderName = EMAIL_NAMA;
+        $this->senderEmail = EMAIL_ADR;
+        $this->password = EMAIL_PASS;
+        $this->SMTPhost = SMTP_HOST;
+    }
+
+    public function sendMail($receiver, $subject = "Test subject", $body = "Test body")
+    {
+        return $this->send($receiver, $subject, $body);
+    }
+
+    public function sendMailWithAttachment($receiver, $subject, $body, $attachments = [])
+    {
+        return $this->send($receiver, $subject, $body, $attachments);
+    }
+
+    public function sendMailWithTemplate($receiver, $subject, $templatePath, $templateData = [])
+    {
+        if (!file_exists($templatePath)) {
+            throw new Exception("Template file not found: " . $templatePath);
+        }
+
+        // Load template content
+        $body = file_get_contents($templatePath);
+
+        // Replace placeholders with actual data
+        foreach ($templateData as $key => $value) {
+            $body = str_replace('{{' . $key . '}}', $value, $body);
+        }
+
+        return $this->send($receiver, $subject, $body);
+    }
+
+    private function send($receiver, $subject, $body, $attachments = [])
     {
         $mail = new PHPMailer(true);
         try {
             // Server settings
-            $mail->SMTPDebug = 0; // Enable verbose debug output
+            $mail->SMTPDebug = 0; // Disable verbose debug output
             $mail->isSMTP(); // Set mailer to use SMTP
             $mail->Host = $this->SMTPhost; // Specify main and backup SMTP servers
             $mail->SMTPAuth = true; // Enable SMTP authentication
@@ -31,14 +66,23 @@ class Email
                 throw new Exception('Invalid sender email address');
             }
 
-            if (!filter_var($reciever, FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($receiver, FILTER_VALIDATE_EMAIL)) {
                 throw new Exception('Invalid receiver email address');
             }
 
             // Recipients
             $mail->setFrom($this->senderEmail, $this->senderName);
-            $mail->addAddress($reciever); // Add a recipient
+            $mail->addAddress($receiver); // Add a recipient
             $mail->addReplyTo($this->senderEmail);
+
+            // Attachments
+            foreach ($attachments as $attachment) {
+                if (filter_var($attachment, FILTER_VALIDATE_URL)) {
+                    $mail->addAttachment($attachment);
+                } else {
+                    throw new Exception("Invalid attachment URL: " . $attachment);
+                }
+            }
 
             // Content
             $mail->isHTML(true); // Set email format to HTML

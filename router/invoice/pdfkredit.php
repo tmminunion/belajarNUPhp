@@ -71,7 +71,7 @@ class pdfkredit extends invoiceModel
         $moduleSize = 1; // Ukuran modul QR code
 
         // Menggunakan nilai default jika $text kosong
-        $text = empty($text) ? "https://bungtemin.net" : $text;
+        $text = empty($text) ? "https://underbody.nufat.id" : $text;
 
         // Generate QR code
         ob_start();

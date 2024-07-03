@@ -34,4 +34,28 @@ class invoiceModel
         // Output the generated PDF (1 = download, 0 = preview)
         $dompdf->stream("invoice.pdf", array("Attachment" => 0));
     }
+    public function pdfrenderfile($template, $data, $pdfFilePath)
+    {
+        ob_start();
+        View($template, $data);
+        $html = ob_get_clean();
+
+        // Initialize DOMPDF and set options
+        $options = new Options();
+        $options->set('defaultFont', 'Helvetica');
+        $dompdf = new Dompdf($options);
+
+        // Load the HTML content
+        $dompdf->loadHtml($html);
+
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to the specified file path
+        $output = $dompdf->output();
+        file_put_contents($pdfFilePath, $output);
+    }
 }

@@ -71,7 +71,7 @@ class setting extends Controller
         $user->save();
 
         // Send activation email
-        $activation_link = getBaseUrl() . "account/setting/activateEmail?token=" . $token;
+        $activation_link = getBaseUrl() . "account/action/activateEmail?token=" . $token;
         $subject = "Aktivasi Email Baru Anda";
         $message = "Klik link berikut untuk mengaktifkan email Anda: " . $activation_link;
 
@@ -88,29 +88,4 @@ class setting extends Controller
         exit();
     }
 
-    public function activateEmail()
-    {
-        if (!isset($_GET['token'])) {
-            $_SESSION['error_update_email'] = 'Token aktivasi tidak valid.';
-            header('Location: ' . getBaseUrl() . 'account/setting');
-            exit();
-        }
-
-        $token = $_GET['token'];
-        $user = User::where('activation_token', $token)->first();
-
-        if (!$user) {
-            $_SESSION['error_update_email'] = 'Token aktivasi tidak valid.';
-            header('Location: ' . getBaseUrl() . 'account/setting');
-            exit();
-        }
-
-        $user->active_email = 1;
-        $user->activation_token = null;
-        $user->save();
-
-        $_SESSION['status_update_email'] = 'Email Anda telah berhasil diaktifkan.';
-        header('Location: ' . getBaseUrl() . 'account/setting');
-        exit();
-    }
 }

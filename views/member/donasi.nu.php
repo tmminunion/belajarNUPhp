@@ -67,7 +67,7 @@
                                                 <td style="text-align:right;font-weight:bold;font-size:18px;">
                                                     <?= number_format($value["saldo"], 0, ',', '.') ?>,-
                                                 </td>
-                                                <td><a class="btn btn-sm btn-primary" href="<?= getBaseUrl() ?>transaksi/member/<?= $value["id"] ?>/1">Lihat Transaksi</a></td>
+                                                <td><a class="btn btn-sm btn-primary" href="<?= getBaseUrl() ?>donasi/member/<?= $value["id"] ?>/1">Lihat Transaksi</a></td>
 
 
                                             </tr>

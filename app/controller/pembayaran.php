@@ -100,6 +100,7 @@ class pembayaran extends Controller
      {
           $data = PemModel::pilih($jenis, $id);
           $data['jenis'] = $jenis;
+          $data["id"] = $id;
           View("profil/payment", $data);
      }
 }
