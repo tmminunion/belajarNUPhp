@@ -3,18 +3,17 @@
 <div class="header pb-5 pt-1 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-size: cover; background-position: center top;">
     <span class="mask bg-gradient-default opacity-7"></span>
     <div class="container-fluid d-flex align-items-center mt--3">
-        <div class="row">
-            <div class="col-lg-7 col-md-10">
-                <h1 class="display-2 text-white">Aktivitas</h1>
-                <p class="text-white mt-0 mb-9">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-            </div>
-        </div>
+
     </div>
 </div>
 
 <div class="container-fluid mt--9 pb-4">
+    <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Aktivitas</h1>
+
+    </div>
     <div class="row">
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-12 order-xl-1">
             <div class="card bg-secondary shadow">
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
@@ -39,14 +38,14 @@
             </div>
         </div>
     </div>
-   
+
 </div>
 
 @section('scriptsfooter')
 <script>
     function loadContent(tabName) {
         var urlMap = {
-            donasi: '<?= get_url('account/activity/tab?tab=donasi')?>',
+            donasi: '<?= get_url('account/activity/tab?tab=donasi') ?>',
             kas: '<?= get_url('account/activity/tab?tab=kas') ?>',
             tabungan: '<?= get_url('account/activity/tab?tab=tabungan') ?>'
         };
@@ -63,7 +62,7 @@
             .catch(error => console.error('Error loading content:', error));
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Muat konten awal (misalnya DONASI)
         loadContent('donasi');
     });
@@ -76,15 +75,21 @@
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+
     .tabContent {
         min-height: 500px;
     }
+
     .nav-link.active {
-        color: red !important; /* Pastel background color text */
+        color: red !important;
+        /* Pastel background color text */
     }
+
     .nav-link.pastel-bg {
-        background-color: #f0fff !important; /* Pastel background color */
-        color: blue; /* Change text color */
+        background-color: #f0fff !important;
+        /* Pastel background color */
+        color: blue;
+        /* Change text color */
     }
 </style>
 @endsection

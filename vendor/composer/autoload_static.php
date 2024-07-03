@@ -58,6 +58,7 @@ class ComposerStaticInit90c3db821f254808e42c15d94b2d30f3
             'Psr\\Cache\\' => 10,
             'PhpOption\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -230,6 +231,10 @@ class ComposerStaticInit90c3db821f254808e42c15d94b2d30f3
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Overtrue\\Pinyin\\' => 
         array (

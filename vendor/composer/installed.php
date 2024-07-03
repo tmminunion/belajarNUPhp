@@ -3,7 +3,7 @@
         'name' => 'nufat/nuphp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c844356146385b09555639068b7c4c96c339e151',
+        'reference' => '4c63cd93f7b6e1334ef18cd0ec3543d3575b9e62',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -367,7 +367,7 @@
         'nufat/nuphp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c844356146385b09555639068b7c4c96c339e151',
+            'reference' => '4c63cd93f7b6e1334ef18cd0ec3543d3575b9e62',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -391,6 +391,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../overtrue/pinyin',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '06e6e8071324c856d4d63e7528443ff83f71e44a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(
