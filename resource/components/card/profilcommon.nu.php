@@ -38,17 +38,15 @@
                 <?= $member->nama ?>
             </h3>
             <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                <i class="ni location_pin mr-2"></i><?= $member->noreg?>
             </div>
             <div class="h5 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                <i class="ni business_briefcase-24 mr-2"></i><?= $member->email ?>
             </div>
             <div>
-                <i class="ni education_hat mr-2"></i>University of Computer Science
+                <i class="ni education_hat mr-2"></i>Underbody Assy - White
             </div>
-            <hr class="my-4" />
-            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
-            <a href="#">Show more</a>
+      
         </div>
     </div>
 </div>

@@ -37,12 +37,10 @@
                                                         <?= $nomor + 1 ?>
                                                     </td>
                                                     <td>
-                                                        <a href="<?= getBaseUrl() . "pembayaran/resume/kas/" . $value["judul"]; ?>"> <?= $value["judul"] ?></a>
+                                                        <a href="<?= getBaseUrl() . "midtrans/transaksi/check/" . $value["judul"]; ?>"> <?= $value["judul"] ?></a>
                                                     </td>
                                                                                                         <td>
-                                                       <?php $didi = App\Models\MidtransModel::getstatus($value["judul"]); 
-                                                       echo $didi->data;
-                                                       ?>
+                                                      
                                                     </td>
                                                     <td>
                                                         <?= strnama($value->member->nama); ?>

@@ -38,4 +38,5 @@ class snaplist extends Controller
                'perPage' => $perPage,
           ]);
      }
+      
 }
