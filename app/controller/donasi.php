@@ -179,8 +179,7 @@ class donasi extends Controller
           exit;
      }
 
-
-     public function pdf($id)
+ public function pdf($id)
      {
           $page = 1;
           $perPage = 100;
@@ -235,4 +234,7 @@ class donasi extends Controller
 
           $dompdf->stream('donasi_report_' . $id . '.pdf', ['Attachment' => false]);
      }
+
+
+  
 }

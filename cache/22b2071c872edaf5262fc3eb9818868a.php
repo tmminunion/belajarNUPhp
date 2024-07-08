@@ -30,6 +30,10 @@
             text-align: right;
         }
 
+        .center-align {
+            text-align: center;
+        }
+
         .page_break {
             page-break-before: always;
         }
@@ -131,7 +135,7 @@
             <td style="width:50%; border:0px; vertical-align: top;">
                 <div class="right">
                     <h2>List Donatur</h2>
-                    <table>
+                <table>
                         <thead>
                             <tr>
                                 <th>Nama Lengkap</th>
@@ -140,7 +144,7 @@
                         </thead>
                         <tbody>
                           <?php $no = 1; ?>
-            <?php $__currentLoopData = $transactions->where('type', 'kredit'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $transactions->where('type', 'kredit')->take(15); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td><?php echo e($transaction->member->nama); ?></td>
                                 <td class="right-align">RP. <?= number_format($transaction->jumlah, 0, ',', '.') ?>,- </td>
@@ -160,9 +164,10 @@
         </tr>
     </table>
 
+
     <div class="page_break"></div>
 
-    <h2>Laporan Donasi</h2>
+    <h2>Laporan Pemasukan</h2>
    
     <!-- Tabel Transaksi Kredit -->
     <table>
@@ -197,40 +202,45 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
-
+   <div class="page_break"></div>
+      <h2>Laporan Pengeluaran</h2>
     <!-- Tabel Transaksi Debit -->
-    <table>
-        <caption>Transaksi Debit</caption>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>NOMER</th>
-                <th>Transaksi</th>
-                <th>Noreg</th>
-                <th>Nama</th>
-                <th>Status</th>
-                <th>Jumlah</th>
-                <th>Tanggal</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1; ?>
-            <?php $__currentLoopData = $transactions->where('type', 'debit'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-                <td><?php echo e($no++); ?></td>
-                <td><?php echo e($transaction->judul); ?></td>
-                <td><?php echo e($transaction->type); ?></td>
-                <td><?php echo e($transaction->member->noreg); ?></td>
-                <td><?php echo e($transaction->member->nama); ?></td>
-                <td><?php echo e($transaction->status); ?></td>
-                <td class="right-align"><?php echo e(number_format($transaction->jumlah, 0, ',', '.')); ?></td>
-                <td><?php echo e($transaction->date); ?></td>
-                <td><?php echo e($transaction->keterangan); ?></td>
-            </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
+ <table>
+    <caption>Transaksi Debit</caption>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>NOMER</th>
+            <th>Transaksi</th>
+            <th>Noreg</th>
+            <th>Nama</th>
+            <th>Status</th>
+            <th>Jumlah</th>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $no = 1; ?>
+        <?php $__empty_1 = true; $__currentLoopData = $transactions->where('type', 'debit'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <tr>
+            <td><?php echo e($no++); ?></td>
+            <td><?php echo e($transaction->judul); ?></td>
+            <td><?php echo e($transaction->type); ?></td>
+            <td><?php echo e($transaction->member->noreg); ?></td>
+            <td><?php echo e($transaction->member->nama); ?></td>
+            <td><?php echo e($transaction->status); ?></td>
+            <td class="right-align"><?php echo e(number_format($transaction->jumlah, 0, ',', '.')); ?></td>
+            <td><?php echo e($transaction->date); ?></td>
+            <td><?php echo e($transaction->keterangan); ?></td>
+        </tr>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+        <tr>
+            <td colspan="9" class="center-align">Tidak ada data</td>
+        </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
     <div class="page_break"></div>
     <p>Lampiran</p>
      <table class="table table-bordered">

@@ -30,6 +30,10 @@
             text-align: right;
         }
 
+        .center-align {
+            text-align: center;
+        }
+
         .page_break {
             page-break-before: always;
         }
@@ -131,7 +135,7 @@
             <td style="width:50%; border:0px; vertical-align: top;">
                 <div class="right">
                     <h2>List Donatur</h2>
-                    <table>
+                <table>
                         <thead>
                             <tr>
                                 <th>Nama Lengkap</th>
@@ -140,7 +144,7 @@
                         </thead>
                         <tbody>
                           @php $no = 1; @endphp
-            @foreach($transactions->where('type', 'kredit') as $transaction)
+            @foreach($transactions->where('type', 'kredit')->take(15) as $transaction)
                             <tr>
                                 <td>{{ $transaction->member->nama }}</td>
                                 <td class="right-align">RP. <?= number_format($transaction->jumlah, 0, ',', '.') ?>,- </td>
@@ -160,9 +164,10 @@
         </tr>
     </table>
 
+
     <div class="page_break"></div>
 
-    <h2>Laporan Donasi</h2>
+    <h2>Laporan Pemasukan</h2>
    
     <!-- Tabel Transaksi Kredit -->
     <table>
@@ -197,40 +202,45 @@
             @endforeach
         </tbody>
     </table>
-
+   <div class="page_break"></div>
+      <h2>Laporan Pengeluaran</h2>
     <!-- Tabel Transaksi Debit -->
-    <table>
-        <caption>Transaksi Debit</caption>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>NOMER</th>
-                <th>Transaksi</th>
-                <th>Noreg</th>
-                <th>Nama</th>
-                <th>Status</th>
-                <th>Jumlah</th>
-                <th>Tanggal</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php $no = 1; @endphp
-            @foreach($transactions->where('type', 'debit') as $transaction)
-            <tr>
-                <td>{{ $no++ }}</td>
-                <td>{{ $transaction->judul }}</td>
-                <td>{{ $transaction->type }}</td>
-                <td>{{ $transaction->member->noreg }}</td>
-                <td>{{ $transaction->member->nama }}</td>
-                <td>{{ $transaction->status }}</td>
-                <td class="right-align">{{ number_format($transaction->jumlah, 0, ',', '.') }}</td>
-                <td>{{ $transaction->date }}</td>
-                <td>{{ $transaction->keterangan }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+ <table>
+    <caption>Transaksi Debit</caption>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>NOMER</th>
+            <th>Transaksi</th>
+            <th>Noreg</th>
+            <th>Nama</th>
+            <th>Status</th>
+            <th>Jumlah</th>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
+        </tr>
+    </thead>
+    <tbody>
+        @php $no = 1; @endphp
+        @forelse($transactions->where('type', 'debit') as $transaction)
+        <tr>
+            <td>{{ $no++ }}</td>
+            <td>{{ $transaction->judul }}</td>
+            <td>{{ $transaction->type }}</td>
+            <td>{{ $transaction->member->noreg }}</td>
+            <td>{{ $transaction->member->nama }}</td>
+            <td>{{ $transaction->status }}</td>
+            <td class="right-align">{{ number_format($transaction->jumlah, 0, ',', '.') }}</td>
+            <td>{{ $transaction->date }}</td>
+            <td>{{ $transaction->keterangan }}</td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="9" class="center-align">Tidak ada data</td>
+        </tr>
+        @endforelse
+    </tbody>
+</table>
     <div class="page_break"></div>
     <p>Lampiran</p>
      <table class="table table-bordered">
